@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>码兵之家</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="码兵之家">
+  <title>使用 GNU gettext 实现程序的多国语言本地化 | 码兵之家</title>
+  <meta name="keywords" content=" Linux ">
+  <meta name="description" content="使用 GNU gettext 实现程序的多国语言本地化 | 码兵之家">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="ld 是 GNU 的连接器，用于将多个已经编译好的 .o 文件连接成可执行文件或者动态库。 一般使用方式如下： ld  [参数选项]  -o [输出文件名] obj_file1.o  obj_file2.o  obj_file3.o ...  例如，.a 库文件可以跟 .o 文件一起列出来： ld  -o  main  crt0.o  obj1.o  obj2.o  libq1.a   以上例的">
 <meta property="og:type" content="article">
@@ -58,7 +58,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/blog1/"
    class="avatar_target">
@@ -1007,12 +1007,62 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-使用-GNU-gettext-实现程序的多国语言本地化" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%A0%81%E5%85%B5%E4%B9%8B%E5%AE%B6"><span class="toc-text">关于码兵之家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <h1 class="article-title">使用 GNU gettext 实现程序的多国语言本地化</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="技术文章">技术文章</a> > 
+            
+            <a  data-rel="技术文章&lt;---&gt;Linux">Linux</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">Linux</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-02-24 22:35:47'>2021-06-13 10:57</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:1.1k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-GNU-gettext-%E5%AE%9E%E7%8E%B0%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%A4%9A%E5%9B%BD%E8%AF%AD%E8%A8%80%E6%9C%AC%E5%9C%B0%E5%8C%96"><span class="toc-text">使用 GNU gettext 实现程序的多国语言本地化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">1. 基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C"><span class="toc-text">2. 批量操作</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1025,37 +1075,118 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于码兵之家"><a href="#关于码兵之家" class="headerlink" title="关于码兵之家"></a>关于码兵之家</h2><p><strong>码兵之家</strong> 是公仔（梁权清）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源</p>
-<p><code>3-hexo</code> 主题使用交流可以加 Q群: <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e8cf083cc097141eaf323396f1766809b8e90ff00c67bb441898f672892f6904"><img data-ignore border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="3-hexo使用交流" title="3-hexo使用交流"></a></p>
-<p>主要功能：</p>
-<ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a target="_blank" rel="noopener" href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
-</ul>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="使用-GNU-gettext-实现程序的多国语言本地化"><a href="#使用-GNU-gettext-实现程序的多国语言本地化" class="headerlink" title="使用 GNU gettext 实现程序的多国语言本地化"></a>使用 GNU gettext 实现程序的多国语言本地化</h2><h3 id="1-基本操作"><a href="#1-基本操作" class="headerlink" title="1. 基本操作"></a>1. 基本操作</h3><p>gettext 是 GNU 出品的一个项目，主要用于将应用程序本地化和国际化的一个实用套件。</p>
+<p>首先，我们的程序，如果在源代码中写死了字符串，则我们无法对这个字符串进行国际化和本地化，例如：</p>
+<pre><code class="C">int main()
+&#123;
+    printf(&quot;hello world. \n&quot;);
+&#125;
+</code></pre>
+<p>上面的程序，无论在什么语言版本的系统中，其显示的都是英文的字符串 “hello world” 。</p>
+<p>gettext 的方法是，需要进行国际化与本地化的字符串中，全部加上一个叫 gettext() 的函数调用，如下：</p>
+<pre><code class="C">// a1.c
+#include &lt;stdio.h&gt;
+#include &lt;libintl.h&gt;
+#include &lt;locale.h&gt;
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+#define PACKAGE &quot;test1&quot;      // 语言字符串资源包名
+
+int main()
+&#123;
+    setlocale(LC_ALL, &quot;&quot;);
+    bindtextdomain(PACKAGE, &quot;locale&quot;);
+    textdomain(PACKAGE);
+    
+    printf(&quot;%s\n&quot;, gettext(&quot;I come from China.&quot;));
+    printf(&quot;%s\n&quot;, gettext(&quot;I like Java language.&quot;));
+    // 上面的 gettext() 可以用宏来代替，进行简化，例如:
+    // #define _(str) gettext(str)
+    // #define N(str) gettext(str)
+    // 等等
+    return 0;
+&#125;
+// 使用如下命令编译： 
+// gcc -o a1 a1.c 
+</code></pre>
+<p>上面示范程序中的字符串 “I come from China.” 和 “I like Java language.” ，在使用之前都加上了 gettext() 函数进行包裹。gettext() 函数的作用是：以原始字符串作为 key，去加载并获取到并返回其对应语言的的本地字符串。</p>
+<p>使用 <code>xgettext</code> 命令，将源文件中被 gettext() 函数包裹的字符串全部抓出来，命令如下（用 test1 作为语言包名）：</p>
+<pre><code>xgettext  a1.c  -o test1.po
+</code></pre>
+<p>xgettext 命令可以指定多个原文文件，输出的 .po 文件是一个文本文件，里面包含了需要翻译的所有字符串，文件名是上面源码中指定的对应的语言资源包 PACKAGE 名。</p>
+<p>打开 test1.po 文件，把字符编码设置为 UTF-8，将里面的 <code>&quot;Content-Type: text/plain; charset=CHARSET\n&quot;</code> 改为 <code>&quot;Content-Type: text/plain; charset=UTF-8\n&quot;</code>。然后，对相应的文本进行翻译：</p>
+<pre><code>#: a1.c:13
+msgid &quot;I come from China.&quot;
+msgstr &quot;&quot;
+
+#: a1.c:14
+msgid &quot;I like Java language.&quot;
+msgstr &quot;&quot;
+</code></pre>
+<p>上面的 msgid 就是原始字符串，作为 key，不要修改，下面的 msgstr 则应该修改，将翻译过去的文本填进去，如下：</p>
+<pre><code>#: a1.c:13
+msgid &quot;I come from China.&quot;
+msgstr &quot;我来自中国。&quot;
+
+#: a1.c:14
+msgid &quot;I like Java language.&quot;
+msgstr &quot;我喜欢 Java 语言&quot;
+</code></pre>
+<p>然后使用 <code>msgfmt</code> 命令将 .po 文件编译为 gettext() 函数可以识别的 .mo 文件，命令如下：</p>
+<pre><code>msgfmt  test1.po  -o  test1.mo
+</code></pre>
+<p>由于上面 C 程序中指定了 .mo 资源的加载路径，语句 <code>bindtextdomain(PACKAGE, &quot;locale&quot;);</code> 指定了 .mo 存放在当前目录的 locale 子目录下面。所以，把生成的 test1.mo 文件放在当前目录的如下路径下：</p>
+<pre><code>locale/zh_CN/LC_MESSAGES/test1.mo
+</code></pre>
+<p>这里假设系统为简体中文，当前 locale 设置为 zh_CN，上面 C 程序的语句  <code>setlocale(LC_ALL, &quot;&quot;);</code> 就是使用系统默认的语言环境。执行上面 C 程序 <code>./a1</code> 得到结果为：</p>
+<pre><code>我来自中国。
+我喜欢 Java 语言
+</code></pre>
+<p>上面例子说明了 gettext 套件的基本使用流程。</p>
+<h3 id="2-批量操作"><a href="#2-批量操作" class="headerlink" title="2. 批量操作"></a>2. 批量操作</h3><p><code>xgettext</code> 命令可以一次性指定多个输入源文件，如：</p>
+<pre><code>xgettext  a1.c  a2.c  a3.c  -o  package.po
+</code></pre>
+<p><code>xgettext</code> 命令也可以通配符，如：</p>
+<pre><code>xgettext  *.c  -o  package.po
+</code></pre>
+<p>可以把所有需要提取的源文件放在一个列表中（list1.txt 中列出所有源文件名）：</p>
+<pre><code>xgettext -f list1.txt -o package.po
+</code></pre>
+<p>增加其他关键字，例如 增加 N() 函数，则 N(“string”) 也会被抓取：</p>
+<pre><code>xgettext  *.c -kN -o  package.po
+</code></pre>
+<p>如果已经翻译好了字符串，后来源代码发生了更改，增加了一些新的字符串，可以使用 -j 选项，把新增的字符串追加到已经存在的翻译好的 .po 文件中，例如：</p>
+<pre><code>xgettext  a1.c  a2.c  a3.c  -j  -o package.po
+</code></pre>
+<p>用 <code>msginit</code> 命令可以把 xgettext 生成的 .po 文件（POT）转换成对应语言的翻译文本 .po （会修改好一些编码与语言的相关字段）：</p>
+<pre><code>msginit  --no-translator --locale zh_CN -o package_new.po -i package.po
+</code></pre>
+<p>可以用 <code>msgmerge</code> 命令把新生成的 .po 合并到已经翻译好的 .po 文件中：</p>
+<pre><code>msgmerge  -o package.po  locale/zh_CN/LC_MESSAGES/package.po  package.po
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2238236@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry"><span class="miit">
@@ -1068,11 +1199,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>

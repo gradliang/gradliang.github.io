@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>码兵之家</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="码兵之家">
+  <title>x86 AT&amp;T 汇编语法基础与寻址方式 | 码兵之家</title>
+  <meta name="keywords" content=" x86汇编 ">
+  <meta name="description" content="x86 AT&amp;T 汇编语法基础与寻址方式 | 码兵之家">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="ld 是 GNU 的连接器，用于将多个已经编译好的 .o 文件连接成可执行文件或者动态库。 一般使用方式如下： ld  [参数选项]  -o [输出文件名] obj_file1.o  obj_file2.o  obj_file3.o ...  例如，.a 库文件可以跟 .o 文件一起列出来： ld  -o  main  crt0.o  obj1.o  obj2.o  libq1.a   以上例的">
 <meta property="og:type" content="article">
@@ -58,7 +58,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/blog1/"
    class="avatar_target">
@@ -1007,12 +1007,62 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-x86-AT-T-汇编语法基础与寻址方式" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%A0%81%E5%85%B5%E4%B9%8B%E5%AE%B6"><span class="toc-text">关于码兵之家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <h1 class="article-title">x86 AT&amp;T 汇编语法基础与寻址方式</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="技术文章">技术文章</a> > 
+            
+            <a  data-rel="技术文章&lt;---&gt;x86汇编">x86汇编</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">x86汇编</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-02-24 22:35:47'>2008-06-01 18:34</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:2.4k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89"><span class="toc-text">数据定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AE%B5%E5%AE%9A%E4%B9%89"><span class="toc-text">段定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%AE%B5%EF%BC%88-data%EF%BC%89%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0"><span class="toc-text">数据段（.data）定义数据元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E6%9C%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E6%8D%AE%EF%BC%88-bss%E6%AE%B5%EF%BC%89"><span class="toc-text">定义未初始化数据（.bss段）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E9%9D%99%E6%80%81%E7%AC%A6%E5%8F%B7"><span class="toc-text">定义静态符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%8B%E5%8D%B3%E6%95%B0%EF%BC%8C%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92%E6%96%B9%E5%90%91%E4%B8%8E%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-text">立即数，数据传递方向与寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AB%8B%E5%8D%B3%E6%95%B0"><span class="toc-text">立即数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92%E6%96%B9%E5%90%91"><span class="toc-text">数据传递方向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E5%AF%BB%E5%9D%80"><span class="toc-text">寄存器寻址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E4%BD%8D%E5%AE%BD"><span class="toc-text">指令位宽</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-text">内存寻址方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-text">1. 寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%9B%B4%E6%8E%A5%E5%AF%BB%E5%9D%80"><span class="toc-text">2. 直接寻址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AF%84%E5%AD%98%E5%99%A8%E9%97%B4%E6%8E%A5%E5%AF%BB%E5%9D%80"><span class="toc-text">3. 寄存器间接寻址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%9F%BA%E5%9D%80%E5%8A%A0%E5%81%8F%E7%A7%BB%E9%87%8F%E5%AF%BB%E5%9D%80"><span class="toc-text">4. 基址加偏移量寻址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%9F%BA%E5%9D%80%E5%8A%A0%E5%8F%98%E5%9D%80%E5%AF%BB%E5%9D%80"><span class="toc-text">5. 基址加变址寻址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ModRM-%E5%AD%97%E6%AE%B5"><span class="toc-text">ModRM 字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SIB-%E5%AD%97%E6%AE%B5"><span class="toc-text">SIB 字段</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1025,37 +1075,488 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于码兵之家"><a href="#关于码兵之家" class="headerlink" title="关于码兵之家"></a>关于码兵之家</h2><p><strong>码兵之家</strong> 是公仔（梁权清）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源</p>
-<p><code>3-hexo</code> 主题使用交流可以加 Q群: <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e8cf083cc097141eaf323396f1766809b8e90ff00c67bb441898f672892f6904"><img data-ignore border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="3-hexo使用交流" title="3-hexo使用交流"></a></p>
-<p>主要功能：</p>
-<ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a target="_blank" rel="noopener" href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据定义"><a href="#数据定义" class="headerlink" title="数据定义"></a>数据定义</h2><h3 id="段定义"><a href="#段定义" class="headerlink" title="段定义"></a>段定义</h3><ol>
+<li><code>.text</code> 定义代码段</li>
+<li><code>.data</code> 定义数据段</li>
+<li><code>.bss</code> 定义未初始化数据段</li>
+<li><code>.rodata</code> 定义只读数据段</li>
+</ol>
+<h3 id="数据段（-data）定义数据元素"><a href="#数据段（-data）定义数据元素" class="headerlink" title="数据段（.data）定义数据元素"></a>数据段（.data）定义数据元素</h3><table>
+<thead>
+<tr>
+<th>伪指令</th>
+<th>数据类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.ascii</code></td>
+<td>文本字符串</td>
+</tr>
+<tr>
+<td><code>.asciz</code></td>
+<td>文本字符串（后面加<code>\0</code>结尾）</td>
+</tr>
+<tr>
+<td><code>.byte</code></td>
+<td>字节值（8位整数）</td>
+</tr>
+<tr>
+<td><code>.short</code></td>
+<td>16位整数</td>
+</tr>
+<tr>
+<td><code>.int</code></td>
+<td>32位整数</td>
+</tr>
+<tr>
+<td><code>.long</code></td>
+<td>32位整数</td>
+</tr>
+<tr>
+<td><code>.quad</code></td>
+<td>64位整数</td>
+</tr>
+<tr>
+<td><code>.octa</code></td>
+<td>128位整数</td>
+</tr>
+<tr>
+<td><code>.single</code></td>
+<td>单精度浮点数（同.float）</td>
+</tr>
+<tr>
+<td><code>.float</code></td>
+<td>单精度浮点数</td>
+</tr>
+<tr>
+<td><code>.double</code></td>
+<td>双精度浮点数</td>
+</tr>
+</tbody></table>
+<p><code>.globl</code> 伪指令将标定义为全局可链接的，跨文件可以访问的符号。</p>
+<p>代码样例：</p>
+<pre><code class="x86asm">    .globl    msg                           # 将 msg 定义为全局的
+pi:
+    .float    3.14159
+    .long     100, 200, 300, 500, 400
+msg:
+    .asciz    &quot;This is a text message.&quot;
+</code></pre>
+<h3 id="定义未初始化数据（-bss段）"><a href="#定义未初始化数据（-bss段）" class="headerlink" title="定义未初始化数据（.bss段）"></a>定义未初始化数据（.bss段）</h3><ul>
+<li><code>.comm</code>  定义全局的通用内存区域</li>
+<li><code>.lcomm</code> 定义局部的通用内存区域</li>
 </ul>
+<p>格式如下：</p>
+<pre><code>    .comm    symbol, length
+</code></pre>
+<p>代码样例：</p>
+<pre><code class="x86asm">.section  .bss
+    .comm   symbolName1, 10000    # 定义10000字节，符号名为 symbolName1
+    .lcomm  symbolName2, 200      # 定义200字节，符号名为 symbolName2
+</code></pre>
+<h3 id="定义静态符号"><a href="#定义静态符号" class="headerlink" title="定义静态符号"></a>定义静态符号</h3><p>使用 <code>.equ</code> 伪指令定义静态符号，也可以把它当作一个宏定义。<br>格式举例：</p>
+<pre><code class="x86asm">    .equ    LINUX_SYS_CALL, 0x80
+    movl    $LINUX_SYS_CALL, %eax
+</code></pre>
+<h3 id="立即数，数据传递方向与寄存器"><a href="#立即数，数据传递方向与寄存器" class="headerlink" title="立即数，数据传递方向与寄存器"></a>立即数，数据传递方向与寄存器</h3><h4 id="立即数"><a href="#立即数" class="headerlink" title="立即数"></a>立即数</h4><p>所有数字前面加上美元符号，表示立即数，如 <code>$100</code> 表示十进制的 <code>100</code> 的立即数，<code>$0x100</code> 表示十六进制的 <code>0x100</code> 立即数。</p>
+<h4 id="数据传递方向"><a href="#数据传递方向" class="headerlink" title="数据传递方向"></a>数据传递方向</h4><p>数据传递方向为从左到右 （与 Intel 语法的从右到左相反）</p>
+<h4 id="寄存器寻址"><a href="#寄存器寻址" class="headerlink" title="寄存器寻址"></a>寄存器寻址</h4><p>寄存器寻址需要在寄存器名称前面加上百分号 <code>%</code></p>
+<h4 id="指令位宽"><a href="#指令位宽" class="headerlink" title="指令位宽"></a>指令位宽</h4><p>涉及不同位宽的指令，需要在指令后面加上位宽后缀。</p>
+<table>
+<thead>
+<tr>
+<th>位宽后缀</th>
+<th>数据位宽</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>b</td>
+<td>8 位</td>
+</tr>
+<tr>
+<td>w</td>
+<td>16 位</td>
+</tr>
+<tr>
+<td>l</td>
+<td>32 位</td>
+</tr>
+<tr>
+<td>q</td>
+<td>64 位</td>
+</tr>
+</tbody></table>
+<p>代码样例： </p>
+<pre><code class="x86asm">    movl   $0x12345678, %eax      # 将立即数 0x12345678 传递给 EAX 寄存器
+    movb   $al, %bl               # 将寄存器 AL 的值复制给 BL
+</code></pre>
+<h2 id="内存寻址方式"><a href="#内存寻址方式" class="headerlink" title="内存寻址方式"></a>内存寻址方式</h2><h3 id="1-寄存器"><a href="#1-寄存器" class="headerlink" title="1. 寄存器"></a>1. 寄存器</h3><p>机器码中的 ModRM 字段中，mod == 11 时，r/m 表示为操作数为寄存器。</p>
+<table>
+<thead>
+<tr>
+<th>r/m 值</th>
+<th>默认时</th>
+<th>REX.B == 1 时</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>000</td>
+<td>EAX / RAX</td>
+<td>R8</td>
+</tr>
+<tr>
+<td>001</td>
+<td>ECX / RCX</td>
+<td>R9</td>
+</tr>
+<tr>
+<td>010</td>
+<td>EDX / RDX</td>
+<td>R10</td>
+</tr>
+<tr>
+<td>011</td>
+<td>EBX / RBX</td>
+<td>R11</td>
+</tr>
+<tr>
+<td>100</td>
+<td>ESP / RSP</td>
+<td>R12</td>
+</tr>
+<tr>
+<td>101</td>
+<td>EBP / RBP</td>
+<td>R13</td>
+</tr>
+<tr>
+<td>110</td>
+<td>ESI / RSI</td>
+<td>R14</td>
+</tr>
+<tr>
+<td>111</td>
+<td>EDI / RDI</td>
+<td>R15</td>
+</tr>
+</tbody></table>
+<h3 id="2-直接寻址"><a href="#2-直接寻址" class="headerlink" title="2. 直接寻址"></a>2. 直接寻址</h3><p>32位模式下，直接以数据段的标签来表示内存地址的方式，进行寻址。举例：</p>
+<pre><code class="x86asm">    .section  .data
+data1:
+    .int    0x12345678
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+    .section  .bss
+    .comm   data2, 8
+
+    .section  .text
+    movl    data1, %eax       # 直接用内存位置的标签 data1 来表示内存寻址
+    addl    %eax, %eax
+    movl    %eax, data2          # 直接用内存位置的标签 data2 来表示内存寻址
+</code></pre>
+<p>标签值会最终会转化为一个 32 位的内存地址。</p>
+<p>在 64 位 x86-64 模式下，不能再使用一个 32 位的内存地址值来进行寻址了。这个32位的标签值被重新释义为：相对于程序计算器（ PC ）的偏移。所以在 64 位模式下，出现了一种叫相对 PC 寻址，举例：</p>
+<pre><code class="x86asm">    .section  .data
+data1:
+    .int    0x12345678
+
+    .section  .bss
+    .comm   data2, 8
+
+    .section  .text
+    movl    data1(%rip), %eax      # 直接用内存位置的标签 data1 来表示相对PC寻址
+    addl    %eax, %eax
+    movl    %eax, data2(%rip)      # 直接用内存位置的标签 data2 来表示相对PC寻址
+</code></pre>
+<p>机器码中的 ModRM 字段中，mod == 00，r/m == 101 时，表示为(1)直接寻址 或者 (2)相对 PC 寻址，指令会带一个32位的整数作为内存地址值。</p>
+<h3 id="3-寄存器间接寻址"><a href="#3-寄存器间接寻址" class="headerlink" title="3. 寄存器间接寻址"></a>3. 寄存器间接寻址</h3><p>将内存地址值存放在一个通用寄存器中，通过寄存器的值作为内存地址来间接访问内存的数据。用小括号把寄存器括起来表示，举例：</p>
+<pre><code class="x86asm">    movl    %ebx, (%eax)    # 32位下，(%eax) 表示将 EAX 寄存器里面的值作为内存地址进行寻址
+    movq    %rbx, (%rax)    # 64位下，(%rax) 表示将 RAX 寄存器里面的值作为内存地址进行寻址
+</code></pre>
+<p>机器码中的 ModRM 字段中，mod == 00 时，表示采用寄存器间接寻址； r/m 表示寄存器的值。  </p>
+<p>注：实际机器码中不存在 <code>(%ebx)</code> / <code>(%rbx)</code> / <code>(%r13)</code> 这种寄存器间接寻址，汇编器会自动把这类寄存器间接寻址加上一个 0 的偏移量。因为 ebx/rbx/r13 的 r/m 值为 101，而 mod == 00，r/m == 101 时表示为(1)直接寻址 或者 (2)相对 PC 寻址。请看下面的基址加偏移量寻址</p>
+<h3 id="4-基址加偏移量寻址"><a href="#4-基址加偏移量寻址" class="headerlink" title="4. 基址加偏移量寻址"></a>4. 基址加偏移量寻址</h3><p>将寄存器中的值，加上一个 8 位或者 32 位有符号整数的偏移量，得到的和作为内存地址来访问内存的数据。将偏移量的值放在小括号外面，用小括号把寄存器括起来表示，举例：</p>
+<pre><code class="x86asm">    .section .text
+    movl    %ebx, 4(%edi)
+    movl    %eax, -8(%esi)
+    movl    %edx, 0x12345678(%eax)
+    movl    %ecx, values(%edx)
+    
+    .section .data
+values:
+    .int    100, 200, 300
+</code></pre>
+<p>机器码中的 ModRM 字段中，当 r/m != 100 时，</p>
+<ul>
+<li>(1) mod == 01 时，表示采用 寄存器 + 8位偏移量， r/m表示对应寄存器；</li>
+<li>(2) mod == 10 时，表示采用 寄存器 + 32位偏移量， r/m表示对应寄存器。</li>
+</ul>
+<p>注：实际机器码中不存在 (%esp) 或 value(%esp) 这类寻址，汇编器会自动把这 esp/rsp/r12 的间接寻址转换为下面的基址加变址寻址。因为 r/m == 100 时代表的 esp/rsp/r12 被表示为带 SIB 字段的基址加变址寻址，请参考下面的基址加变址寻址</p>
+<h3 id="5-基址加变址寻址"><a href="#5-基址加变址寻址" class="headerlink" title="5. 基址加变址寻址"></a>5. 基址加变址寻址</h3><p>基址加变址寻址的表达式如下：</p>
+<pre><code>    偏移量 (基址寄存器, 变址寄存器, 比例因子)
+</code></pre>
+<p>最终的内存地址值 EA = 基址寄存器值 + 变址寄存器 * 比例因子 + 偏移量<br>比例因子只能为 1, 2, 4, 8 。</p>
+<p>注： esp/rsp/r12 不能做变址寄存器</p>
+<pre><code class="x86asm">    movl    %eax, (%ebx, %ecx)              # 没有比例因子时，默认比例因子为 1
+    movl    %eax, (%ebx, %ecx, 4)           # EA = ebx + ecx * 4
+    movl    %eax, (%ebx, %ecx, 8)           # EA = ebx + ecx * 8
+    movl    %eax, values(, %edi, 4)         # EA = values + edi * 4
+    movl    %eax, (, %ecx, 8)               # EA = ecx * 8
+    movl    %eax, values(%esi, %edi, 4)     # EA = values + esi + edi * 4
+</code></pre>
+<p>机器码中的 ModRM 字段中，当 r/m == 100 时，表示使用基址加变址寻址，具体参数由后继的 SIB 字节表示</p>
+<ul>
+<li>(1) mod == 00 时，表示不带偏移量</li>
+<li>(2) mod == 01 时，表示带 8 位偏移量</li>
+<li>(3) mod == 10 时，表示带 32 位偏移量</li>
+</ul>
+<h2 id="ModRM-字段"><a href="#ModRM-字段" class="headerlink" title="ModRM 字段"></a>ModRM 字段</h2><p>ModRM 字段为 1 字节，具体可以按下面位域分为 3 段。用于对指令的操作数或者寻址做出说明。</p>
+<pre><code>ModRM 字段：
+┌───┬───┬───┬───┬───┬───┬───┬───┐
+│ 7 │ 6 │ 5 │ 4 │ 3 │ 2 │ 1 │ 0 │
+├───┴───┼───┴───┴───┼───┴───┴───┤
+│  mod  │    reg    │    r/m    │
+└───────┴───────────┴───────────┘
+</code></pre>
+<ul>
+<li>reg 域表示寄存器</li>
+<li>r/m 域可以表示寄存器，也可以表示为内存寻址，具体由 mod 域决定</li>
+<li>mod == 00 时，r/m 域为内存寻址，不加偏移量</li>
+<li>mod == 01 时，r/m 域为内存寻址，带一个 8 位的偏移量</li>
+<li>mod == 10 时，r/m 域为内存寻址，带一个 32 位的偏移量</li>
+<li>mod == 11 时，r/m 域为寄存器</li>
+</ul>
+<p>详细说明：（下面与64位来说明，32位下是同理只用低32位下的寄存器部分）</p>
+<ul>
+<li>下表中，disp8 表示 8 位偏移量，disp32 表示 32 位偏移量</li>
+<li>SIB 表示后面带一个叫 SIB 的 1 字节的字段，用这个字段来说明寻址方式 </li>
+</ul>
+<table>
+    <tr>
+        <td>Mod 值</td>
+        <td>R/M 值</td>
+        <td>默认值（当REX.B == 0）</td>
+        <td>当REX.B == 1 时</td>
+   </tr>
+   <tr>
+        <td rowspan="8">00</td>
+        <td>000</td>
+        <td>(%rax)</td>
+        <td>(%r8)</td>
+   </tr>
+   <tr>
+           <td>001</td>
+           <td>(%rcx)</td>
+        <td>(%r9)</td>
+   </tr>
+   <tr>
+           <td>010</td>
+           <td>(%rdx)</td>
+        <td>(%r10)</td>
+   </tr>
+   <tr>
+           <td>011</td>
+           <td>(%rbx)</td>
+        <td>(%r11)</td>
+   </tr>
+   <tr>
+           <td>100</td>
+           <td><font color="orange">SIB</font></td>
+        <td><font color="orange">SIB</font></td>
+   </tr>
+   <tr>
+           <td>101</td>
+           <td><font color="red">disp32 或者 disp32(rip)</font></td>
+        <td><font color="red">disp32 或者 disp32(rip)</font></td>
+   </tr>
+   <tr>
+           <td>110</td>
+           <td>(%rsi)</td>
+        <td>(%r14)</td>
+   </tr>
+   <tr>
+           <td>111</td>
+           <td>(%rdi)</td>
+        <td>(%r15)</td>
+   </tr>
+   <tr>
+        <td rowspan="8">01</td>
+        <td>000</td>
+        <td>disp8(%rax)</td>
+        <td>disp8(%r8)</td>
+   </tr>
+   <tr>
+           <td>001</td>
+           <td>disp8(%rcx)</td>
+        <td>disp8(%r9)</td>
+   </tr>
+   <tr>
+           <td>010</td>
+           <td>disp8(%rdx)</td>
+        <td>disp8(%r10)</td>
+   </tr>
+   <tr>
+           <td>011</td>
+           <td>disp8(%rbx)</td>
+        <td>disp8(%r11)</td>
+   </tr>
+   <tr>
+           <td>100</td>
+           <td><font color="orange">disp8 + SIB</font></td>
+        <td><font color="orange">disp8 + SIB</font></td>
+   </tr>
+   <tr>
+           <td>101</td>
+           <td>disp8(%rbp)</td>
+        <td>disp8(%r13)</td>
+   </tr>
+   <tr>
+           <td>110</td>
+           <td>disp8(%rsi)</td>
+        <td>disp8(%r14)</td>
+   </tr>
+   <tr>
+           <td>111</td>
+           <td>disp8(%rdi)</td>
+        <td>disp8(%r15)</td>
+   </tr>
+   <tr>
+        <td rowspan="8">10</td>
+        <td>000</td>
+        <td>disp32(%rax)</td>
+        <td>disp32(%r8)</td>
+   </tr>
+   <tr>
+           <td>001</td>
+           <td>disp32(%rcx)</td>
+        <td>disp32(%r9)</td>
+   </tr>
+   <tr>
+           <td>010</td>
+           <td>disp32(%rdx)</td>
+        <td>disp32(%r10)</td>
+   </tr>
+   <tr>
+           <td>011</td>
+           <td>disp32(%rbx)</td>
+        <td>disp32(%r11)</td>
+   </tr>
+   <tr>
+           <td>100</td>
+           <td><font color="orange">disp32 + SIB</font></td>
+        <td><font color="orange">disp32 + SIB</font></td>
+   </tr>
+   <tr>
+           <td>101</td>
+           <td>disp32(%rbp)</td>
+        <td>disp32(%r13)</td>
+   </tr>
+   <tr>
+           <td>110</td>
+           <td>disp32(%rsi)</td>
+        <td>disp32(%r14)</td>
+   </tr>
+   <tr>
+           <td>111</td>
+           <td>disp32(%rdi)</td>
+        <td>disp32(%r15)</td>
+   </tr>
+   <tr>
+        <td rowspan="8">11</td>
+        <td>000</td>
+        <td>%rax</td>
+        <td>%r8</td>
+   </tr>
+   <tr>
+           <td>001</td>
+           <td>%rcx</td>
+        <td>%r9</td>
+   </tr>
+   <tr>
+           <td>010</td>
+           <td>%rdx</td>
+        <td>%r10</td>
+   </tr>
+   <tr>
+           <td>011</td>
+           <td>%rbx</td>
+        <td>%r11</td>
+   </tr>
+   <tr>
+           <td>100</td>
+           <td>%rsp</td>
+        <td>%r12</td>
+   </tr>
+   <tr>
+           <td>101</td>
+           <td>%rbp</td>
+        <td>%r13</td>
+   </tr>
+   <tr>
+           <td>110</td>
+           <td>%rsi</td>
+        <td>%r14</td>
+   </tr>
+   <tr>
+           <td>111</td>
+           <td>%rdi</td>
+        <td>%r15</td>
+   </tr>
+</table>
+
+<p>特殊情况说明：</p>
+<ol>
+<li>当 mod == 00 并且 r/m == 101 时，只使用一个 32 位的偏移量做寻址。32 位下为 32 位地址值，64 位下为相对程序计算器 PC 的偏移。</li>
+<li>当 r/m = 100 时，表示后继带一个 SIB 的字节，用这个字节的信息来进行内存寻址。</li>
+</ol>
+<h2 id="SIB-字段"><a href="#SIB-字段" class="headerlink" title="SIB 字段"></a>SIB 字段</h2><p>SIB 字段为 1 字节，具体可以按下面位域分为 3 段。用于对指令的内存寻址做出说明。</p>
+<pre><code>SIB 字段：
+┌───┬───┬───┬───┬───┬───┬───┬───┐
+│ 7 │ 6 │ 5 │ 4 │ 3 │ 2 │ 1 │ 0 │
+├───┴───┼───┴───┴───┼───┴───┴───┤
+│ scale │   index   │    base   │
+└───────┴───────────┴───────────┘
+</code></pre>
+<ol>
+<li>scale 为比例因子，scale的值: 00 = 1，  01 = 2，  10 = 4，  11 = 8</li>
+<li>index 为变址寄存器</li>
+<li>base 为基址寄存器</li>
+</ol>
+<p>注意：</p>
+<ol>
+<li><p>RSP/ESP 寄存器不能用于 index 变址寄存器，所以，当 index == 100 时，只存在基址寄存器 base，变址寄存器 index 和比例因子 scale 忽略不用；另外，R12 时可以用于index 变址寄存器的。</p>
+</li>
+<li><p>RBP/EBP/R13 寄存器默认是作为基址寄存器来使用，x86 要求RBP/EBP/R13 寄存器做基址寄存器时，必须带一个 8 位或者 32 位的偏移量。所以，如果 mod == 00，r/m == 100，base == 101时，base基址寄存器字段并不是表示 RBP/EBP/R13，而是要忽略这个基址寄存器，不存在基址寄存器，只存在变址寄存器，并把一个 32 位的偏移量作为基地址。所以出现以下形式的寻址：</p>
+</li>
+</ol>
+<pre><code class="x86asm">    movl    %eax,  values(, %edi, 8)      # 这里是忽略基地址寄存器，不需要基地址寄存器的情况 
+    movl    %eax,  (, %edi, 8)            # 忽略disp32的话，汇编器会默认加上一个为 0 的 disp32 值
+</code></pre>
+<p><br/><br/><br/><br/><br/><br/><br/></p>
+<p><img src="/blog1/images/asmbook.jpg" alt="汇编语言程序设计"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2238236@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry"><span class="miit">
@@ -1068,11 +1569,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>

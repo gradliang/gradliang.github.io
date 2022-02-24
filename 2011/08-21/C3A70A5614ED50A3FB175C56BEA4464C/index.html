@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>码兵之家</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="码兵之家">
+  <title>Java 的反射与注解 | 码兵之家</title>
+  <meta name="keywords" content=" Java ">
+  <meta name="description" content="Java 的反射与注解 | 码兵之家">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="ld 是 GNU 的连接器，用于将多个已经编译好的 .o 文件连接成可执行文件或者动态库。 一般使用方式如下： ld  [参数选项]  -o [输出文件名] obj_file1.o  obj_file2.o  obj_file3.o ...  例如，.a 库文件可以跟 .o 文件一起列出来： ld  -o  main  crt0.o  obj1.o  obj2.o  libq1.a   以上例的">
 <meta property="og:type" content="article">
@@ -58,7 +58,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/blog1/"
    class="avatar_target">
@@ -1007,12 +1007,62 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-Java-的反射与注解" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%A0%81%E5%85%B5%E4%B9%8B%E5%AE%B6"><span class="toc-text">关于码兵之家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <h1 class="article-title">Java 的反射与注解</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="技术文章">技术文章</a> > 
+            
+            <a  data-rel="技术文章&lt;---&gt;Java">Java</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">Java</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-02-24 22:35:47'>2011-08-21 10:43</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:2.4k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84"><span class="toc-text">反射</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E4%B8%8E-Class-%E7%B1%BB"><span class="toc-text">反射机制与 Class 类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-text">获取构造方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="toc-text">修饰符的解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%92%8C%E8%AE%BF%E9%97%AE%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="toc-text">获取和访问成员变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%92%8C%E8%AE%BF%E9%97%AE%E6%96%B9%E6%B3%95"><span class="toc-text">获取和访问方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3-%EF%BC%88Annotation%EF%BC%89"><span class="toc-text">注解 （Annotation）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E6%B3%A8%E8%A7%A3"><span class="toc-text">标准注解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Override"><span class="toc-text">1. @Override</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Deprecated"><span class="toc-text">2. @Deprecated</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-SuppressWarnings"><span class="toc-text">3. @SuppressWarnings</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E6%B3%A8%E8%A7%A3"><span class="toc-text">元注解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Documented"><span class="toc-text">1. @Documented</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Inherited"><span class="toc-text">2. @Inherited</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Retension"><span class="toc-text">3. @Retension</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Target"><span class="toc-text">4. @Target</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3"><span class="toc-text">自定义注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E8%AE%BF%E9%97%AE%E6%B3%A8%E8%A7%A3%E4%BF%A1%E6%81%AF"><span class="toc-text">通过反射机制访问注解信息</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1025,37 +1075,461 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于码兵之家"><a href="#关于码兵之家" class="headerlink" title="关于码兵之家"></a>关于码兵之家</h2><p><strong>码兵之家</strong> 是公仔（梁权清）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源</p>
-<p><code>3-hexo</code> 主题使用交流可以加 Q群: <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e8cf083cc097141eaf323396f1766809b8e90ff00c67bb441898f672892f6904"><img data-ignore border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="3-hexo使用交流" title="3-hexo使用交流"></a></p>
-<p>主要功能：</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h3 id="反射机制与-Class-类"><a href="#反射机制与-Class-类" class="headerlink" title="反射机制与 Class 类"></a>反射机制与 Class 类</h3><p>反射机制是程序在运行的中途，动态地获取一个类或者对象的成员与方法，并使用它们的机制。反射是通过 java.lang.Class 类的方法来实现。</p>
+<p>Java 中每个对象都是 Class 类的一个对象，可以通过下面方式获取到 Class 对象：</p>
+<ol>
+<li>通过调用对象的 <code>getClass()</code> 方法获得：</li>
+</ol>
+<pre><code class="Java">Class classObj = objectName.getClass();
+</code></pre>
+<ol start="2">
+<li>通过类的隐含静态对象成员变量 <code>class</code> 获得：</li>
+</ol>
+<pre><code class="Java">Class classObj = ClassName.class;
+</code></pre>
+<ol start="3">
+<li>通过 Class 类的静态方法 <code>forName()</code> 去查找获得。这里必须加上异常处理，因为有可能找不到对应的类。</li>
+</ol>
+<pre><code class="Java">try &#123;
+    Class classObj = Class.forName(&quot;com.xxxx.xxxx.ClassName&quot;);
+&#125; catch(ClassNotFoundException e) &#123;
+    e.printStackTrace();
+&#125;
+</code></pre>
+<h3 id="获取构造方法"><a href="#获取构造方法" class="headerlink" title="获取构造方法"></a>获取构造方法</h3><p>使用 Class 类对象的下面成员方法获取类的构造方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>返回值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>getConstructors()</code></td>
+<td>Constructor对象数组</td>
+<td>返回类的所有public的构造方法</td>
+</tr>
+<tr>
+<td><code>getDeclaredConstructors()</code></td>
+<td>Constructor对象数组</td>
+<td>返回类的所有构造方法，按声明顺序返回</td>
+</tr>
+<tr>
+<td><code>getConstructor(Class&lt;?&gt;... paramTypes)</code></td>
+<td>Constructor对象</td>
+<td>返回类的一个public的指定构造方法</td>
+</tr>
+<tr>
+<td><code>getDeclaredConstructor(Class&lt;?&gt;... paramTypes)</code></td>
+<td>Constructor对象</td>
+<td>返回类的一个指定构造方法</td>
+</tr>
+</tbody></table>
+<p>举例：</p>
+<pre><code class="Java">class ClassName1 &#123;
+    public ClassName1(String value1, int value2) &#123;
+    &#125;
+&#125;
+//----
+public class Test1 &#123;
+    public Test1() &#123;&#125;
+    Class cls = ClassName1.class;
+    constructor = cls.getConstructor(String.class, int.class);
+&#125;
+</code></pre>
+<p>Constructor 类中的常用方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>newInstance()</code></td>
+<td>调用构造器创建一个该类的新实例对象</td>
+</tr>
+<tr>
+<td><code>isVarArgs()</code></td>
+<td>该构造方法是否可以带可变数量的参数，是则返回 true，否则返回 false</td>
+</tr>
+<tr>
+<td><code>getParameterTypes()</code></td>
+<td>返回 Class 对象数组，表示该构造方法的参数类型</td>
+</tr>
+<tr>
+<td><code>getExceptionTypes()</code></td>
+<td>返回 Class 对象数组，表示该构造方法可能抛出的异常类型</td>
+</tr>
+<tr>
+<td><code>setAccessible(boolean)</code></td>
+<td>设置为 true 则可以调用非 public 的构造方法来创建对象</td>
+</tr>
+<tr>
+<td><code>getModifiers()</code></td>
+<td>返回一个整数，表示该构造方法的修饰符</td>
+</tr>
+</tbody></table>
+<h3 id="修饰符的解释"><a href="#修饰符的解释" class="headerlink" title="修饰符的解释"></a>修饰符的解释</h3><p>getModifiers() 方法会返回一个整数代表的修饰符，用Modifier类的下面静态方法可以解释修饰符：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>isPublic(int)</code></td>
+<td>是否 public 修饰</td>
+</tr>
+<tr>
+<td><code>isProtected(int)</code></td>
+<td>是否 protected 修饰</td>
+</tr>
+<tr>
+<td><code>isPrivate(int)</code></td>
+<td>是否 private 修饰</td>
+</tr>
+<tr>
+<td><code>isStatic(int)</code></td>
+<td>是否 static 修饰</td>
+</tr>
+<tr>
+<td><code>isFinal(int)</code></td>
+<td>是否 final 修饰</td>
+</tr>
+<tr>
+<td><code>toString(int)</code></td>
+<td>将所有修饰与字符串的形式返回</td>
+</tr>
+</tbody></table>
+<h3 id="获取和访问成员变量"><a href="#获取和访问成员变量" class="headerlink" title="获取和访问成员变量"></a>获取和访问成员变量</h3><p>通过 Class 类对象的下面方法获取成员变量的变量信息：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>getField(String)</code></td>
+<td>返回一个 Field 对象，代表一个 public 的成员</td>
+</tr>
+<tr>
+<td><code>getFields()</code></td>
+<td>返回一个 Field 对象数组，代表所有 public 的成员列表(包括父类的成员)</td>
+</tr>
+<tr>
+<td><code>getDeclaredField(String)</code></td>
+<td>返回一个 Field 对象，代表一个的成员</td>
+</tr>
+<tr>
+<td><code>getDeclaredFields()</code></td>
+<td>返回一个 Field 对象数组，代表所有的成员列表(不包括继承的成员)</td>
+</tr>
+</tbody></table>
+<p>Field 类常用的方法有：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>get(Object obj)</code></td>
+<td>返回此 Field 表示的成员对象</td>
+</tr>
+<tr>
+<td><code>set(Object obj, Object value)</code></td>
+<td>将此 Field 表示的成员对象设置为指定值</td>
+</tr>
+<tr>
+<td><code>getName()</code></td>
+<td>获取字段的名称</td>
+</tr>
+<tr>
+<td><code>getType()</code></td>
+<td>返回一个 Class 对象，获取字段的类型</td>
+</tr>
+<tr>
+<td><code>getInt(Object obj)</code></td>
+<td>获取 int 类型的 obj 的成员变量的值</td>
+</tr>
+<tr>
+<td><code>setInt(Object obj, int value)</code></td>
+<td>设置 int 类型的 obj 的成员变量的值</td>
+</tr>
+<tr>
+<td><code>getFloat(Object obj)</code></td>
+<td>获取 float 类型的 obj 的成员变量的值</td>
+</tr>
+<tr>
+<td><code>setFloat(Object obj, float value)</code></td>
+<td>设置 float 类型的 obj 的成员变量的值</td>
+</tr>
+<tr>
+<td><code>getBoolean(Object obj)</code></td>
+<td>获取 boolean 类型的 obj 的成员变量的值</td>
+</tr>
+<tr>
+<td><code>setBoolean(Object obj, boolean value)</code></td>
+<td>设置 boolean 类型的 obj 的成员变量的值</td>
+</tr>
+<tr>
+<td><code>setAccessible(boolean)</code></td>
+<td>设置为 true 则可以访问非 public 的成员</td>
+</tr>
+<tr>
+<td><code>getModifiers()</code></td>
+<td>返回一个整数，表示该成员的修饰符</td>
+</tr>
+</tbody></table>
+<h3 id="获取和访问方法"><a href="#获取和访问方法" class="headerlink" title="获取和访问方法"></a>获取和访问方法</h3><p>通过 Class 类对象的下面方法获取方法信息：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>getMethod(String name, Class&lt;?&gt;... paramTypes)</code></td>
+<td>返回一个 Method 对象，代表一个 public 的方法</td>
+</tr>
+<tr>
+<td><code>getMethods()</code></td>
+<td>返回一个 Method 对象数组，代表所有 public 的方法</td>
+</tr>
+<tr>
+<td><code>getDeclaredMethod(String name, Class&lt;?&gt;... paramTypes)</code></td>
+<td>返回一个 Method 对象，代表一个方法</td>
+</tr>
+<tr>
+<td><code>getDeclaredMethods()</code></td>
+<td>返回一个 Method 对象数组，代表所有的方法(不包括继承的方法)</td>
+</tr>
+</tbody></table>
+<p>Method 类常用的方法有：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>invoke(Object obj, Object... args)</code></td>
+<td>调用 obj 对象的方法</td>
+</tr>
+<tr>
+<td><code>getName()</code></td>
+<td>获取方法名</td>
+</tr>
+<tr>
+<td><code>getReturnType()</code></td>
+<td>返回一个 Class 对象，获取方法的返回值类型</td>
+</tr>
+<tr>
+<td><code>getParameterTypes()</code></td>
+<td>返回 Class 对象数组，获取方法的参数列表的类型的数组</td>
+</tr>
+<tr>
+<td><code>getExceptionTypes()</code></td>
+<td>返回 Class 对象数组，获取方法的可能抛出的类型的数组</td>
+</tr>
+<tr>
+<td><code>isVarArgs()</code></td>
+<td>该方法是否可以带可变数量的参数，是则返回 true，否则返回 false</td>
+</tr>
+<tr>
+<td><code>getModifiers()</code></td>
+<td>返回一个整数，表示该方法的修饰符</td>
+</tr>
+</tbody></table>
+<h2 id="注解-（Annotation）"><a href="#注解-（Annotation）" class="headerlink" title="注解 （Annotation）"></a>注解 （Annotation）</h2><p>注解是以结构化的方式为程序提供额外信息，包括能被编译器、加载器、解释器等自动处理的额外信息。<br>可以进行注解的有：</p>
 <ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a target="_blank" rel="noopener" href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
+<li>包</li>
+<li>类型（类、接口、枚举）</li>
+<li>构造方法</li>
+<li>方法</li>
+<li>成员变量</li>
+<li>参数</li>
+<li>局部变量</li>
 </ul>
+<p><code>注解类型</code> 是指一种特殊的接口类型，<code>注解</code> 则是指 <code>注解类型</code> 的一个实例。</p>
+<p>注解中的信息是以 <code>键 / 值</code> 对的形式存在的，可以存在 0 个或者多个键值对。没有键值对的注解叫标记注解类型。</p>
+<h3 id="标准注解"><a href="#标准注解" class="headerlink" title="标准注解"></a>标准注解</h3><p>Java 在 API java.lang 包中定义了三个标准的内置注解。如下：</p>
+<h4 id="1-Override"><a href="#1-Override" class="headerlink" title="1. @Override"></a>1. @Override</h4><p>@Override 是一个标记注解类型，用于编译器检查该方法是否是重载方法，可以方式程序员在重写覆盖某个方法时犯错。如果要重写的方法不是父类的方法，则编译器会报错。</p>
+<h4 id="2-Deprecated"><a href="#2-Deprecated" class="headerlink" title="2. @Deprecated"></a>2. @Deprecated</h4><p>@Deprecated 是一个标记注解类型，表示该字段以后版本可能会被废弃，请使用者不应该继续使用，请采用其他方法代替。编译时会有警告提示。但是目前版本还是被使用。</p>
+<h4 id="3-SuppressWarnings"><a href="#3-SuppressWarnings" class="headerlink" title="3. @SuppressWarnings"></a>3. @SuppressWarnings</h4><p>@SuppressWarnings 注解是请编译器不要提示某些类型的警告信息出现。它的用法是传递一个字符串数组作为参数。例如：</p>
+<pre><code class="Java">@SuppressWarnings(value=(&quot;deprecation&quot;, &quot;unchecked&quot;, &quot;unused&quot;))
+public void func1(void) &#123;&#125;
+</code></pre>
+<h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p><code>元注解</code> 是对注解进行注解的注解。在 API java.lang.annotation 包中定义了四个标准的元注解。</p>
+<h4 id="1-Documented"><a href="#1-Documented" class="headerlink" title="1. @Documented"></a>1. @Documented</h4><p>@Documented 是一个标记注解类型，被它注解的元素应该被 javadoc 文档化。</p>
+<h4 id="2-Inherited"><a href="#2-Inherited" class="headerlink" title="2. @Inherited"></a>2. @Inherited</h4><p>默认标记在父类上面的注解是不会被子类继承的。@Inherited 表示注解类型会被子类继承。</p>
+<h4 id="3-Retension"><a href="#3-Retension" class="headerlink" title="3. @Retension"></a>3. @Retension</h4><p>表示注解的有效期，也就是注解的保留时间。它的值是一个 <code>java.lang.annotation.RetensionPolicy</code> 的枚举值。该枚举有下面值，表示下面不同的含义：</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SOURCE</code></td>
+<td>注解只存在与源文件，编译器解释该注解之后就会丢弃</td>
+</tr>
+<tr>
+<td><code>CLASS</code></td>
+<td>注解会留存在*.class文件中，但是 JVM 不会去读取此注解。默认值</td>
+</tr>
+<tr>
+<td><code>RUNTIME</code></td>
+<td>注解会被 JVM 加载。可以使用反射机制来查询到该注解的内容</td>
+</tr>
+</tbody></table>
+<h4 id="4-Target"><a href="#4-Target" class="headerlink" title="4. @Target"></a>4. @Target</h4><p>用于指明注解修饰的对象范围，也就是指明适用的元素类型。如果未设置 @Target，则表示所有程序元素都适用。 它的值是一个 <code>java.lang.annotation.ElementType</code> 的枚举值。该枚举有下面值，表示下面不同的含义：</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PACKAGE</code></td>
+<td>注解只标注包</td>
+</tr>
+<tr>
+<td><code>TYPE</code></td>
+<td>注解只标注类、接口、枚举以及 Annotation 类型</td>
+</tr>
+<tr>
+<td><code>ANNOTATION_TYPE</code></td>
+<td>注解只标注 Annotation 类型</td>
+</tr>
+<tr>
+<td><code>CONSTRUCTOR</code></td>
+<td>注解只标注构造方法</td>
+</tr>
+<tr>
+<td><code>FIELD</code></td>
+<td>注解只标注成员</td>
+</tr>
+<tr>
+<td><code>METHOD</code></td>
+<td>注解只标注方法</td>
+</tr>
+<tr>
+<td><code>PARAMETER</code></td>
+<td>注解只标注参数</td>
+</tr>
+<tr>
+<td><code>LOCAL_VARIABLE</code></td>
+<td>注解只标注局部变量</td>
+</tr>
+</tbody></table>
+<h3 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h3><p>自定义注解使用 <code>interface</code> 关键字前面加一个 <code>“@”</code> 来实现，自定义注解隐含继承了 <code>java.lang.annotation.Annotation</code> 接口。有些地方需要注意的是：</p>
+<ul>
+<li>注解中的方法不需要加上 private、protected、public 等修饰，保持默认即可</li>
+<li>注解中的方法可以加上 default 来声明默认值</li>
+<li>自定义注解不能继承其他注解或者接口</li>
+<li>可以加上元注解来描述注解的使用方式与范围</li>
+</ul>
+<p>举例：</p>
+<pre><code class="Java">package com.testanno;
+import java.lang.annotation.*;
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+@Target(value = &#123;ElementType.TYPE, ElementType.METHOD&#125;)
+@Retention(RetentionPolicy.RUNTIME)
+@Inherited
+@Documented
+public @interface Anno1 &#123;                      // 这里声明一个注解类型叫 Anno1
+    int value1() default 1;
+    String value2() default &quot;string-1&quot;;
+    Class type() default int.class;
+&#125;
+</code></pre>
+<h3 id="通过反射机制访问注解信息"><a href="#通过反射机制访问注解信息" class="headerlink" title="通过反射机制访问注解信息"></a>通过反射机制访问注解信息</h3><p>Constructor、Field、Method 类都是继承于 AccessibleObject 类，提供了一下相关的方法：</p>
+<ul>
+<li><code>isAnnotationPresent</code> : 用于查询是否附加了指定类型的注解</li>
+<li><code>getAnnotation</code> : 获取指定类型的注解对象</li>
+<li><code>getAnnotations</code> : 获取所有的注解对象，返回一个注解对象数组</li>
+<li><code>getParameterAnnotations</code> : 获取所有参数所添加的注解对象，返回一个二维注解对象数组</li>
+</ul>
+<p>使用注解例子：</p>
+<pre><code class="Java">package com.testanno;
+public class Test1 &#123;   // 直接使用上一个例子中的 Anno1 注解类型
+    @Anno1(value1 = 100, value2 = &quot;string-2&quot;)
+    public void function1()&#123;
+        System.out.println(&quot;function1&quot;);
+    &#125;
+    @Anno1
+    public void function2() &#123;
+        System.out.println(&quot;function2&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p>下面例子是通过反射机制来访问注解信息：</p>
+<pre><code class="Java">package com.testanno;
+
+import java.lang.reflect.Method;
+
+public class MyTest &#123;
+    public static void main(String[] args) &#123;
+        try &#123;
+            Class cls = Class.forName(&quot;com.testanno.Test1&quot;);               // 通过反射获得类对象
+            Method[] methods = cls.getMethods();                           // 获得所有方法
+            for (Method curMethod: methods) &#123;                              // 遍历所有方法
+                if (curMethod.isAnnotationPresent(Anno1.class)) &#123;
+                    Anno1 anno1 = curMethod.getAnnotation(Anno1.class);    // 获得方法的注解
+                    System.out.println(&quot;Method name = &quot; + curMethod.getName());
+                    System.out.println(&quot;value1 = &quot; + anno1.value1() + 
+                                        &quot;, value2 = &quot; + anno1.value2() + &quot;\n&quot;);
+                &#125;
+            &#125;
+        &#125;
+        catch (ClassNotFoundException e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>输出结果：</p>
+<pre><code>Method name = function2
+value1 = 1, value2 = string-1
+
+Method name = function1
+value1 = 100, value2 = string-2
+</code></pre>
+<p><img src="/blog1/2011/08-21/C3A70A5614ED50A3FB175C56BEA4464C/fan.jpg" alt="完"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2238236@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry"><span class="miit">
@@ -1068,11 +1542,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>

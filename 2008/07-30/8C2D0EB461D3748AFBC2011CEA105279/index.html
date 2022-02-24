@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>码兵之家</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="码兵之家">
+  <title>x86 串操作指令 | 码兵之家</title>
+  <meta name="keywords" content=" x86汇编 ">
+  <meta name="description" content="x86 串操作指令 | 码兵之家">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="ld 是 GNU 的连接器，用于将多个已经编译好的 .o 文件连接成可执行文件或者动态库。 一般使用方式如下： ld  [参数选项]  -o [输出文件名] obj_file1.o  obj_file2.o  obj_file3.o ...  例如，.a 库文件可以跟 .o 文件一起列出来： ld  -o  main  crt0.o  obj1.o  obj2.o  libq1.a   以上例的">
 <meta property="og:type" content="article">
@@ -58,7 +58,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/blog1/"
    class="avatar_target">
@@ -1007,12 +1007,62 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-x86-串操作指令" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%A0%81%E5%85%B5%E4%B9%8B%E5%AE%B6"><span class="toc-text">关于码兵之家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <h1 class="article-title">x86 串操作指令</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="技术文章">技术文章</a> > 
+            
+            <a  data-rel="技术文章&lt;---&gt;x86汇编">x86汇编</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">x86汇编</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-02-24 22:35:47'>2008-07-30 00:10</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:1.5k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E5%90%91%E6%A0%87%E5%BF%97%E4%BD%8D-DF"><span class="toc-text">方向标志位 DF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4"><span class="toc-text">串传送指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-MOVSB"><span class="toc-text">1. MOVSB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-MOVSW"><span class="toc-text">2. MOVSW</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-MOVSL-%EF%BC%88AT-amp-T%E8%AF%AD%E6%B3%95%EF%BC%89-MOVSD-%EF%BC%88Intel%E8%AF%AD%E6%B3%95%EF%BC%89"><span class="toc-text">3. MOVSL （AT&amp;T语法） MOVSD （Intel语法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-MOVSQ"><span class="toc-text">4. MOVSQ</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#REP-%E5%89%8D%E7%BC%80"><span class="toc-text">REP 前缀</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2%E5%8A%A0%E8%BD%BD%E6%8C%87%E4%BB%A4"><span class="toc-text">串加载指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-LODSB"><span class="toc-text">1. LODSB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-LODSW"><span class="toc-text">2. LODSW</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-LODSL-%EF%BC%88AT-amp-T%E8%AF%AD%E6%B3%95%EF%BC%89-LODSD-%EF%BC%88Intel%E8%AF%AD%E6%B3%95%EF%BC%89"><span class="toc-text">3. LODSL （AT&amp;T语法） LODSD （Intel语法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-LODSQ"><span class="toc-text">4. LODSQ</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2%E5%AD%98%E5%82%A8%E6%8C%87%E4%BB%A4"><span class="toc-text">串存储指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-STOSB"><span class="toc-text">1. STOSB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-STOSW"><span class="toc-text">2. STOSW</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-STOSL-%EF%BC%88AT-amp-T%E8%AF%AD%E6%B3%95%EF%BC%89-STOSD-%EF%BC%88Intel%E8%AF%AD%E6%B3%95%EF%BC%89"><span class="toc-text">3. STOSL （AT&amp;T语法） STOSD （Intel语法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-STOSQ"><span class="toc-text">4. STOSQ</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2%E6%AF%94%E8%BE%83%E6%8C%87%E4%BB%A4"><span class="toc-text">串比较指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-CMPSB"><span class="toc-text">1. CMPSB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-CMPSW"><span class="toc-text">2. CMPSW</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-CMPSL-%EF%BC%88AT-amp-T%E8%AF%AD%E6%B3%95%EF%BC%89-CMPSD-%EF%BC%88Intel%E8%AF%AD%E6%B3%95%EF%BC%89"><span class="toc-text">3. CMPSL （AT&amp;T语法） CMPSD （Intel语法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-CMPSQ"><span class="toc-text">4. CMPSQ</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2%E6%89%AB%E6%8F%8F%E6%8C%87%E4%BB%A4"><span class="toc-text">串扫描指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-SCASB"><span class="toc-text">1. SCASB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-SCASW"><span class="toc-text">2. SCASW</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-SCASL-%EF%BC%88AT-amp-T%E8%AF%AD%E6%B3%95%EF%BC%89-SCASD-%EF%BC%88Intel%E8%AF%AD%E6%B3%95%EF%BC%89"><span class="toc-text">3. SCASL （AT&amp;T语法） SCASD （Intel语法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-SCASQ"><span class="toc-text">4. SCASQ</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1025,37 +1075,136 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于码兵之家"><a href="#关于码兵之家" class="headerlink" title="关于码兵之家"></a>关于码兵之家</h2><p><strong>码兵之家</strong> 是公仔（梁权清）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源</p>
-<p><code>3-hexo</code> 主题使用交流可以加 Q群: <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e8cf083cc097141eaf323396f1766809b8e90ff00c67bb441898f672892f6904"><img data-ignore border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="3-hexo使用交流" title="3-hexo使用交流"></a></p>
-<p>主要功能：</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="方向标志位-DF"><a href="#方向标志位-DF" class="headerlink" title="方向标志位 DF"></a>方向标志位 DF</h2><p>方向标志位 <code>DF</code> 是 <code>EFLAGS</code> 寄存器中的 bit-10，用于指明串操作的方向。</p>
 <ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a target="_blank" rel="noopener" href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
+<li><code>SI/ESI/RSI</code> 寄存器中的 S 代表 “源” （只配合 DS 段使用）</li>
+<li><code>DI/EDI/RDI</code> 寄存器中的 D 代表 “目标”（只配合 ES 段使用）</li>
 </ul>
+<ol>
+<li>DF 为 0 时，每次操作之后，SI/ESI/RSI、DI/EDI/RDI 寄存器递增</li>
+<li>DF 为 0 时，每次操作之后，SI/ESI/RSI、DI/EDI/RDI 寄存器递减</li>
+</ol>
+<hr>
+<ul>
+<li><code>CLD</code> 指令： 该指令将 DF 清 0</li>
+<li><code>STD</code> 指令： 该指令将 DF 置 1</li>
+</ul>
+<h2 id="串传送指令"><a href="#串传送指令" class="headerlink" title="串传送指令"></a>串传送指令</h2><h4 id="1-MOVSB"><a href="#1-MOVSB" class="headerlink" title="1. MOVSB"></a>1. MOVSB</h4><ul>
+<li>将 SI/ESI/RSI 指定的源内存地址中 1 个字节的数据，传送到 DI/EDI/RDI 指定的目标内存地址中。</li>
+<li>并且，SI/ESI/RSI 和 DI/EDI/RDI 根据 DF 标志自动递增或者递减 1。</li>
+</ul>
+<h4 id="2-MOVSW"><a href="#2-MOVSW" class="headerlink" title="2. MOVSW"></a>2. MOVSW</h4><ul>
+<li>将 SI/ESI/RSI 指定的源内存地址中 2 个字节的数据，传送到 DI/EDI/RDI 指定的目标内存地址中。</li>
+<li>并且，SI/ESI/RSI 和 DI/EDI/RDI 根据 DF 标志自动递增或者递减 2。</li>
+</ul>
+<h4 id="3-MOVSL-（AT-amp-T语法）-MOVSD-（Intel语法）"><a href="#3-MOVSL-（AT-amp-T语法）-MOVSD-（Intel语法）" class="headerlink" title="3. MOVSL （AT&amp;T语法） MOVSD （Intel语法）"></a>3. MOVSL （AT&amp;T语法） MOVSD （Intel语法）</h4><ul>
+<li>将 SI/ESI/RSI 指定的源内存地址中 4 个字节的数据，传送到 DI/EDI/RDI 指定的目标内存地址中。</li>
+<li>并且，SI/ESI/RSI 和 DI/EDI/RDI 根据 DF 标志自动递增或者递减 4。</li>
+</ul>
+<h4 id="4-MOVSQ"><a href="#4-MOVSQ" class="headerlink" title="4. MOVSQ"></a>4. MOVSQ</h4><ul>
+<li>将 SI/ESI/RSI 指定的源内存地址中 8 个字节的数据，传送到 DI/EDI/RDI 指定的目标内存地址中。</li>
+<li>并且，SI/ESI/RSI 和 DI/EDI/RDI 根据 DF 标志自动递增或者递减 8。</li>
+</ul>
+<h2 id="REP-前缀"><a href="#REP-前缀" class="headerlink" title="REP 前缀"></a>REP 前缀</h2><p>串操作指令一般是配合 rep 前缀使用。 rep 前缀的作用是根据 CX/ECX/RCX 寄存器的值，重复执行多次串指令，每执行一次， CX/ECX/RCX 自动减 1。</p>
+<pre><code class="x86asm">    rep  movsw
+</code></pre>
+<p>相当于如下指令：</p>
+<pre><code class="x86asm">L1:
+    movsw
+    loop  L1
+</code></pre>
+<h2 id="串加载指令"><a href="#串加载指令" class="headerlink" title="串加载指令"></a>串加载指令</h2><h4 id="1-LODSB"><a href="#1-LODSB" class="headerlink" title="1. LODSB"></a>1. LODSB</h4><ul>
+<li>将 SI/ESI/RSI 指定的源内存地址中 1 个字节的数据，传送到 AL 寄存器中。</li>
+<li>并且，SI/ESI/RSI 根据 DF 标志自动递增或者递减 1。</li>
+</ul>
+<h4 id="2-LODSW"><a href="#2-LODSW" class="headerlink" title="2. LODSW"></a>2. LODSW</h4><ul>
+<li>将 SI/ESI/RSI 指定的源内存地址中 2 个字节的数据，传送到 AX 寄存器中。</li>
+<li>并且，SI/ESI/RSI 根据 DF 标志自动递增或者递减 2。</li>
+</ul>
+<h4 id="3-LODSL-（AT-amp-T语法）-LODSD-（Intel语法）"><a href="#3-LODSL-（AT-amp-T语法）-LODSD-（Intel语法）" class="headerlink" title="3. LODSL （AT&amp;T语法） LODSD （Intel语法）"></a>3. LODSL （AT&amp;T语法） LODSD （Intel语法）</h4><ul>
+<li>将 SI/ESI/RSI 指定的源内存地址中 4 个字节的数据，传送到 EAX 寄存器中。</li>
+<li>并且，SI/ESI/RSI 根据 DF 标志自动递增或者递减 4。</li>
+</ul>
+<h4 id="4-LODSQ"><a href="#4-LODSQ" class="headerlink" title="4. LODSQ"></a>4. LODSQ</h4><ul>
+<li>将 SI/ESI/RSI 指定的源内存地址中 8 个字节的数据，传送到 RAX 寄存器中。</li>
+<li>并且，SI/ESI/RSI 根据 DF 标志自动递增或者递减 8。</li>
+</ul>
+<h2 id="串存储指令"><a href="#串存储指令" class="headerlink" title="串存储指令"></a>串存储指令</h2><h4 id="1-STOSB"><a href="#1-STOSB" class="headerlink" title="1. STOSB"></a>1. STOSB</h4><ul>
+<li>将 AL 寄存器的值（1 个字节）存储到 DI/EDI/RDI 指定的目标内存地址中。</li>
+<li>并且，DI/EDI/RDI 根据 DF 标志自动递增或者递减 1。</li>
+</ul>
+<h4 id="2-STOSW"><a href="#2-STOSW" class="headerlink" title="2. STOSW"></a>2. STOSW</h4><ul>
+<li>将 AX 寄存器的值（2 个字节）存储到 DI/EDI/RDI 指定的目标内存地址中。</li>
+<li>并且，DI/EDI/RDI 根据 DF 标志自动递增或者递减 2。</li>
+</ul>
+<h4 id="3-STOSL-（AT-amp-T语法）-STOSD-（Intel语法）"><a href="#3-STOSL-（AT-amp-T语法）-STOSD-（Intel语法）" class="headerlink" title="3. STOSL （AT&amp;T语法） STOSD （Intel语法）"></a>3. STOSL （AT&amp;T语法） STOSD （Intel语法）</h4><ul>
+<li>将 EAX 寄存器的值（4 个字节）存储到 DI/EDI/RDI 指定的目标内存地址中。</li>
+<li>并且，DI/EDI/RDI 根据 DF 标志自动递增或者递减 4。</li>
+</ul>
+<h4 id="4-STOSQ"><a href="#4-STOSQ" class="headerlink" title="4. STOSQ"></a>4. STOSQ</h4><ul>
+<li>将 RAX 寄存器的值（8 个字节）存储到 DI/EDI/RDI 指定的目标内存地址中。</li>
+<li>并且，DI/EDI/RDI 根据 DF 标志自动递增或者递减 8。</li>
+</ul>
+<p>STOSB/STOSW/STOSL/STOSQ 可以配合 rep 前缀对大内存缓冲区进行初始化。</p>
+<h2 id="串比较指令"><a href="#串比较指令" class="headerlink" title="串比较指令"></a>串比较指令</h2><h4 id="1-CMPSB"><a href="#1-CMPSB" class="headerlink" title="1. CMPSB"></a>1. CMPSB</h4><ul>
+<li>SI/ESI/RSI 指定的源内存地址，DI/EDI/RDI 指定的目标内存，1 字节减操作，源减去目标，然后根据结果设置 EFLAGS 寄存器标志。 </li>
+<li>并且，SI/ESI/RSI 和 DI/EDI/RDI 根据 DF 标志自动递增或者递减 1。</li>
+</ul>
+<h4 id="2-CMPSW"><a href="#2-CMPSW" class="headerlink" title="2. CMPSW"></a>2. CMPSW</h4><ul>
+<li>SI/ESI/RSI 指定的源内存地址，DI/EDI/RDI 指定的目标内存，2 字节减操作，源减去目标，然后根据结果设置 EFLAGS 寄存器标志。 </li>
+<li>并且，SI/ESI/RSI 和 DI/EDI/RDI 根据 DF 标志自动递增或者递减 2。</li>
+</ul>
+<h4 id="3-CMPSL-（AT-amp-T语法）-CMPSD-（Intel语法）"><a href="#3-CMPSL-（AT-amp-T语法）-CMPSD-（Intel语法）" class="headerlink" title="3. CMPSL （AT&amp;T语法） CMPSD （Intel语法）"></a>3. CMPSL （AT&amp;T语法） CMPSD （Intel语法）</h4><ul>
+<li>SI/ESI/RSI 指定的源内存地址，DI/EDI/RDI 指定的目标内存，4 字节减操作，源减去目标，然后根据结果设置 EFLAGS 寄存器标志。 </li>
+<li>并且，SI/ESI/RSI 和 DI/EDI/RDI 根据 DF 标志自动递增或者递减 4。</li>
+</ul>
+<h4 id="4-CMPSQ"><a href="#4-CMPSQ" class="headerlink" title="4. CMPSQ"></a>4. CMPSQ</h4><ul>
+<li>SI/ESI/RSI 指定的源内存地址，DI/EDI/RDI 指定的目标内存，8 字节减操作，源减去目标，然后根据结果设置 EFLAGS 寄存器标志。 </li>
+<li>并且，SI/ESI/RSI 和 DI/EDI/RDI 根据 DF 标志自动递增或者递减 8。</li>
+</ul>
+<p>CMPSB/CMPSW/CMPSL/CMPSQ 可以配合 REP、REPE、REPNE、REPZ、REPNZ前缀一起使用来实现各种字符串比较操作。</p>
+<h2 id="串扫描指令"><a href="#串扫描指令" class="headerlink" title="串扫描指令"></a>串扫描指令</h2><h4 id="1-SCASB"><a href="#1-SCASB" class="headerlink" title="1. SCASB"></a>1. SCASB</h4><ul>
+<li>AL 作为源操作数，DI/EDI/RDI 指定的目标内存，1 字节减操作，源减去目标，然后根据结果设置 EFLAGS 寄存器标志。 </li>
+<li>并且，DI/EDI/RDI 根据 DF 标志自动递增或者递减 1。</li>
+</ul>
+<h4 id="2-SCASW"><a href="#2-SCASW" class="headerlink" title="2. SCASW"></a>2. SCASW</h4><ul>
+<li>AX 作为源操作数，DI/EDI/RDI 指定的目标内存，2 字节减操作，源减去目标，然后根据结果设置 EFLAGS 寄存器标志。 </li>
+<li>并且，DI/EDI/RDI 根据 DF 标志自动递增或者递减 1。</li>
+</ul>
+<h4 id="3-SCASL-（AT-amp-T语法）-SCASD-（Intel语法）"><a href="#3-SCASL-（AT-amp-T语法）-SCASD-（Intel语法）" class="headerlink" title="3. SCASL （AT&amp;T语法） SCASD （Intel语法）"></a>3. SCASL （AT&amp;T语法） SCASD （Intel语法）</h4><ul>
+<li>EAX 作为源操作数，DI/EDI/RDI 指定的目标内存，4 字节减操作，源减去目标，然后根据结果设置 EFLAGS 寄存器标志。 </li>
+<li>并且，DI/EDI/RDI 根据 DF 标志自动递增或者递减 1。</li>
+</ul>
+<h4 id="4-SCASQ"><a href="#4-SCASQ" class="headerlink" title="4. SCASQ"></a>4. SCASQ</h4><ul>
+<li>RAX 作为源操作数，DI/EDI/RDI 指定的目标内存，8 字节减操作，源减去目标，然后根据结果设置 EFLAGS 寄存器标志。 </li>
+<li>并且，DI/EDI/RDI 根据 DF 标志自动递增或者递减 1。</li>
+</ul>
+<p>SCASB/SCASW/SCASL/SCASQ 可以配合 REP、REPE、REPNE、REPZ、REPNZ前缀一起使用来实现各种字符串比较、查找操作。</p>
+<p><br/><br/><br/><br/><br/><br/><br/><br><img src="/blog1/images/asmbook.jpg" alt="汇编语言程序设计"></p>
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2238236@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry"><span class="miit">
@@ -1068,11 +1217,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>

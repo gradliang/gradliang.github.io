@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>码兵之家</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="码兵之家">
+  <title>x86 条件分支指令说明 | 码兵之家</title>
+  <meta name="keywords" content=" x86汇编 ">
+  <meta name="description" content="x86 条件分支指令说明 | 码兵之家">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="ld 是 GNU 的连接器，用于将多个已经编译好的 .o 文件连接成可执行文件或者动态库。 一般使用方式如下： ld  [参数选项]  -o [输出文件名] obj_file1.o  obj_file2.o  obj_file3.o ...  例如，.a 库文件可以跟 .o 文件一起列出来： ld  -o  main  crt0.o  obj1.o  obj2.o  libq1.a   以上例的">
 <meta property="og:type" content="article">
@@ -58,7 +58,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/blog1/"
    class="avatar_target">
@@ -1007,12 +1007,62 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-x86-条件分支指令说明" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%A0%81%E5%85%B5%E4%B9%8B%E5%AE%B6"><span class="toc-text">关于码兵之家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <h1 class="article-title">x86 条件分支指令说明</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="技术文章">技术文章</a> > 
+            
+            <a  data-rel="技术文章&lt;---&gt;x86汇编">x86汇编</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">x86汇编</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-02-24 22:35:47'>2008-06-02 12:30</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:1.5k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#EFLAGS"><span class="toc-text">EFLAGS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E8%B7%B3%E8%BD%AC%E6%8C%87%E4%BB%A4%E5%88%97%E8%A1%A8"><span class="toc-text">条件跳转指令列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E6%8C%87%E4%BB%A4"><span class="toc-text">循环指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4"><span class="toc-text">条件数据传送指令</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1025,37 +1075,473 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于码兵之家"><a href="#关于码兵之家" class="headerlink" title="关于码兵之家"></a>关于码兵之家</h2><p><strong>码兵之家</strong> 是公仔（梁权清）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源</p>
-<p><code>3-hexo</code> 主题使用交流可以加 Q群: <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e8cf083cc097141eaf323396f1766809b8e90ff00c67bb441898f672892f6904"><img data-ignore border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="3-hexo使用交流" title="3-hexo使用交流"></a></p>
-<p>主要功能：</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="EFLAGS"><a href="#EFLAGS" class="headerlink" title="EFLAGS"></a>EFLAGS</h2><p>x86 处理器的 EFLAGS 寄存器有很多位，但是与条件分支相关的是其中的 5 位：</p>
+<ol>
+<li><p>ZF<br> bit6，零标志位。执行指令之后，其结果为 0 时，该标志位置 1，不为 0 时置 0。</p>
+</li>
+<li><p>SF<br> bit7，符号标志位。执行指令之后，其结果为负数时，该标志位置 1，否则置 0。</p>
+</li>
+<li><p>CF<br> bit0，进位标志位。执行指令之后，发生向超出最高位进位，或者从超出最高位借位时，该标志位置 1，否则置 0。</p>
+</li>
+<li><p>OF<br> bit11，溢出标志位。执行指令之后，超出机器能表示的范围时，该标志位置 1，否则置 0。</p>
+</li>
+<li><p>PF<br> bit2，奇偶标志位。执行指令之后，结果中的所有位中，1 的个数位偶数时，该标志位置 1，否则置 0。</p>
+</li>
+</ol>
+<hr>
 <ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a target="_blank" rel="noopener" href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
+<li><code>CLC</code> 指令： 该指令将 CF 清 0</li>
+<li><code>STC</code> 指令： 该指令将 CF 置 1</li>
+<li><code>CLC</code> 指令： 该指令将 CF 取反</li>
 </ul>
+<h2 id="条件跳转指令列表"><a href="#条件跳转指令列表" class="headerlink" title="条件跳转指令列表"></a>条件跳转指令列表</h2><ul>
+<li>对于使用无符号数的比较，则使用 above （A）和 below （B）关键字比较;</li>
+<li>对于使用有符号数的比较，则使用 greater （G）和 less （L）关键字进行比较。</li>
+</ul>
+<table>
+    <tr>
+        <td>序 号</td>
+        <td>指 令</td>
+        <td>描 述</td>
+        <td>EFLAGS</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>JO</td>
+        <td>如果溢出（overflow），则跳转</td>
+        <td>OF == 1</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>JNO</td>
+        <td>如果没溢出（not overflow），则跳转</td>
+        <td>OF == 0</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>JB</td>
+        <td>如果小于（below），则跳转</td>
+        <td>CF == 1</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>JC</td>
+        <td>如果 CF == 1，则跳转</td>
+        <td>CF == 1</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>JNAE</td>
+        <td>如果不大于（not above）或者等于</td>
+        <td>CF == 1</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>JNB</td>
+        <td>如果不小于（not below）</td>
+        <td>CF == 0</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>JNC</td>
+        <td>如果 CF != 1，则跳转</td>
+        <td>CF == 0</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>JAE</td>
+        <td>如果大于（above）或等于，则跳转</td>
+        <td>CF == 0</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>JZ</td>
+        <td>如果 ZF == 1，则跳转</td>
+        <td>ZF == 1</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>JE</td>
+        <td>如果相等（equal），则跳转</td>
+        <td>ZF == 1</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td>JNZ</td>
+        <td>如果 ZF != 1，则跳转</td>
+        <td>ZF == 0</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>JNE</td>
+        <td>如果不相等（not equal），则跳转</td>
+        <td>ZF == 0</td>
+    </tr>
+    <tr>
+        <td>13</td>
+        <td>JBE</td>
+        <td>如果小于（below）或等于，则跳转</td>
+        <td>CF == 1 && ZF == 1</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td>JNA</td>
+        <td>如果不大于（not above），则跳转</td>
+        <td>CF == 1 && ZF == 1</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>JNBE</td>
+        <td>如果不小于（not below）或等于，则跳转</td>
+        <td>CF == 0 && ZF == 0</td>
+    </tr>
+    <tr>
+        <td>16</td>
+        <td>JA</td>
+        <td>如果大于（above），则跳转</td>
+        <td>CF == 0 && ZF == 0</td>
+    </tr>
+    <tr>
+        <td>17</td>
+        <td>JS</td>
+        <td>如果 SF == 1，则跳转</td>
+        <td>SF == 1</td>
+    </tr>
+    <tr>
+        <td>18</td>
+        <td>JNS</td>
+        <td>如果 SF == 0，则跳转</td>
+        <td>SF == 0</td>
+    </tr>
+    <tr>
+        <td>19</td>
+        <td>JP</td>
+        <td>如果奇偶检验（parity），则跳转</td>
+        <td>PF == 1</td>
+    </tr>
+    <tr>
+        <td>20</td>
+        <td>JPE</td>
+        <td>如果偶检验（parity even），则跳转</td>
+        <td>PF == 1</td>
+    </tr>
+    <tr>
+        <td>21</td>
+        <td>JNP</td>
+        <td>如果不奇偶检验（not parity），则跳转</td>
+        <td>PF == 0</td>
+    </tr>
+    <tr>
+        <td>22</td>
+        <td>JPO</td>
+        <td>如果奇检验（parity odd），则跳转</td>
+        <td>PF == 0</td>
+    </tr>
+    <tr>
+        <td>23</td>
+        <td>JL</td>
+        <td>如果小于（less）则跳转</td>
+        <td>SF != OF</td>
+    </tr>
+    <tr>
+        <td>24</td>
+        <td>JNGE</td>
+        <td>如果不大于（not greater）或等于则跳转</td>
+        <td>SF != OF</td>
+    </tr>
+    <tr>
+        <td>25</td>
+        <td>JNL</td>
+        <td>如果不小于（not less）则跳转</td>
+        <td>SF == OF</td>
+    </tr>
+    <tr>
+        <td>26</td>
+        <td>JGE</td>
+        <td>如果大于（greater）或等于，则跳转</td>
+        <td>SF == OF</td>
+    </tr>
+    <tr>
+        <td>27</td>
+        <td>JLE</td>
+        <td>如果小于（less）或等于，则跳转</td>
+        <td>ZF == 1 || SF != OF</td>
+    </tr>
+    <tr>
+        <td>28</td>
+        <td>JNG</td>
+        <td>如果不大于（greater），则跳转</td>
+        <td>ZF == 1 || SF != OF</td>
+    </tr>
+    <tr>
+        <td>29</td>
+        <td>JNLE</td>
+        <td>如果不小于（not less）或等于，则跳转</td>
+        <td>ZF == 0 && SF == OF</td>
+    </tr>
+    <tr>
+        <td>30</td>
+        <td>JG</td>
+        <td>如果大于（greater），则跳转</td>
+        <td>ZF == 0 && SF == OF</td>
+    </tr>
+    <tr>
+        <td>31</td>
+        <td>JCXZ<br/>JECXZ<br/>JRCXZ</td>
+        <td>当 CX/ECX/RCX 寄存器为 0 时跳转</td>
+        <td>三条指令是一样的，<br/>只跳转8位偏移量</td>
+    </tr>
+</table>
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+<h2 id="循环指令"><a href="#循环指令" class="headerlink" title="循环指令"></a>循环指令</h2><p>下面指令会将 CX/ECX/RCX 自动减去 1，如果 CX/ECX/RCX 不为 0 则跳转到指定的 8 位偏移标签。</p>
+<table>
+    <tr>
+        <td>序 号</td>
+        <td>指 令</td>
+        <td>描 述</td>
+        <td>其 他</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>LOOP</td>
+        <td>CX/ECX/RCX != 0，则跳转</td>
+        <td>只有8位偏移</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>LOOPE / LOOPZ</td>
+        <td>CX/ECX/RCX != 0，并且 ZF == 1，则跳转</td>
+        <td>只有8位偏移</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>LOOPNE / LOOPNZ</td>
+        <td>CX/ECX/RCX != 0，并且 ZF == 0，则跳转</td>
+        <td>只有8位偏移</td>
+    </tr>
+</table>
+
+<p>loop 指令有个灾难：如果将 CX/ECX/RCX 设置为 0，执行 loop 时会自动减去 1，就会变成 -1 回环，会陷入很长很长的循环。这时可以配合 JCXZ 指令判断 CX/ECX/RCX 为 0 则跳转来避免。</p>
+<h2 id="条件数据传送指令"><a href="#条件数据传送指令" class="headerlink" title="条件数据传送指令"></a>条件数据传送指令</h2><p>也可以利用标志位来达到按条件数据传送的功能指令。条件数据传送指令置限于寄存器与寄存器、或者寄存器与存储器之间的数据传送，不支持立即数传送。</p>
+<ul>
+<li>对于使用无符号数的比较，则使用 above （A）和 below （B）关键字比较;</li>
+<li>对于使用有符号数的比较，则使用 greater （G）和 less （L）关键字进行比较。</li>
+</ul>
+<table>
+    <tr>
+        <td>序 号</td>
+        <td>指 令</td>
+        <td>描 述</td>
+        <td>EFLAGS</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>CMOVO</td>
+        <td>如果溢出（overflow），则传送</td>
+        <td>OF == 1</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>CMOVNO</td>
+        <td>如果没溢出（not overflow），则传送</td>
+        <td>OF == 0</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>CMOVB</td>
+        <td>如果小于（below），则传送</td>
+        <td>CF == 1</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>CMOVC</td>
+        <td>如果 CF == 1，则传送</td>
+        <td>CF == 1</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>CMOVNAE</td>
+        <td>如果不大于（not above）或者等于，则传送</td>
+        <td>CF == 1</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>CMOVNB</td>
+        <td>如果不小于（not below），则传送</td>
+        <td>CF == 0</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>CMOVNC</td>
+        <td>如果 CF != 1，则传送</td>
+        <td>CF == 0</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>CMOVAE</td>
+        <td>如果大于（above）或等于，则传送</td>
+        <td>CF == 0</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>CMOVZ</td>
+        <td>如果 ZF == 1，则传送</td>
+        <td>ZF == 1</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>CMOVE</td>
+        <td>如果相等（equal），则传送</td>
+        <td>ZF == 1</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td>CMOVNZ</td>
+        <td>如果 ZF != 1，则传送</td>
+        <td>ZF == 0</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>CMOVNE</td>
+        <td>如果不相等（not equal），则传送</td>
+        <td>ZF == 0</td>
+    </tr>
+    <tr>
+        <td>13</td>
+        <td>CMOVBE</td>
+        <td>如果小于（below）或等于，则传送</td>
+        <td>CF == 1 && ZF == 1</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td>CMOVNA</td>
+        <td>如果不大于（not above），则传送</td>
+        <td>CF == 1 && ZF == 1</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>CMOVNBE</td>
+        <td>如果不小于（not below）或等于，则传送</td>
+        <td>CF == 0 && ZF == 0</td>
+    </tr>
+    <tr>
+        <td>16</td>
+        <td>CMOVA</td>
+        <td>如果大于（above），则传送</td>
+        <td>CF == 0 && ZF == 0</td>
+    </tr>
+    <tr>
+        <td>17</td>
+        <td>CMOVS</td>
+        <td>如果 SF == 1，则传送</td>
+        <td>SF == 1</td>
+    </tr>
+    <tr>
+        <td>18</td>
+        <td>CMOVNS</td>
+        <td>如果 SF == 0，则传送</td>
+        <td>SF == 0</td>
+    </tr>
+    <tr>
+        <td>19</td>
+        <td>CMOVP</td>
+        <td>如果奇偶检验（parity），则传送</td>
+        <td>PF == 1</td>
+    </tr>
+    <tr>
+        <td>20</td>
+        <td>CMOVPE</td>
+        <td>如果偶检验（parity even），则传送</td>
+        <td>PF == 1</td>
+    </tr>
+    <tr>
+        <td>21</td>
+        <td>CMOVNP</td>
+        <td>如果不奇偶检验（not parity），则传送</td>
+        <td>PF == 0</td>
+    </tr>
+    <tr>
+        <td>22</td>
+        <td>CMOVPO</td>
+        <td>如果奇检验（parity odd），则传送</td>
+        <td>PF == 0</td>
+    </tr>
+    <tr>
+        <td>23</td>
+        <td>CMOVL</td>
+        <td>如果小于（less）则传送</td>
+        <td>SF != OF</td>
+    </tr>
+    <tr>
+        <td>24</td>
+        <td>CMOVNGE</td>
+        <td>如果不大于（not greater）或等于则传送</td>
+        <td>SF != OF</td>
+    </tr>
+    <tr>
+        <td>25</td>
+        <td>CMOVNL</td>
+        <td>如果不小于（not less）则传送</td>
+        <td>SF == OF</td>
+    </tr>
+    <tr>
+        <td>26</td>
+        <td>CMOVGE</td>
+        <td>如果大于（greater）或等于，则传送</td>
+        <td>SF == OF</td>
+    </tr>
+    <tr>
+        <td>27</td>
+        <td>CMOVLE</td>
+        <td>如果小于（less）或等于，则传送</td>
+        <td>ZF == 1 || SF != OF</td>
+    </tr>
+    <tr>
+        <td>28</td>
+        <td>CMOVNG</td>
+        <td>如果不大于（greater），则传送</td>
+        <td>ZF == 1 || SF != OF</td>
+    </tr>
+    <tr>
+        <td>29</td>
+        <td>CMOVNLE</td>
+        <td>如果不小于（not less）或等于，则传送</td>
+        <td>ZF == 0 && SF == OF</td>
+    </tr>
+    <tr>
+        <td>30</td>
+        <td>CMOVG</td>
+        <td>如果大于（greater），则传送</td>
+        <td>ZF == 0 && SF == OF</td>
+    </tr>
+</table>
+
+
+<p><br/><br/><br/><br/><br/><br/><br/><br><img src="/blog1/images/asmbook.jpg" alt="汇编语言程序设计"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2238236@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry"><span class="miit">
@@ -1068,11 +1554,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>

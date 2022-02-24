@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>码兵之家</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="码兵之家">
+  <title>C 语言中的常见的预定义宏 | 码兵之家</title>
+  <meta name="keywords" content=" C/C++ ">
+  <meta name="description" content="C 语言中的常见的预定义宏 | 码兵之家">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="ld 是 GNU 的连接器，用于将多个已经编译好的 .o 文件连接成可执行文件或者动态库。 一般使用方式如下： ld  [参数选项]  -o [输出文件名] obj_file1.o  obj_file2.o  obj_file3.o ...  例如，.a 库文件可以跟 .o 文件一起列出来： ld  -o  main  crt0.o  obj1.o  obj2.o  libq1.a   以上例的">
 <meta property="og:type" content="article">
@@ -58,7 +58,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/blog1/"
    class="avatar_target">
@@ -1007,12 +1007,62 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-C-语言中的常见的预定义宏" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%A0%81%E5%85%B5%E4%B9%8B%E5%AE%B6"><span class="toc-text">关于码兵之家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <h1 class="article-title">C 语言中的常见的预定义宏</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="技术文章">技术文章</a> > 
+            
+            <a  data-rel="技术文章&lt;---&gt;C_CPP">C_CPP</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">C/C++</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-02-24 22:35:47'>2018-07-04 10:30</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:811</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#DATA"><span class="toc-text">__DATA__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FILE"><span class="toc-text">__FILE__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LINE"><span class="toc-text">__LINE__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TIME"><span class="toc-text">__TIME__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FUNCTION"><span class="toc-text">__FUNCTION__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#func"><span class="toc-text">__func__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STDC-VERSION"><span class="toc-text">__STDC_VERSION__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cplusplus"><span class="toc-text">__cplusplus</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STDC-UTF-16"><span class="toc-text">__STDC_UTF_16__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STDC-UTF-32"><span class="toc-text">__STDC_UTF_32__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STDC-LIB-EXT1"><span class="toc-text">__STDC_LIB_EXT1__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STDC-NO-VLA"><span class="toc-text">__STDC_NO_VLA__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STDC-NO-ATOMICS"><span class="toc-text">__STDC_NO_ATOMICS__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STDC-NO-COMPLEX"><span class="toc-text">__STDC_NO_COMPLEX__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STDC-NO-THREADS"><span class="toc-text">__STDC_NO_THREADS__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GNUC"><span class="toc-text">__GNUC__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MSC-VER"><span class="toc-text">_MSC_VER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clang"><span class="toc-text">__clang__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BORLANDC"><span class="toc-text">__BORLANDC__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WIN32"><span class="toc-text">_WIN32</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WIN64"><span class="toc-text">_WIN64</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#APPLE"><span class="toc-text">__APPLE__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unix"><span class="toc-text">__unix__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linux"><span class="toc-text">__linux__</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1025,37 +1075,54 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于码兵之家"><a href="#关于码兵之家" class="headerlink" title="关于码兵之家"></a>关于码兵之家</h2><p><strong>码兵之家</strong> 是公仔（梁权清）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源</p>
-<p><code>3-hexo</code> 主题使用交流可以加 Q群: <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e8cf083cc097141eaf323396f1766809b8e90ff00c67bb441898f672892f6904"><img data-ignore border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="3-hexo使用交流" title="3-hexo使用交流"></a></p>
-<p>主要功能：</p>
-<ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a target="_blank" rel="noopener" href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
-</ul>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="DATA"><a href="#DATA" class="headerlink" title="__DATA__"></a>__DATA__</h3><p>此宏是编译器预定义的。表示当前的日期的一个字符串。</p>
+<h3 id="FILE"><a href="#FILE" class="headerlink" title="__FILE__"></a>__FILE__</h3><p>此宏是编译器预定义的。表示当前的源文件名的一个字符串。</p>
+<h3 id="LINE"><a href="#LINE" class="headerlink" title="__LINE__"></a>__LINE__</h3><p>此宏是编译器预定义的。表示当前的行号的的一个整数常量。</p>
+<h3 id="TIME"><a href="#TIME" class="headerlink" title="__TIME__"></a>__TIME__</h3><p>此宏是编译器预定义的。表示当前的时间（精确到秒）的一个字符串。</p>
+<h3 id="FUNCTION"><a href="#FUNCTION" class="headerlink" title="__FUNCTION__"></a>__FUNCTION__</h3><p>此宏是编译器预定义的。表示当前函数的函数名。</p>
+<h3 id="func"><a href="#func" class="headerlink" title="__func__"></a>__func__</h3><p>此宏是编译器预定义的。表示当前函数的函数名（ C99 标准才有 ）。</p>
+<h3 id="STDC-VERSION"><a href="#STDC-VERSION" class="headerlink" title="__STDC_VERSION__"></a>__STDC_VERSION__</h3><p>此宏是编译器预定义的。表示当前 C 语言标准的版本号的整数。</p>
+<h3 id="cplusplus"><a href="#cplusplus" class="headerlink" title="__cplusplus"></a>__cplusplus</h3><p>此宏是 C++ 特有的，表示当前 C++ 语言标准的版本号的整数。C 语言编译器下绝对不会定义此宏。此宏可以用来区分当前源文件是 C 还是 C++。</p>
+<h3 id="STDC-UTF-16"><a href="#STDC-UTF-16" class="headerlink" title="__STDC_UTF_16__"></a>__STDC_UTF_16__</h3><p>如果该宏预定义为整数值1，则表示 char16_t 类型的值为 UTF-16 编码的字符。如果采用其他编码，则不会有此宏。</p>
+<h3 id="STDC-UTF-32"><a href="#STDC-UTF-32" class="headerlink" title="__STDC_UTF_32__"></a>__STDC_UTF_32__</h3><p>如果该宏预定义为整数值1，则表示 char32_t 类型的值为 UTF-32 编码的字符。如果采用其他编码，则不会有此宏。</p>
+<h3 id="STDC-LIB-EXT1"><a href="#STDC-LIB-EXT1" class="headerlink" title="__STDC_LIB_EXT1__"></a>__STDC_LIB_EXT1__</h3><p>如果该宏被定义，则它是一个整数值 1，表示当前编译器实现了 C11 标准中安全版本的边界检查的函数集合，通常这些函数是以 <code>_s</code> 结尾的。否则该部分函数集合没有被实现。</p>
+<h3 id="STDC-NO-VLA"><a href="#STDC-NO-VLA" class="headerlink" title="__STDC_NO_VLA__"></a>__STDC_NO_VLA__</h3><p>如果该宏被定义，则它是一个整数值 1，表示该编译器不支持变长数组（ VLA ）。</p>
+<h3 id="STDC-NO-ATOMICS"><a href="#STDC-NO-ATOMICS" class="headerlink" title="__STDC_NO_ATOMICS__"></a>__STDC_NO_ATOMICS__</h3><p>如果该宏被定义，则它是一个整数值 1，表示当前编译器不支持原子类型操作。（包括使用 <code>_Atomic</code> 限定符）<br>如果没有定义此宏，不要 <code>#include &lt;stdatomic.h&gt;</code></p>
+<h3 id="STDC-NO-COMPLEX"><a href="#STDC-NO-COMPLEX" class="headerlink" title="__STDC_NO_COMPLEX__"></a>__STDC_NO_COMPLEX__</h3><p>如果该宏被定义，则它是一个整数值 1，表示当前编译器不支持复数类型。<br>如果没有定义此宏，不要 <code>#include &lt;complex.h&gt;</code></p>
+<h3 id="STDC-NO-THREADS"><a href="#STDC-NO-THREADS" class="headerlink" title="__STDC_NO_THREADS__"></a>__STDC_NO_THREADS__</h3><p>如果该宏被定义，则它是一个整数值 1，表示当前编译器不支持 C 标准的线程库 （不是指 POSIX Thread），<code>_Thread_local</code> 关键字依然可以使用。<br>如果没有定义此宏，不要 <code>#include &lt;threads.h&gt;</code></p>
+<h3 id="GNUC"><a href="#GNUC" class="headerlink" title="__GNUC__"></a>__GNUC__</h3><p>GCC 编译器才有此宏，表示 GCC 的版本号。但是 clang 为了兼容 GCC，也会定义此宏。</p>
+<h3 id="MSC-VER"><a href="#MSC-VER" class="headerlink" title="_MSC_VER"></a>_MSC_VER</h3><p>VC 编译器才有此宏，表示 VC 的版本号。但是 Windows 下的 clang 为了兼容 VC，可能也会定义此宏。</p>
+<h3 id="clang"><a href="#clang" class="headerlink" title="__clang__"></a>__clang__</h3><p>clang 编译器才有此宏，表示 clang 的版本号。</p>
+<h3 id="BORLANDC"><a href="#BORLANDC" class="headerlink" title="__BORLANDC__"></a>__BORLANDC__</h3><p>Borland C/C++ 编译器才有此宏，表示 Borland C/C++ 的版本号。</p>
+<h3 id="WIN32"><a href="#WIN32" class="headerlink" title="_WIN32"></a>_WIN32</h3><p>生成目标为 Windows 系统的程序，都会定义此宏，不管是 32 位还是 64 位的，都会。</p>
+<h3 id="WIN64"><a href="#WIN64" class="headerlink" title="_WIN64"></a>_WIN64</h3><p>生成目标为 64位 Windows 系统的程序，会定义此宏，只有 64 位的 Windows，才会有定义此宏。</p>
+<h3 id="APPLE"><a href="#APPLE" class="headerlink" title="__APPLE__"></a>__APPLE__</h3><p>生成目标为苹果操作系统的程序，会定义此宏，不管是电脑还是手机、平板设备。</p>
+<h3 id="unix"><a href="#unix" class="headerlink" title="__unix__"></a>__unix__</h3><p>生成目标为 unix 及其兼容系统的程序。</p>
+<h3 id="linux"><a href="#linux" class="headerlink" title="__linux__"></a>__linux__</h3><p>生成目标为 linux 及其兼容系统的程序。</p>
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2238236@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry"><span class="miit">
@@ -1068,11 +1135,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>

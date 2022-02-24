@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>码兵之家</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="码兵之家">
+  <title>Linux 手动安装 Rust 最新版本编译器 | 码兵之家</title>
+  <meta name="keywords" content=" Rust ">
+  <meta name="description" content="Linux 手动安装 Rust 最新版本编译器 | 码兵之家">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="ld 是 GNU 的连接器，用于将多个已经编译好的 .o 文件连接成可执行文件或者动态库。 一般使用方式如下： ld  [参数选项]  -o [输出文件名] obj_file1.o  obj_file2.o  obj_file3.o ...  例如，.a 库文件可以跟 .o 文件一起列出来： ld  -o  main  crt0.o  obj1.o  obj2.o  libq1.a   以上例的">
 <meta property="og:type" content="article">
@@ -58,7 +58,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/blog1/"
    class="avatar_target">
@@ -1007,12 +1007,62 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-Linux-手动安装-Rust-最新版本编译器" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%A0%81%E5%85%B5%E4%B9%8B%E5%AE%B6"><span class="toc-text">关于码兵之家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <h1 class="article-title">Linux 手动安装 Rust 最新版本编译器</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="技术文章">技术文章</a> > 
+            
+            <a  data-rel="技术文章&lt;---&gt;Rust">Rust</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">Rust</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-02-24 22:35:47'>2021-03-30 09:05</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:860</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
     
 <style>
     .left-col .switch-btn,
@@ -1025,37 +1075,125 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于码兵之家"><a href="#关于码兵之家" class="headerlink" title="关于码兵之家"></a>关于码兵之家</h2><p><strong>码兵之家</strong> 是公仔（梁权清）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源</p>
-<p><code>3-hexo</code> 主题使用交流可以加 Q群: <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e8cf083cc097141eaf323396f1766809b8e90ff00c67bb441898f672892f6904"><img data-ignore border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="3-hexo使用交流" title="3-hexo使用交流"></a></p>
-<p>主要功能：</p>
-<ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a target="_blank" rel="noopener" href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
-</ul>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Linux 手动安装 Rust 最新版本编译器</p>
+<p>一般来说，Linux 发行版都自带了 Rust 编译器，通过 <code>apt-get</code> 或者 <code>dnf</code> 等包管理工具即可以安装 Rust 编译器。</p>
+<p>Rust 编译器套件中包含了自升级命令行组件 rustup，可以进行升级操作： </p>
+<pre><code class="bash">rustup self update            # 升级 rustup 工具本身
+rustup update                 # 升级 Rust 编译器整个套件
+</code></pre>
+<p>也可以去 Rust 官方去下载指定的版本进行手动安装。 手动安装可以选择安装组件，可以指定安装路径，也可以选择具体版本。</p>
+<p>如下，去  <a target="_blank" rel="noopener" href="https://forge.rust-lang.org/infra/other-installation-methods.html">“ 官方地址 ”</a> 去下载具体版本; 这里选择以 1.51.0 版本为例子。（本文书写时最新版本为 1.51.0）。<br>一般的 Linux 发行版的 platform 请选择 x86_64-unknown-linux-gnu， 特殊的 Alpine Linux发行版的 platform 请选择 x86_64-unknown-linux-musl 。</p>
+<p>下面以下载到的文件 rust-1.51.0-x86_64-unknown-linux-gnu.tar.gz 为例：</p>
+<pre><code class="bash"># 解压缩：
+tar zxvf rust-1.51.0-x86_64-unknown-linux-gnu.tar.gz
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+# 进入解压缩后的目录:
+cd rust-1.51.0-x86_64-unknown-linux-gnu
+</code></pre>
+<p>查看一下具体目录结构：</p>
+<pre><code class="bash">ls -l
+</code></pre>
+<p>你会看到，里面有个官方的安装脚本 <code>install.sh</code> ：</p>
+<pre><code class="bash">ls -l
+total 68
+-rwxrwxrwx 1 root root  9322 May  6 20:09 COPYRIGHT
+-rwxrwxrwx 1 root root  9723 May  6 20:09 LICENSE-APACHE
+-rwxrwxrwx 1 root root  1023 May  6 20:09 LICENSE-MIT
+-rwxrwxrwx 1 root root  9566 May  6 20:09 README.md
+drwxrwxrwx 1 root root   512 May  6 20:11 cargo
+drwxrwxrwx 1 root root   512 May  6 20:11 clippy-preview
+-rwxrwxrwx 1 root root   192 May  6 20:11 components
+-rwxrwxrwx 1 root root    40 May  6 20:10 git-commit-hash
+-rwxrwxrwx 1 root root 27856 May  6 20:10 install.sh
+drwxrwxrwx 1 root root   512 May  6 20:11 llvm-tools-preview
+drwxrwxrwx 1 root root   512 May  6 20:11 miri-preview
+drwxrwxrwx 1 root root   512 May  6 20:11 rls-preview
+drwxrwxrwx 1 root root   512 May  6 20:11 rust-analysis-x86_64-unknown-linux-gnu
+drwxrwxrwx 1 root root   512 May  6 20:11 rust-analyzer-preview
+drwxrwxrwx 1 root root   512 May  6 20:11 rust-docs
+-rwxrwxrwx 1 root root     2 May  6 20:11 rust-installer-version
+drwxrwxrwx 1 root root   512 May  6 20:11 rust-std-x86_64-unknown-linux-gnu
+drwxrwxrwx 1 root root   512 May  6 20:11 rustc
+drwxrwxrwx 1 root root   512 May  6 20:11 rustfmt-preview
+-rwxrwxrwx 1 root root    29 May  6 20:11 version
+</code></pre>
+<p>运行一下 <code>install.sh</code> 看看有什么安装选项：</p>
+<pre><code class="bash">sudo ./install.sh --help
+
+Usage: ./install.sh [options]
+
+Options:
+
+    --uninstall                      only uninstall from the installation prefix
+    --destdir=[&lt;none&gt;]               set installation root
+    --prefix=[/usr/local]            set installation prefix
+    --without=[&lt;none&gt;]               comma-separated list of components to not install
+    --components=[&lt;none&gt;]            comma-separated list of components to install
+    --list-components                list available components
+    --sysconfdir=[/etc]              install system configuration files
+    --bindir=[/bin]                  install binaries
+    --libdir=[/lib]                  install libraries
+    --datadir=[/share]               install data
+    --mandir=[/share/man]            install man pages in PATH
+    --docdir=[\&lt;default\&gt;]           install documentation in PATH
+    --disable-ldconfig               don&#39;t run ldconfig after installation (Linux only)
+    --disable-verify                 don&#39;t obsolete
+    --verbose                        run with verbose output
+</code></pre>
+<p>这里有几个有用的选项：</p>
+<ul>
+<li>--prefix=[/usr/local] <br/>指定安装路径，不指定时为 /usr/local</li>
+<li>--list-components <br/>列出可以安装的组件</li>
+<li>--without=[&lt;none&gt;] <br/>不安装指定组件</li>
+</ul>
+<p>下面看看具体有哪些组件可供选择：</p>
+<pre><code class="bash">sudo ./install.sh --list-components
+
+# Available components
+
+* rustc
+* cargo
+* rls-preview
+* rust-analyzer-preview
+* clippy-preview
+* miri-preview
+* rustfmt-preview
+* llvm-tools-preview
+* rust-analysis-x86_64-unknown-linux-gnu
+* rust-std-x86_64-unknown-linux-gnu
+* rust-docs
+</code></pre>
+<p>其中，本人亲测，rust-docs 为帮助文档，安装过程特别慢，而且文档可以直接在浏览器上网去查看，所以没有必要装到本地，采用以下命令进行安装：</p>
+<pre><code class="bash">sudo ./install.sh --without=rust-docs
+</code></pre>
+<p>输入编译命令，测试一下，出现版本号则表示安装成功：</p>
+<pre><code class="bash">rustc -V
+rustc 1.51.0 (2fd73fabe 2021-03-23)
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2238236@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry"><span class="miit">
@@ -1068,11 +1206,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>

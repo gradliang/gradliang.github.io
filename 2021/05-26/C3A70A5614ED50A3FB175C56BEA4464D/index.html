@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>码兵之家</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="码兵之家">
+  <title>Node.js Windows平台下多版本共存的方法 | 码兵之家</title>
+  <meta name="keywords" content=" JavaScript ">
+  <meta name="description" content="Node.js Windows平台下多版本共存的方法 | 码兵之家">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="ld 是 GNU 的连接器，用于将多个已经编译好的 .o 文件连接成可执行文件或者动态库。 一般使用方式如下： ld  [参数选项]  -o [输出文件名] obj_file1.o  obj_file2.o  obj_file3.o ...  例如，.a 库文件可以跟 .o 文件一起列出来： ld  -o  main  crt0.o  obj1.o  obj2.o  libq1.a   以上例的">
 <meta property="og:type" content="article">
@@ -58,7 +58,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/blog1/"
    class="avatar_target">
@@ -1007,12 +1007,62 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-Node-js-Windows平台下多版本共存的方法" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%A0%81%E5%85%B5%E4%B9%8B%E5%AE%B6"><span class="toc-text">关于码兵之家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <h1 class="article-title">Node.js Windows平台下多版本共存的方法</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="技术文章">技术文章</a> > 
+            
+            <a  data-rel="技术文章&lt;---&gt;JavaScript">JavaScript</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">JavaScript</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-02-24 22:35:47'>2021-05-26 10:21</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:696</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
     
 <style>
     .left-col .switch-btn,
@@ -1025,37 +1075,84 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于码兵之家"><a href="#关于码兵之家" class="headerlink" title="关于码兵之家"></a>关于码兵之家</h2><p><strong>码兵之家</strong> 是公仔（梁权清）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源</p>
-<p><code>3-hexo</code> 主题使用交流可以加 Q群: <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e8cf083cc097141eaf323396f1766809b8e90ff00c67bb441898f672892f6904"><img data-ignore border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="3-hexo使用交流" title="3-hexo使用交流"></a></p>
-<p>主要功能：</p>
-<ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a target="_blank" rel="noopener" href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
-</ul>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文所描述的方法，是以绿色软件的安装方法来实现，Node.js 在 Windows 下多个不同版本共存。不同的版本放在不同的目录下，通过设置不同的 PATH 环境变量来实现。不同目录下的 Node.js 拥有不同的 exe 版本和相互独立的 npm 包。</p>
+<p>该方法在其它操作系统也可以通用。</p>
+<p>首先，去 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">https://nodejs.org/en/</a> 下载你需要的版本：</p>
+<p><img src="/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/shuoming1.jpg" alt="进去网站，选择另类的下载"></p>
+<hr>
+<p>选择 All download options :</p>
+<p><img src="/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/shuoming2.jpg" alt="选择所有下载选项"></p>
+<hr>
+<p>选择绿色软件包，解压即用的那种，下图的 <a target="_blank" rel="noopener" href="https://nodejs.org/dist/v16.2.0/node-v16.2.0-win-x64.7z">node-v16.2.0-win-x64.7z</a> 和 <a target="_blank" rel="noopener" href="https://nodejs.org/dist/v16.2.0/node-v16.2.0-win-x64.zip">node-v16.2.0-win-x64.zip</a> 都可以，只是压缩格式不一样:</p>
+<p><img src="/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/shuoming3.jpg" alt="选择绿色软件包版本"></p>
+<hr>
+<p>解压到自己喜欢存放的目录，任何目录都可以；我这里以 <code>D:\GreenSoft\Node\node-v16</code> 目录作例子进行说明：</p>
+<p><img src="/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/shuoming4.png" alt="解压缩"></p>
+<hr>
+<p>在 Node.js 程序根目录 D:\GreenSoft\Node\node-v16 目录中 （本文以 D:\GreenSoft\Node\node-v16 为例子作说明）:  </p>
+<ol>
+<li>先新建一个目录，名叫 cache，用于存放 npm 安装缓存。</li>
+<li>再新建一个文本文件，名字叫 <code>npmrc</code>，配置 npm 的安装路径，内容如下：</li>
+</ol>
+<pre><code>prefix=D:\GreenSoft\Node\node-v16
+cache=D:\GreenSoft\Node\node-v16\cache
+</code></pre>
+<p>如果想全局使用淘宝镜像源，可以加上：</p>
+<pre><code>registry=https://registry.npm.taobao.org
+</code></pre>
+<p>然后，再复制 npmrc 到 D:\GreenSoft\Node\node-v16\node_modules\npm 中。 真正起作用的配置文件是位于 node_modules\npm 中的这份，在 Node.js 程序根目录的那份配置文件只是用于备份。</p>
+<p>如果升级了 npm 的话， node_modules\npm 中的 npmrc 可能会被删除，这时只需把 Node.js 程序根目录中的 npmrc 复制到 node_modules\npm 中即可。</p>
+<hr>
+<p>下面说明如何创建快捷方式：</p>
+<p>在 Node.js 程序根目录 D:\GreenSoft\Node\node-v16 目录创建一个批处理文件，名叫：setenv.bat，内容如下：</p>
+<pre><code class="bat">@echo off
+set PATH=D:\GreenSoft\Node\node-v16;%PATH%
+cls
+</code></pre>
+<p>在桌面或者开始菜单中，右键创建一个快捷方式，指向 D:\GreenSoft\Node\node-v16\setenv.bat。</p>
+<p>然后，右键 –&gt; 属性，把快捷方式的属性修改如下（主要是在 bat 文件路径前面加上 <code>cmd /K </code> ，同时也可以修改起始位置）：</p>
+<p><img src="/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/shuoming5.png" alt="修改快捷方式"></p>
+<p>双击刚才修改好的快捷方式，输入运行 <code>node -v</code> 和 <code>npm -v</code>，看看版本号是否正常，如果正常显示，则表示安装成功。</p>
+<pre><code class="bat">C:\&gt;node -v
+v16.2.0
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+C:\&gt;npm -v
+7.14.0
+
+C:\&gt;
+</code></pre>
+<p>有时候会遇到使用 npm 来更新安装 npm 会失败的情况，也就是 <code>npm install -g npm</code> 会报错的情况。这时可以借用 cnpm 来更新，如下：</p>
+<pre><code class="bat">npm install -g cnpm --registry=https://registry.npm.taobao.org
+cnpm install -g npm
+</code></pre>
+<p>更新完 npm 之后，记得把 Node.js 程序根目录下的 npmrc 文件复制回 node_modules\npm 中。</p>
+<hr>
+<p>结尾处上个图让大伙养养眼！</p>
+<p><img src="/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/pic1.jpg" alt="Lena"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2238236@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry"><span class="miit">
@@ -1068,11 +1165,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>

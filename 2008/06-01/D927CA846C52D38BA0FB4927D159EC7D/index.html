@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>码兵之家</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="码兵之家">
+  <title>用 CPUID 指令获取处理器信息（书摘） | 码兵之家</title>
+  <meta name="keywords" content=" x86汇编 ">
+  <meta name="description" content="用 CPUID 指令获取处理器信息（书摘） | 码兵之家">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="ld 是 GNU 的连接器，用于将多个已经编译好的 .o 文件连接成可执行文件或者动态库。 一般使用方式如下： ld  [参数选项]  -o [输出文件名] obj_file1.o  obj_file2.o  obj_file3.o ...  例如，.a 库文件可以跟 .o 文件一起列出来： ld  -o  main  crt0.o  obj1.o  obj2.o  libq1.a   以上例的">
 <meta property="og:type" content="article">
@@ -58,7 +58,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/blog1/"
    class="avatar_target">
@@ -1007,12 +1007,62 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-用-CPUID-指令获取处理器信息" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%A0%81%E5%85%B5%E4%B9%8B%E5%AE%B6"><span class="toc-text">关于码兵之家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <h1 class="article-title">用 CPUID 指令获取处理器信息（书摘）</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="技术文章">技术文章</a> > 
+            
+            <a  data-rel="技术文章&lt;---&gt;x86汇编">x86汇编</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">x86汇编</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-02-24 22:35:47'>2008-06-01 11:44</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:1.6k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#CPUID-%E7%A8%8B%E5%BA%8F"><span class="toc-text">CPUID 程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E7%A8%8B%E5%BA%8F"><span class="toc-text">调试程序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GDB-%E5%8D%95%E6%AD%A5%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="toc-text">GDB 单步运行程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE"><span class="toc-text">查看数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E-C-%E8%AF%AD%E8%A8%80%E5%BA%93%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E9%93%BE%E6%8E%A5"><span class="toc-text">与 C 语言库函数进行链接</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1025,37 +1075,329 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于码兵之家"><a href="#关于码兵之家" class="headerlink" title="关于码兵之家"></a>关于码兵之家</h2><p><strong>码兵之家</strong> 是公仔（梁权清）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源</p>
-<p><code>3-hexo</code> 主题使用交流可以加 Q群: <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e8cf083cc097141eaf323396f1766809b8e90ff00c67bb441898f672892f6904"><img data-ignore border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="3-hexo使用交流" title="3-hexo使用交流"></a></p>
-<p>主要功能：</p>
-<ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a target="_blank" rel="noopener" href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
-</ul>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="CPUID-程序"><a href="#CPUID-程序" class="headerlink" title="CPUID 程序"></a>CPUID 程序</h3><p><code>CPUID</code> 是一条获取 CPU 信息的指令，以寄存器 <code>EAX</code> 作为输入信息的参数，执行该指令之后，会输出具体结果到 <code>EBX、ECX、EDX</code> 寄存器上面，具体会输出什么信息，由输入参数寄存器 <code>EAX</code> 决定。</p>
+<p><code>CPUID</code> 指令具体使用的寄存器 <code>EAX</code> 的不同的输入选项如下所示：</p>
+<table>
+<thead>
+<tr>
+<th>EAX值</th>
+<th>CPUID 输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>厂商 ID字符串（Vendor ID）与支持的最大的 CPUID 选项值</td>
+</tr>
+<tr>
+<td>1</td>
+<td>处理器类型、系列、型号和步进信息</td>
+</tr>
+<tr>
+<td>2</td>
+<td>处理器缓存配置</td>
+</tr>
+<tr>
+<td>3</td>
+<td>处理器的序列号</td>
+</tr>
+<tr>
+<td>4</td>
+<td>缓存配置（线程数量、核心数量和物理属性）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>监视信息</td>
+</tr>
+<tr>
+<td>80000000h</td>
+<td>扩展的厂商 ID 字符串和支持的级别</td>
+</tr>
+<tr>
+<td>80000001h</td>
+<td>扩展的处理器类型、系列、型号和步进信息</td>
+</tr>
+<tr>
+<td>80000002h ~ 80000004h</td>
+<td>扩展的处理器名称字符串</td>
+</tr>
+</tbody></table>
+<p>如果寄存器 <code>EAX</code> 输入 0， 则 <code>EBX、ECX、EDX</code> 寄存器输出如下：</p>
+<pre><code>EBX 寄存器：
+31         23        15        7        0
+┌─────────┬─────────┬─────────┬─────────┐
+│  byte4  │  byte3  │  byte2  │  byte1  │
+└─────────┴─────────┴─────────┴─────────┘
+EDX 寄存器：
+31         23        15        7        0
+┌─────────┬─────────┬─────────┬─────────┐
+│  byte8  │  byte7  │  byte6  │  byte5  │
+└─────────┴─────────┴─────────┴─────────┘
+ECX 寄存器：
+31         23        15        7        0
+┌─────────┬─────────┬─────────┬─────────┐
+│  byte12 │  byte11 │  byte10 │  byte9  │
+└─────────┴─────────┴─────────┴─────────┘
+</code></pre>
+<p>把上面寄存器的值组成字符串即可。范例程序 (Linux下)：</p>
+<pre><code># cpuid.s 
+.section .data
+output:
+    .ascii  &quot;The processor Vendor ID is &#39;xxxxxxxxxxxx&#39; \n&quot;
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+.section .text
+.globl  _start
+_start:
+    nop
+    movl    $0, %eax
+    cpuid
+    movl    $output, %edi
+    movl    %ebx, 28(%edi)
+    movl    %edx, 32(%edi)
+    movl    %ecx, 36(%edi)
+    movl    $4, %eax
+    movl    $1, %ebx
+    movl    $output, %ecx
+    movl    $42, %edx
+    int     $0x80
+    movl    $1, %eax
+    movl    $0, %ebx
+    int     $0x80
+</code></pre>
+<p>上面代码中，<code>int $0x80</code> 是调用 Linux 系统调用。<code>_start</code> 标签所定义的地址是 GNU 链接器默认的程序运行起始地址。</p>
+<p>用下面命令进行编译、链接并运行 （要求在 32 位 x86 的 Linux 系统下，如果是 64 位系统的话，可以在虚拟机下面装一个 32 位的）：</p>
+<pre><code class="bash">as -o cpuid.o cpuid.s
+ld -o cpuid cpuid.o
+
+# 运行：
+./cpuid
+
+结果：
+The processor Vendor ID is &#39;GenuineIntel&#39;
+</code></pre>
+<h3 id="调试程序"><a href="#调试程序" class="headerlink" title="调试程序"></a>调试程序</h3><p>如果需要调试程序，则需要在编译的时候，加上 <code>-gstabs</code> 选项，会把调试信息直接附加进可执行二进制文件中：</p>
+<pre><code class="bash">as -gstabs -o cpuid.o cpuid.s
+ld -o cpuid cpuid.o
+</code></pre>
+<h4 id="GDB-单步运行程序"><a href="#GDB-单步运行程序" class="headerlink" title="GDB 单步运行程序"></a>GDB 单步运行程序</h4><p>运行 <code>gdb cpuid</code> ：</p>
+<pre><code>gdb cpuid
+GNU gdb Red Hat Linux (5.3post-0.20021129.18rh)
+Copyright 2003 Free Software Foundation, Inc.
+GDB is free software, covered by the GNU General Public License, and you are
+welcome to change it and/or distribute copies of it under certain conditions.
+Type &quot;show copying&quot; to see the conditions.
+There is absolutely no warranty for GDB.  Type &quot;show warranty&quot; for details.
+This GDB was configured as &quot;i386-redhat-linux-gnu&quot;...
+(gdb)
+</code></pre>
+<p>使用 <code>run</code> 命令直接运行 cpuid 程序：</p>
+<pre><code>(gdb) run
+Starting program: /root/Test/cpuid
+The processor Vendor ID is &#39;GenuineIntel&#39;
+Program exited normally.
+(gdb)
+</code></pre>
+<p>可以使用 break 命令设置断点，汇编语言设定断点，必须指定某个标签的相对位置。格式如下：</p>
+<pre><code>break * label+offset
+</code></pre>
+<p>gdb 会直接忽略 _start 这个标签的断点：</p>
+<pre><code>(gdb) break * _start
+Breakpoint 1 at 0x8048074: file cpuid.s, line 9.
+(gdb) run
+Starting program: /root/Test/cpuid
+The processor Vendor ID is &#39;GenuineIntel&#39;
+Program exited normally.
+(gdb)
+</code></pre>
+<p>所以可以在 _start 标签之后直接加上一个 nop 指令，以这个nop指定作为断点，表示为 _start + 1，如下：</p>
+<pre><code>(gdb) break * _start+1
+Breakpoint 2 at 0x8048075: file cpuid.s, line 10.
+(gdb) run
+Starting program: /root/Test/cpuid
+ 
+Breakpoint 2, &lt;function called from gdb&gt;
+Current language:  auto; currently asm
+(gdb) next
+11          cpuid
+(gdb) next
+12          movl    $output, %edi
+(gdb) step
+13          movl    %ebx, 28(%edi)
+(gdb) step
+14          movl    %edx, 32(%edi)
+(gdb) cont
+Continuing.
+The processor Vendor ID is &#39;GenuineIntel&#39;
+Program exited normally.
+(gdb)
+</code></pre>
+<p>如上操作，设置断点之后，直接 <code>run</code> 命令可以运行程序，到达断点就暂停。这时，使用 <code>next</code> 或者 <code>step</code> 命令可以单步执行每条指令；使用 <code>cont</code> 命令可以继续以正常的方式继续执行。<br><code>next</code> 可以简化为 <code>n</code>；<code>step</code> 可以简化为 <code>s</code>；<code>cont</code> 可以简化为 <code>c</code></p>
+<h4 id="查看数据"><a href="#查看数据" class="headerlink" title="查看数据"></a>查看数据</h4><table>
+<thead>
+<tr>
+<th>数据命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>info registers</code></td>
+<td>显示所有寄存器的值</td>
+</tr>
+<tr>
+<td><code>print</code></td>
+<td>显示特定寄存器或者来自程序的变量的值</td>
+</tr>
+<tr>
+<td><code>print/d</code></td>
+<td>同上，显示为十进制的值</td>
+</tr>
+<tr>
+<td><code>print/t</code></td>
+<td>同上，显示为二进制的值</td>
+</tr>
+<tr>
+<td><code>print/x</code></td>
+<td>同上，显示为十六进制的值</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>显示特定内存位置的值</td>
+</tr>
+</tbody></table>
+<p>查看寄存器：</p>
+<pre><code>(gdb) run
+Starting program: /root/Test/cpuid
+ 
+Breakpoint 2, &lt;function called from gdb&gt;
+(gdb) s
+11          cpuid
+(gdb) info registers
+eax            0x0      0
+ecx            0x0      0
+edx            0x0      0
+ebx            0x0      0
+esp            0xbfffeab0       0xbfffeab0
+ebp            0x0      0x0
+esi            0x0      0
+edi            0x0      0
+eip            0x804807a        0x804807a
+eflags         0x200306 2097926
+cs             0x23     35
+ss             0x2b     43
+ds             0x2b     43
+es             0x2b     43
+fs             0x0      0
+gs             0x0      0
+(gdb) s
+12          movl    $output, %edi
+(gdb) info registers
+eax            0x16     22
+ecx            0x6c65746e       1818588270
+edx            0x49656e69       1231384169
+ebx            0x756e6547       1970169159
+esp            0xbfffeab0       0xbfffeab0
+ebp            0x0      0x0
+esi            0x0      0
+edi            0x0      0
+eip            0x804807c        0x804807c
+eflags         0x200306 2097926
+cs             0x23     35
+ss             0x2b     43
+ds             0x2b     43
+es             0x2b     43
+fs             0x0      0
+gs             0x0      0
+(gdb) print/x $ebx
+$1 = 0x756e6547
+(gdb) print/x $edx
+$2 = 0x49656e69
+(gdb) print/x $ecx
+$3 = 0x6c65746e
+(gdb)
+</code></pre>
+<p><code>x</code> 命令用于查看内存位置的值。<code>x</code> 命令的格式为：</p>
+<pre><code>x/nyz
+</code></pre>
+<p>n 为需要显示的字段数。y 是输出格式，y 的值有：</p>
+<ol>
+<li>c 用于字符</li>
+<li>d 用于十进制</li>
+<li>x 用于十六进制</li>
+</ol>
+<p>z 是要显示的字段的长度：</p>
+<ol>
+<li>b 用于字节</li>
+<li>h 用于16位大小</li>
+<li>w 用于32位大小</li>
+</ol>
+<p>以下是显示 output 位置的内存的数据：</p>
+<pre><code>(gdb) x/42cb &amp;output
+0x80490ac &lt;output&gt;:     84 &#39;T&#39;  104 &#39;h&#39; 101 &#39;e&#39; 32 &#39; &#39;  112 &#39;p&#39; 114 &#39;r&#39; 111 &#39;o&#39; 99 &#39;c&#39;
+0x80490b4 &lt;output+8&gt;:   101 &#39;e&#39; 115 &#39;s&#39; 115 &#39;s&#39; 111 &#39;o&#39; 114 &#39;r&#39; 32 &#39; &#39;  86 &#39;V&#39;  101 &#39;e&#39;
+0x80490bc &lt;output+16&gt;:  110 &#39;n&#39; 100 &#39;d&#39; 111 &#39;o&#39; 114 &#39;r&#39; 32 &#39; &#39;  73 &#39;I&#39;  68 &#39;D&#39;  32 &#39; &#39;
+0x80490c4 &lt;output+24&gt;:  105 &#39;i&#39; 115 &#39;s&#39; 32 &#39; &#39;  39 &#39;\&#39;&#39; 120 &#39;x&#39; 120 &#39;x&#39; 120 &#39;x&#39; 120 &#39;x&#39;
+0x80490cc &lt;output+32&gt;:  120 &#39;x&#39; 120 &#39;x&#39; 120 &#39;x&#39; 120 &#39;x&#39; 120 &#39;x&#39; 120 &#39;x&#39; 120 &#39;x&#39; 120 &#39;x&#39;
+0x80490d4 &lt;output+40&gt;:  39 &#39;\&#39;&#39; 32 &#39; &#39;
+(gdb)
+</code></pre>
+<h3 id="与-C-语言库函数进行链接"><a href="#与-C-语言库函数进行链接" class="headerlink" title="与 C 语言库函数进行链接"></a>与 C 语言库函数进行链接</h3><p>以上的系统调用方式改用为调用 C 语言函数库的方式，程序如下：</p>
+<pre><code># cpuid2.s 
+.section .data
+output:
+    .ascii  &quot;The processor Vendor ID is &#39;%s&#39; \n&quot;
+
+.section .bss
+    .lcomm buffer, 16     # 在 .bss 中开辟一个16字节的未初始化数据缓冲区，标签为buffer
+
+.section .text
+.globl  _start
+_start:
+    nop
+    movl    $0, %eax
+    cpuid
+    movl    $buffer, %edi
+    movl    %ebx, (%edi)
+    movl    %edx, 4(%edi)
+    movl    %ecx, 8(%edi)
+    pushl   $buffer
+    pushl   $output
+    call    printf            # 调用 C 语言的 printf
+    addl    $8, %esp
+    pushl   $0
+    call    exit              # 调用 C 语言的 exit
+</code></pre>
+<p>编译方法：</p>
+<pre><code>as -o cpuid2.o cpuid2.s
+ld -dynamic-linker /lib/ld-linux.so.2 -o cpuid2 -lc cpuid2.o
+
+# 运行：
+./cpuid2
+The processor Vendor ID is &#39;GenuineIntel&#39;
+</code></pre>
+<p><img src="/blog1/images/asmbook.jpg" alt="汇编语言程序设计"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2238236@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry"><span class="miit">
@@ -1068,11 +1410,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>

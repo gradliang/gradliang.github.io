@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>码兵之家</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="码兵之家">
+  <title>AT&amp;T 汇编伪指令说明 | 码兵之家</title>
+  <meta name="keywords" content=" x86汇编 ">
+  <meta name="description" content="AT&amp;T 汇编伪指令说明 | 码兵之家">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="ld 是 GNU 的连接器，用于将多个已经编译好的 .o 文件连接成可执行文件或者动态库。 一般使用方式如下： ld  [参数选项]  -o [输出文件名] obj_file1.o  obj_file2.o  obj_file3.o ...  例如，.a 库文件可以跟 .o 文件一起列出来： ld  -o  main  crt0.o  obj1.o  obj2.o  libq1.a   以上例的">
 <meta property="og:type" content="article">
@@ -58,7 +58,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/blog1/"
    class="avatar_target">
@@ -1007,12 +1007,62 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-AT-T-汇编伪指令说明" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%A0%81%E5%85%B5%E4%B9%8B%E5%AE%B6"><span class="toc-text">关于码兵之家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <h1 class="article-title">AT&amp;T 汇编伪指令说明</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="技术文章">技术文章</a> > 
+            
+            <a  data-rel="技术文章&lt;---&gt;x86汇编">x86汇编</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">x86汇编</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-02-24 22:35:47'>2009-10-08 09:32</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:365</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AT-amp-T-%E6%B1%87%E7%BC%96%E4%BC%AA%E6%8C%87%E4%BB%A4%E8%AF%B4%E6%98%8E"><span class="toc-text">AT&amp;T 汇编伪指令说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#globl-%E6%88%96%E8%80%85-global"><span class="toc-text">.globl 或者 .global</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#extern"><span class="toc-text">.extern</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#comm-%E5%92%8C-lcomm"><span class="toc-text">.comm 和 .lcomm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#weak"><span class="toc-text">.weak</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hidden"><span class="toc-text">.hidden</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#type"><span class="toc-text">.type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#size"><span class="toc-text">.size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#align"><span class="toc-text">.align</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zero"><span class="toc-text">.zero</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rept-%E5%92%8C-endr"><span class="toc-text">.rept 和 .endr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#space"><span class="toc-text">.space</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1025,37 +1075,74 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于码兵之家"><a href="#关于码兵之家" class="headerlink" title="关于码兵之家"></a>关于码兵之家</h2><p><strong>码兵之家</strong> 是公仔（梁权清）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源</p>
-<p><code>3-hexo</code> 主题使用交流可以加 Q群: <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e8cf083cc097141eaf323396f1766809b8e90ff00c67bb441898f672892f6904"><img data-ignore border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="3-hexo使用交流" title="3-hexo使用交流"></a></p>
-<p>主要功能：</p>
-<ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a target="_blank" rel="noopener" href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
-</ul>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="AT-amp-T-汇编伪指令说明"><a href="#AT-amp-T-汇编伪指令说明" class="headerlink" title="AT&amp;T 汇编伪指令说明"></a>AT&amp;T 汇编伪指令说明</h1><h3 id="globl-或者-global"><a href="#globl-或者-global" class="headerlink" title=".globl 或者 .global"></a><code>.globl</code> 或者 <code>.global</code></h3><p>.globl / .global 伪指令将符号定义为全局可链接的，跨文件可以访问的符号。</p>
+<pre><code>    .globl  label_name
+</code></pre>
+<h3 id="extern"><a href="#extern" class="headerlink" title=".extern"></a><code>.extern</code></h3><p>.extern 定义外部符号</p>
+<pre><code>    .extern  label_name
+</code></pre>
+<h3 id="comm-和-lcomm"><a href="#comm-和-lcomm" class="headerlink" title=".comm 和 .lcomm"></a><code>.comm</code> 和 <code>.lcomm</code></h3><p>.comm 定义 COMM （未初始化变量）类型的全局符号； .lcomm 定义 COMM （未初始化变量）类型的局部符号</p>
+<pre><code>    #.comm/.lcomm 符号名, 大小
+    .comm label_name, 8
+    .lcomm label_name, 16
+</code></pre>
+<h3 id="weak"><a href="#weak" class="headerlink" title=".weak"></a><code>.weak</code></h3><p>.weak 伪指令将符号定义为弱类型，其他同名符号存在是，应该优先采用其他强类型的符号。</p>
+<pre><code>    .weak  label_name
+</code></pre>
+<h3 id="hidden"><a href="#hidden" class="headerlink" title=".hidden"></a><code>.hidden</code></h3><p>.hidden 伪指令将符号定义为隐藏属性。该符号为全局符号，但是对于 elf 文件来说，不暴露处理。加上此属性的符号，在生成的 .so 文件中，其他模块是找不到该符号的。</p>
+<pre><code>    .hidden  label_name
+</code></pre>
+<h3 id="type"><a href="#type" class="headerlink" title=".type"></a><code>.type</code></h3><p>.type 伪指令指明符号的类型，可以取值：object 或者 function。object 表示数据，function 表示函数。</p>
+<pre><code>    .type    var1, @object
+    .type    function_1, @function
+</code></pre>
+<h3 id="size"><a href="#size" class="headerlink" title=".size"></a><code>.size</code></h3><p>.size 伪指令指明符号的占用空间的大小</p>
+<pre><code>    .size    var1, 4
+</code></pre>
+<h3 id="align"><a href="#align" class="headerlink" title=".align"></a><code>.align</code></h3><p>.align 指出紧跟的数据或者代码要求的对齐值。</p>
+<pre><code>    .align 4
+</code></pre>
+<h3 id="zero"><a href="#zero" class="headerlink" title=".zero"></a><code>.zero</code></h3><p>填充多少个0</p>
+<pre><code>    .zero    4
+</code></pre>
+<h3 id="rept-和-endr"><a href="#rept-和-endr" class="headerlink" title=".rept 和 .endr"></a><code>.rept</code> 和 <code>.endr</code></h3><p>用来重复汇编语句块，例子：</p>
+<pre><code>    .rept   3
+    .long   100
+    .endr
+    # 相当于如下重复了 3 次
+    .long  100
+    .long  100
+    .long  100
+</code></pre>
+<h3 id="space"><a href="#space" class="headerlink" title=".space"></a><code>.space</code></h3><p>填充产生多个重复字节的值：</p>
+<pre><code>    # .space size, fill
+    .space  100, 2         # 100 个 2
+    .space  200            # 200 个 0，不指定值则默认为 0
+</code></pre>
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2238236@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry"><span class="miit">
@@ -1068,11 +1155,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>

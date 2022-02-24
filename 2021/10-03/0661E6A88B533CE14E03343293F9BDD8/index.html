@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>码兵之家</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="码兵之家">
+  <title>GNU 连接器 ld 的使用指南 | 码兵之家</title>
+  <meta name="keywords" content=" Linux ">
+  <meta name="description" content="GNU 连接器 ld 的使用指南 | 码兵之家">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="ld 是 GNU 的连接器，用于将多个已经编译好的 .o 文件连接成可执行文件或者动态库。 一般使用方式如下： ld  [参数选项]  -o [输出文件名] obj_file1.o  obj_file2.o  obj_file3.o ...  例如，.a 库文件可以跟 .o 文件一起列出来： ld  -o  main  crt0.o  obj1.o  obj2.o  libq1.a   以上例的">
 <meta property="og:type" content="article">
@@ -58,7 +58,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/blog1/"
    class="avatar_target">
@@ -1007,12 +1007,62 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-GNU-连接器-ld-的使用指南" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%A0%81%E5%85%B5%E4%B9%8B%E5%AE%B6"><span class="toc-text">关于码兵之家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <h1 class="article-title">GNU 连接器 ld 的使用指南</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="技术文章">技术文章</a> > 
+            
+            <a  data-rel="技术文章&lt;---&gt;Linux">Linux</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">Linux</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-02-24 22:35:47'>2021-10-03 18:50</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:527</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
     
 <style>
     .left-col .switch-btn,
@@ -1025,37 +1075,156 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于码兵之家"><a href="#关于码兵之家" class="headerlink" title="关于码兵之家"></a>关于码兵之家</h2><p><strong>码兵之家</strong> 是公仔（梁权清）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源</p>
-<p><code>3-hexo</code> 主题使用交流可以加 Q群: <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e8cf083cc097141eaf323396f1766809b8e90ff00c67bb441898f672892f6904"><img data-ignore border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="3-hexo使用交流" title="3-hexo使用交流"></a></p>
-<p>主要功能：</p>
-<ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a target="_blank" rel="noopener" href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
-</ul>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ld 是 GNU 的连接器，用于将多个已经编译好的 .o 文件连接成可执行文件或者动态库。</p>
+<p>一般使用方式如下：</p>
+<pre><code class="bash">ld  [参数选项]  -o [输出文件名] obj_file1.o  obj_file2.o  obj_file3.o ...
+</code></pre>
+<p>例如，.a 库文件可以跟 .o 文件一起列出来：</p>
+<pre><code class="bash">ld  -o  main  crt0.o  obj1.o  obj2.o  libq1.a 
+</code></pre>
+<p>以上例的 libq1.a 可以用 -l 选项指定:</p>
+<pre><code class="bash">ld  -o  main  crt0.o  obj1.o  obj2.o  -lq1 
+</code></pre>
+<p>gcc/g++ 也可以直接调用 ld 加选项进行连接，例如：</p>
+<pre><code class="bash">ld  -e  start1  obj1.o  obj2.o              # 指定 start1 符号为程序入口点
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+# 换成 gcc 来使用的话，采用 -Wl 选项来传递连接选项参数 :
+# 
+gcc  -Wl,-e,start1  obj1.o  obj2.o
+</code></pre>
+<p>常用的 ld 的选择项有：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-e  address</code> <br/><code>--entry  address</code></td>
+<td>设置程序的执行入口点</td>
+</tr>
+<tr>
+<td><code>-EB</code></td>
+<td>连接对象文件为大端字节序</td>
+</tr>
+<tr>
+<td><code>-EL</code></td>
+<td>连接对象文件为小端字节序</td>
+</tr>
+<tr>
+<td><code>-A  arch</code></td>
+<td>指定 CPU 架构</td>
+</tr>
+<tr>
+<td><code>-b  target</code> <br/><code>--format  target</code></td>
+<td>指定输入文件的格式</td>
+</tr>
+<tr>
+<td><code>-h  filename</code> <br/><code>-soname  filename</code></td>
+<td>设置共享库的内部名字</td>
+</tr>
+<tr>
+<td><code>-I  program</code> <br/> <code>--dynamic-linker program</code></td>
+<td>设置动态连接解释程序名称</td>
+</tr>
+<tr>
+<td><code>--no-dynamic-linker</code></td>
+<td>可执行文件不需要动态连接解释程序设置</td>
+</tr>
+<tr>
+<td><code>-l  libname</code> <br/><code>--library libname</code></td>
+<td>指出连接需要的库的名称</td>
+</tr>
+<tr>
+<td><code>-L  directory</code><br/><code>--library-path directory</code></td>
+<td>指出库文件的搜索路径</td>
+</tr>
+<tr>
+<td><code>-o  filename</code><br><code>--output  filename</code></td>
+<td>设置输出文件名</td>
+</tr>
+<tr>
+<td><code>-s</code><br/><code>--strip-all</code></td>
+<td>去除所有符号</td>
+</tr>
+<tr>
+<td><code>-S</code><br/><code>--strip-debug</code></td>
+<td>去除调试用的符号</td>
+</tr>
+<tr>
+<td><code>--strip-discarded</code></td>
+<td>去除标记为 discarded 段中的符号</td>
+</tr>
+<tr>
+<td><code>-T  filename</code><br/><code>--script  filename</code></td>
+<td>读取连接器脚本</td>
+</tr>
+<tr>
+<td><code>-Bdynamic</code><br/><code>-dy</code><br/><code>-call_shared</code></td>
+<td>使用共享库来连接</td>
+</tr>
+<tr>
+<td><code>-Bstatic</code><br/><code>-dn</code><br/><code>-non_shared</code><br/><code>-static</code></td>
+<td>使用静态库来连接</td>
+</tr>
+<tr>
+<td><code>-init symbol</code></td>
+<td>设置在装载时调用指定符号</td>
+</tr>
+<tr>
+<td><code>-Map  FILE/DIR</code></td>
+<td>写入map到文件或者目录</td>
+</tr>
+<tr>
+<td><code>-nostdlib</code></td>
+<td>仅仅连接命令行中指定的库，不连接其他标准库</td>
+</tr>
+<tr>
+<td><code>--oformat TARGET</code></td>
+<td>支持输出文件的格式</td>
+</tr>
+<tr>
+<td><code>-rpath PATH</code></td>
+<td>设置程序运行时，动态库的搜索路径</td>
+</tr>
+<tr>
+<td><code>-rpath-link PATH</code></td>
+<td>设置连接时，动态库的搜索路径</td>
+</tr>
+<tr>
+<td><code>-shared</code><br/><code>-Bshareable</code></td>
+<td>生成共享库</td>
+</tr>
+<tr>
+<td><code>-pie</code><br/><code>--pic-executable</code></td>
+<td>生成位置无关代码的可执行文件</td>
+</tr>
+</tbody></table>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2238236@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry"><span class="miit">
@@ -1068,11 +1237,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>

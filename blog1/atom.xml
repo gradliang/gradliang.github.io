@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>码兵之家</title>
+  
+  <subtitle>公仔的个人博客站</subtitle>
+  <link href="http://www.code64.cn/blog1/atom.xml" rel="self"/>
+  
+  <link href="http://www.code64.cn/blog1/"/>
+  <updated>2022-02-24T14:35:47.194Z</updated>
+  <id>http://www.code64.cn/blog1/</id>
+  
+  <author>
+    <name>码兵之家 - 公仔</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GNU 连接器 ld 的使用指南</title>
+    <link href="http://www.code64.cn/blog1/2021/10-03/0661E6A88B533CE14E03343293F9BDD8/"/>
+    <id>http://www.code64.cn/blog1/2021/10-03/0661E6A88B533CE14E03343293F9BDD8/</id>
+    <published>2021-10-03T10:50:42.000Z</published>
+    <updated>2022-02-24T14:35:47.194Z</updated>
+    
+    <content type="html"><![CDATA[<p>ld 是 GNU 的连接器，用于将多个已经编译好的 .o 文件连接成可执行文件或者动态库。</p><p>一般使用方式如下：</p><pre><code class="bash">ld  [参数选项]  -o [输出文件名] obj_file1.o  obj_file2.o  obj_file3.o ...</code></pre><p>例如，.a 库文件可以跟 .o 文件一起列出来：</p><pre><code class="bash">ld  -o  main  crt0.o  obj1.o  obj2.o  libq1.a </code></pre><p>以上例的 libq1.a 可以用 -l 选项指定:</p><pre><code class="bash">ld  -o  main  crt0.o  obj1.o  obj2.o  -lq1 </code></pre><p>gcc/g++ 也可以直接调用 ld 加选项进行连接，例如：</p><pre><code class="bash">ld  -e  start1  obj1.o  obj2.o              # 指定 start1 符号为程序入口点# 换成 gcc 来使用的话，采用 -Wl 选项来传递连接选项参数 :# gcc  -Wl,-e,start1  obj1.o  obj2.o</code></pre><p>常用的 ld 的选择项有：</p><table><thead><tr><th>选项</th><th>解释</th></tr></thead><tbody><tr><td><code>-e  address</code> <br/><code>--entry  address</code></td><td>设置程序的执行入口点</td></tr><tr><td><code>-EB</code></td><td>连接对象文件为大端字节序</td></tr><tr><td><code>-EL</code></td><td>连接对象文件为小端字节序</td></tr><tr><td><code>-A  arch</code></td><td>指定 CPU 架构</td></tr><tr><td><code>-b  target</code> <br/><code>--format  target</code></td><td>指定输入文件的格式</td></tr><tr><td><code>-h  filename</code> <br/><code>-soname  filename</code></td><td>设置共享库的内部名字</td></tr><tr><td><code>-I  program</code> <br/> <code>--dynamic-linker program</code></td><td>设置动态连接解释程序名称</td></tr><tr><td><code>--no-dynamic-linker</code></td><td>可执行文件不需要动态连接解释程序设置</td></tr><tr><td><code>-l  libname</code> <br/><code>--library libname</code></td><td>指出连接需要的库的名称</td></tr><tr><td><code>-L  directory</code><br/><code>--library-path directory</code></td><td>指出库文件的搜索路径</td></tr><tr><td><code>-o  filename</code><br><code>--output  filename</code></td><td>设置输出文件名</td></tr><tr><td><code>-s</code><br/><code>--strip-all</code></td><td>去除所有符号</td></tr><tr><td><code>-S</code><br/><code>--strip-debug</code></td><td>去除调试用的符号</td></tr><tr><td><code>--strip-discarded</code></td><td>去除标记为 discarded 段中的符号</td></tr><tr><td><code>-T  filename</code><br/><code>--script  filename</code></td><td>读取连接器脚本</td></tr><tr><td><code>-Bdynamic</code><br/><code>-dy</code><br/><code>-call_shared</code></td><td>使用共享库来连接</td></tr><tr><td><code>-Bstatic</code><br/><code>-dn</code><br/><code>-non_shared</code><br/><code>-static</code></td><td>使用静态库来连接</td></tr><tr><td><code>-init symbol</code></td><td>设置在装载时调用指定符号</td></tr><tr><td><code>-Map  FILE/DIR</code></td><td>写入map到文件或者目录</td></tr><tr><td><code>-nostdlib</code></td><td>仅仅连接命令行中指定的库，不连接其他标准库</td></tr><tr><td><code>--oformat TARGET</code></td><td>支持输出文件的格式</td></tr><tr><td><code>-rpath PATH</code></td><td>设置程序运行时，动态库的搜索路径</td></tr><tr><td><code>-rpath-link PATH</code></td><td>设置连接时，动态库的搜索路径</td></tr><tr><td><code>-shared</code><br/><code>-Bshareable</code></td><td>生成共享库</td></tr><tr><td><code>-pie</code><br/><code>--pic-executable</code></td><td>生成位置无关代码的可执行文件</td></tr></tbody></table>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;ld 是 GNU 的连接器，用于将多个已经编译好的 .o 文件连接成可执行文件或者动态库。&lt;/p&gt;
+&lt;p&gt;一般使用方式如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;ld  [参数选项]  -o [输出文件名] obj_file1.o  obj_file2.</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="Linux" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/"/>
+    
+    
+    <category term="Linux" scheme="http://www.code64.cn/blog1/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 GNU gettext 实现程序的多国语言本地化</title>
+    <link href="http://www.code64.cn/blog1/2021/06-13/59FA5670CBB6D1AE7BD50A5887B8C1AD/"/>
+    <id>http://www.code64.cn/blog1/2021/06-13/59FA5670CBB6D1AE7BD50A5887B8C1AD/</id>
+    <published>2021-06-13T02:57:38.000Z</published>
+    <updated>2022-02-24T14:35:47.194Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="使用-GNU-gettext-实现程序的多国语言本地化"><a href="#使用-GNU-gettext-实现程序的多国语言本地化" class="headerlink" title="使用 GNU gettext 实现程序的多国语言本地化"></a>使用 GNU gettext 实现程序的多国语言本地化</h2><h3 id="1-基本操作"><a href="#1-基本操作" class="headerlink" title="1. 基本操作"></a>1. 基本操作</h3><p>gettext 是 GNU 出品的一个项目，主要用于将应用程序本地化和国际化的一个实用套件。</p><p>首先，我们的程序，如果在源代码中写死了字符串，则我们无法对这个字符串进行国际化和本地化，例如：</p><pre><code class="C">int main()&#123;    printf(&quot;hello world. \n&quot;);&#125;</code></pre><p>上面的程序，无论在什么语言版本的系统中，其显示的都是英文的字符串 “hello world” 。</p><p>gettext 的方法是，需要进行国际化与本地化的字符串中，全部加上一个叫 gettext() 的函数调用，如下：</p><pre><code class="C">// a1.c#include &lt;stdio.h&gt;#include &lt;libintl.h&gt;#include &lt;locale.h&gt;#define PACKAGE &quot;test1&quot;      // 语言字符串资源包名int main()&#123;    setlocale(LC_ALL, &quot;&quot;);    bindtextdomain(PACKAGE, &quot;locale&quot;);    textdomain(PACKAGE);        printf(&quot;%s\n&quot;, gettext(&quot;I come from China.&quot;));    printf(&quot;%s\n&quot;, gettext(&quot;I like Java language.&quot;));    // 上面的 gettext() 可以用宏来代替，进行简化，例如:    // #define _(str) gettext(str)    // #define N(str) gettext(str)    // 等等    return 0;&#125;// 使用如下命令编译： // gcc -o a1 a1.c </code></pre><p>上面示范程序中的字符串 “I come from China.” 和 “I like Java language.” ，在使用之前都加上了 gettext() 函数进行包裹。gettext() 函数的作用是：以原始字符串作为 key，去加载并获取到并返回其对应语言的的本地字符串。</p><p>使用 <code>xgettext</code> 命令，将源文件中被 gettext() 函数包裹的字符串全部抓出来，命令如下（用 test1 作为语言包名）：</p><pre><code>xgettext  a1.c  -o test1.po</code></pre><p>xgettext 命令可以指定多个原文文件，输出的 .po 文件是一个文本文件，里面包含了需要翻译的所有字符串，文件名是上面源码中指定的对应的语言资源包 PACKAGE 名。</p><p>打开 test1.po 文件，把字符编码设置为 UTF-8，将里面的 <code>&quot;Content-Type: text/plain; charset=CHARSET\n&quot;</code> 改为 <code>&quot;Content-Type: text/plain; charset=UTF-8\n&quot;</code>。然后，对相应的文本进行翻译：</p><pre><code>#: a1.c:13msgid &quot;I come from China.&quot;msgstr &quot;&quot;#: a1.c:14msgid &quot;I like Java language.&quot;msgstr &quot;&quot;</code></pre><p>上面的 msgid 就是原始字符串，作为 key，不要修改，下面的 msgstr 则应该修改，将翻译过去的文本填进去，如下：</p><pre><code>#: a1.c:13msgid &quot;I come from China.&quot;msgstr &quot;我来自中国。&quot;#: a1.c:14msgid &quot;I like Java language.&quot;msgstr &quot;我喜欢 Java 语言&quot;</code></pre><p>然后使用 <code>msgfmt</code> 命令将 .po 文件编译为 gettext() 函数可以识别的 .mo 文件，命令如下：</p><pre><code>msgfmt  test1.po  -o  test1.mo</code></pre><p>由于上面 C 程序中指定了 .mo 资源的加载路径，语句 <code>bindtextdomain(PACKAGE, &quot;locale&quot;);</code> 指定了 .mo 存放在当前目录的 locale 子目录下面。所以，把生成的 test1.mo 文件放在当前目录的如下路径下：</p><pre><code>locale/zh_CN/LC_MESSAGES/test1.mo</code></pre><p>这里假设系统为简体中文，当前 locale 设置为 zh_CN，上面 C 程序的语句  <code>setlocale(LC_ALL, &quot;&quot;);</code> 就是使用系统默认的语言环境。执行上面 C 程序 <code>./a1</code> 得到结果为：</p><pre><code>我来自中国。我喜欢 Java 语言</code></pre><p>上面例子说明了 gettext 套件的基本使用流程。</p><h3 id="2-批量操作"><a href="#2-批量操作" class="headerlink" title="2. 批量操作"></a>2. 批量操作</h3><p><code>xgettext</code> 命令可以一次性指定多个输入源文件，如：</p><pre><code>xgettext  a1.c  a2.c  a3.c  -o  package.po</code></pre><p><code>xgettext</code> 命令也可以通配符，如：</p><pre><code>xgettext  *.c  -o  package.po</code></pre><p>可以把所有需要提取的源文件放在一个列表中（list1.txt 中列出所有源文件名）：</p><pre><code>xgettext -f list1.txt -o package.po</code></pre><p>增加其他关键字，例如 增加 N() 函数，则 N(“string”) 也会被抓取：</p><pre><code>xgettext  *.c -kN -o  package.po</code></pre><p>如果已经翻译好了字符串，后来源代码发生了更改，增加了一些新的字符串，可以使用 -j 选项，把新增的字符串追加到已经存在的翻译好的 .po 文件中，例如：</p><pre><code>xgettext  a1.c  a2.c  a3.c  -j  -o package.po</code></pre><p>用 <code>msginit</code> 命令可以把 xgettext 生成的 .po 文件（POT）转换成对应语言的翻译文本 .po （会修改好一些编码与语言的相关字段）：</p><pre><code>msginit  --no-translator --locale zh_CN -o package_new.po -i package.po</code></pre><p>可以用 <code>msgmerge</code> 命令把新生成的 .po 合并到已经翻译好的 .po 文件中：</p><pre><code>msgmerge  -o package.po  locale/zh_CN/LC_MESSAGES/package.po  package.po</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;使用-GNU-gettext-实现程序的多国语言本地化&quot;&gt;&lt;a href=&quot;#使用-GNU-gettext-实现程序的多国语言本地化&quot; class=&quot;headerlink&quot; title=&quot;使用 GNU gettext 实现程序的多国语言本地化&quot;&gt;&lt;/a&gt;使用 GN</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="Linux" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/"/>
+    
+    
+    <category term="Linux" scheme="http://www.code64.cn/blog1/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows 下如何将标准输出设置为 UTF-8 编码</title>
+    <link href="http://www.code64.cn/blog1/2021/06-10/DE1E7A72CAC1E21D674A76C3D093CAB3/"/>
+    <id>http://www.code64.cn/blog1/2021/06-10/DE1E7A72CAC1E21D674A76C3D093CAB3/</id>
+    <published>2021-06-10T01:05:37.000Z</published>
+    <updated>2022-02-24T14:35:47.194Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Windows-下如何将控制台的标准输出设置为-UTF-8-编码"><a href="#Windows-下如何将控制台的标准输出设置为-UTF-8-编码" class="headerlink" title="Windows 下如何将控制台的标准输出设置为 UTF-8 编码"></a>Windows 下如何将控制台的标准输出设置为 UTF-8 编码</h2><h3 id="C-语言"><a href="#C-语言" class="headerlink" title="C# 语言"></a>C# 语言</h3><p>C# 语言在简体中文版的 Windows 下默认使用 GBK 编码。 切换标准输入输出的字符编码只需要设置 Console 对象的输出字符编码即可。在代码最初处加上 <code>Console.OutputEncoding = System.Text.Encoding.UTF8</code> 。上例子：</p><pre><code class="C#">using System;namespace ConsoleApp&#123;    class Program    &#123;        static void Main(string[] args)        &#123;            Console.OutputEncoding = System.Text.Encoding.UTF8;          // 关键这句            Console.WriteLine(&quot;Hello World! 测试中文输出的 UTF-8 字符串&quot;);        &#125;    &#125;&#125;</code></pre><p>编译成 ConsoleApp.exe，然后在命令行中执行 ConsoleApp.exe，可以看到，正常输出中文字，不会乱码。<br>然后执行：</p><pre><code>ConsoleApp.exe  &gt;  a.txt</code></pre><p>把输出结果重定向到 a.txt 文件中，用编辑器打开 a.txt，可以在编辑器中看到文件编码为 UTF-8 。</p><p><img src="/blog1/2021/06-10/DE1E7A72CAC1E21D674A76C3D093CAB3/encodeing1.png" alt="文本文件"></p><h3 id="C-C-语言"><a href="#C-C-语言" class="headerlink" title="C/C++ 语言"></a>C/C++ 语言</h3><p>简体中文版的Windows 控制台输出的字符 CodePage 为 GBK。在需要输出 UTF-8 文本到标准输出之前，先调用 Windows API 进行设置，使用 <code>SetConsoleOutputCP</code> 这个 API 来先设置控制台输出的 CodePage 为 UTF-8。上例子：</p><pre><code class="C++">// u8test.cpp, 这个源代码要保存为 UTF-8 编码#include &lt;stdio.h&gt;#include &lt;iostream&gt;#include &lt;Windows.h&gt;int main()&#123;    SetConsoleCP(CP_UTF8);    SetConsoleOutputCP(CP_UTF8);    printf(&quot;中文字符串1 \n&quot;);                   // C 风格的标准输出    std::cout &lt;&lt; &quot;中文字符串2&quot; &lt;&lt; std::endl;    // C++ 风格的 I/O 流输出&#125;</code></pre><ol><li><code>SetConsoleCP</code> 函数用于设置标准输入的字符编码 CodePage</li><li><code>SetConsoleOutputCP</code> 函数用于设置标准输出的字符编码 CodePage</li></ol><p>用 mingw gcc 编译的命令：</p><pre><code>g++ -s -o u8test.exe u8test.cpp</code></pre><p>用 VC++ 编译则需要加上 <code>-utf-8</code> 命令参数，如果不加上  <code>-utf-8</code> 的话，编译器会把字符串的编码默认转换为 GBK。（ -utf-8 命令行参数仅仅在 VC++ 2015版本以上才有效 ）</p><pre><code class="bat">cl -MD -utf-8 u8test.cpp</code></pre><h3 id="Go-Rust-语言"><a href="#Go-Rust-语言" class="headerlink" title="Go / Rust 语言"></a>Go / Rust 语言</h3><p>这些新兴语言没有历史包袱，标准库已经默认将标准输入输出的字符编码设置为 UTF-8 了，所以不需要过多关注这些，直接开干使用即可。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Windows-下如何将控制台的标准输出设置为-UTF-8-编码&quot;&gt;&lt;a href=&quot;#Windows-下如何将控制台的标准输出设置为-UTF-8-编码&quot; class=&quot;headerlink&quot; title=&quot;Windows 下如何将控制台的标准输出设置为 UTF-</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="Win32" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Win32/"/>
+    
+    
+    <category term="Win32" scheme="http://www.code64.cn/blog1/tags/Win32/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Node.js 使用 PM2 管理进程</title>
+    <link href="http://www.code64.cn/blog1/2021/05-30/A1F112420F18A412B067B4C27C904C33/"/>
+    <id>http://www.code64.cn/blog1/2021/05-30/A1F112420F18A412B067B4C27C904C33/</id>
+    <published>2021-05-30T02:38:47.000Z</published>
+    <updated>2022-02-24T14:35:47.194Z</updated>
+    
+    <content type="html"><![CDATA[<p>执行 Node.js 的程序，需要使用命令行进行调用：</p><pre><code>node  js-module-name</code></pre><p>当 Ctrl + C 退出之后，或者关闭了终端之后，Node.js 的进程也随之被退出了。如果 Node.js 的程序中途出现了异常，也会退出进程。如果部署在服务器上面的 Node.js 应该需要以守护进程的方式进行启动的话，则需要借助一些工具才能完成这种操作。</p><p>PM2 就是一款 Node.js 应用的极佳的进程管理器。官方网址是： <a href="https://pm2.keymetrics.io/">https://pm2.keymetrics.io/</a>。 安装方法如下：</p><pre><code>npm  install  -g  pm2</code></pre><p>安装完毕之后，需要查看帮助，请输入：</p><pre><code>pm2  -h</code></pre><p>启动一个 Node.js 进程并守护，使用以下命令：</p><pre><code>pm2  start  ex21.js</code></pre><p>这时进程启动并进入后台管理，并输出下面进程信息。加上 <code>--watch</code> 参数在后面，意味着当应用程序发生异常时，pm2会帮你重启服务。</p><pre><code>[PM2] Starting G:\mystudy\node\1\ex21.js in fork_mode (1 instance)[PM2] Done.┌─────┬─────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐│ id  │ name    │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │├─────┼─────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤│ 0   │ ex21    │ default     │ N/A     │ fork    │ 15332    │ 0s     │ 0    │ online    │ 0%       │ 27.7mb   │ o_o      │ disabled │└─────┴─────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘</code></pre><p>即使命令终端窗口关闭了，进程还是会在后台继续运行。以上信息中，可以看出，进程 ID 为：15332，这个进程在进程列表中的 ID 为 0。</p><p>结束一个进程，可以使用下面命令（以上面的进程为例子，命令中的 id 为列表中的 ID）：</p><pre><code>pm2  stop  0</code></pre><p>如果要把列表中所有的进程都停止，则使用：</p><pre><code>pm2  stop  all</code></pre><p>查看完成进程列表，使用命令：</p><pre><code>pm2  list</code></pre><pre><code>┌─────┬─────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐│ id  │ name    │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │├─────┼─────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤│ 0   │ ex21    │ default     │ N/A     │ fork    │ 0        │ 0      │ 0    │ stopped   │ 0%       │ 0b       │ o_o      │ disabled │└─────┴─────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘</code></pre><p>重启进程，则使用命令：</p><pre><code>pm2  restart  0</code></pre><p>重启所有进程，则使用命令：</p><pre><code>pm2  restart  all</code></pre><p>将进程从管理列表中删除，使用命令：</p><pre><code>pm2  delete  0</code></pre><p>将所有进程从管理列表中删除，使用命令：</p><pre><code>pm2  delete  all</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;执行 Node.js 的程序，需要使用命令行进行调用：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;node  js-module-name
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当 Ctrl + C 退出之后，或者关闭了终端之后，Node.js 的进程也随之被退出了。如果 Node.js </summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="JavaScript" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/JavaScript/"/>
+    
+    
+    <category term="JavaScript" scheme="http://www.code64.cn/blog1/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Node.js Windows平台下多版本共存的方法</title>
+    <link href="http://www.code64.cn/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/"/>
+    <id>http://www.code64.cn/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/</id>
+    <published>2021-05-26T02:21:26.000Z</published>
+    <updated>2022-02-24T14:35:47.194Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文所描述的方法，是以绿色软件的安装方法来实现，Node.js 在 Windows 下多个不同版本共存。不同的版本放在不同的目录下，通过设置不同的 PATH 环境变量来实现。不同目录下的 Node.js 拥有不同的 exe 版本和相互独立的 npm 包。</p><p>该方法在其它操作系统也可以通用。</p><p>首先，去 <a href="https://nodejs.org/en/">https://nodejs.org/en/</a> 下载你需要的版本：</p><p><img src="/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/shuoming1.jpg" alt="进去网站，选择另类的下载"></p><hr><p>选择 All download options :</p><p><img src="/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/shuoming2.jpg" alt="选择所有下载选项"></p><hr><p>选择绿色软件包，解压即用的那种，下图的 <a href="https://nodejs.org/dist/v16.2.0/node-v16.2.0-win-x64.7z">node-v16.2.0-win-x64.7z</a> 和 <a href="https://nodejs.org/dist/v16.2.0/node-v16.2.0-win-x64.zip">node-v16.2.0-win-x64.zip</a> 都可以，只是压缩格式不一样:</p><p><img src="/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/shuoming3.jpg" alt="选择绿色软件包版本"></p><hr><p>解压到自己喜欢存放的目录，任何目录都可以；我这里以 <code>D:\GreenSoft\Node\node-v16</code> 目录作例子进行说明：</p><p><img src="/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/shuoming4.png" alt="解压缩"></p><hr><p>在 Node.js 程序根目录 D:\GreenSoft\Node\node-v16 目录中 （本文以 D:\GreenSoft\Node\node-v16 为例子作说明）:  </p><ol><li>先新建一个目录，名叫 cache，用于存放 npm 安装缓存。</li><li>再新建一个文本文件，名字叫 <code>npmrc</code>，配置 npm 的安装路径，内容如下：</li></ol><pre><code>prefix=D:\GreenSoft\Node\node-v16cache=D:\GreenSoft\Node\node-v16\cache</code></pre><p>如果想全局使用淘宝镜像源，可以加上：</p><pre><code>registry=https://registry.npm.taobao.org</code></pre><p>然后，再复制 npmrc 到 D:\GreenSoft\Node\node-v16\node_modules\npm 中。 真正起作用的配置文件是位于 node_modules\npm 中的这份，在 Node.js 程序根目录的那份配置文件只是用于备份。</p><p>如果升级了 npm 的话， node_modules\npm 中的 npmrc 可能会被删除，这时只需把 Node.js 程序根目录中的 npmrc 复制到 node_modules\npm 中即可。</p><hr><p>下面说明如何创建快捷方式：</p><p>在 Node.js 程序根目录 D:\GreenSoft\Node\node-v16 目录创建一个批处理文件，名叫：setenv.bat，内容如下：</p><pre><code class="bat">@echo offset PATH=D:\GreenSoft\Node\node-v16;%PATH%cls</code></pre><p>在桌面或者开始菜单中，右键创建一个快捷方式，指向 D:\GreenSoft\Node\node-v16\setenv.bat。</p><p>然后，右键 –&gt; 属性，把快捷方式的属性修改如下（主要是在 bat 文件路径前面加上 <code>cmd /K </code> ，同时也可以修改起始位置）：</p><p><img src="/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/shuoming5.png" alt="修改快捷方式"></p><p>双击刚才修改好的快捷方式，输入运行 <code>node -v</code> 和 <code>npm -v</code>，看看版本号是否正常，如果正常显示，则表示安装成功。</p><pre><code class="bat">C:\&gt;node -vv16.2.0C:\&gt;npm -v7.14.0C:\&gt;</code></pre><p>有时候会遇到使用 npm 来更新安装 npm 会失败的情况，也就是 <code>npm install -g npm</code> 会报错的情况。这时可以借用 cnpm 来更新，如下：</p><pre><code class="bat">npm install -g cnpm --registry=https://registry.npm.taobao.orgcnpm install -g npm</code></pre><p>更新完 npm 之后，记得把 Node.js 程序根目录下的 npmrc 文件复制回 node_modules\npm 中。</p><hr><p>结尾处上个图让大伙养养眼！</p><p><img src="/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/pic1.jpg" alt="Lena"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;本文所描述的方法，是以绿色软件的安装方法来实现，Node.js 在 Windows 下多个不同版本共存。不同的版本放在不同的目录下，通过设置不同的 PATH 环境变量来实现。不同目录下的 Node.js 拥有不同的 exe 版本和相互独立的 npm 包。&lt;/p&gt;
+&lt;p&gt;该方</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="JavaScript" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/JavaScript/"/>
+    
+    
+    <category term="JavaScript" scheme="http://www.code64.cn/blog1/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rust 语法简明总结</title>
+    <link href="http://www.code64.cn/blog1/2021/04-02/D285A33A84DBDB29D0FE1E420D07D2FD/"/>
+    <id>http://www.code64.cn/blog1/2021/04-02/D285A33A84DBDB29D0FE1E420D07D2FD/</id>
+    <published>2021-04-02T03:18:06.000Z</published>
+    <updated>2022-02-24T14:35:47.194Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Rust-语法简明总结"><a href="#Rust-语法简明总结" class="headerlink" title="Rust 语法简明总结"></a>Rust 语法简明总结</h2><p>该文是简单精要地阐明一下 Rust 语言的一些基本语法。不是要把语法写成书，长编大论；也不是一些简单的笔记，随便写写。本文只是想以最简单的语言文字，尽量简单地把 Rust 这门被有些人称为最难的编程语言，简明地总结出来。</p><h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><pre><code class="rust">fn main() &#123;                   // fn 定义一个函数，程序从 main 函数开始执行    println!(&quot;Hello World.&quot;); // 使用 println 宏打印一行字符串，! 叹号结尾表示 println 是一个宏&#125;</code></pre><h2 id="变量与类型"><a href="#变量与类型" class="headerlink" title="变量与类型"></a>变量与类型</h2><h3 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h3><p>变量必须先绑定再使用，绑定的声明方式如下（其他语言的变量是声明，但是 Rust 的变量是一种资源的绑定关系）：</p><pre><code class="rust">let x : i32 = 100;                 // 定义只读的变量 x，类型为 i32，并初始化为 100let mut y : i32 = 200;             // 定义可写的变量 y，类型为 i32，并初始化为 200const z : i32 = 300;               // 定义常量 z，类型为 i32，并初始化为 300let ver1 = 400_i32;                // 400后面加上 i32 类型后缀，自动推导 ver1 类型为 i32static stvar: i32 = 8;             // static声明静态变量 stvar，类型为 i32</code></pre><h2 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Rust-语法简明总结&quot;&gt;&lt;a href=&quot;#Rust-语法简明总结&quot; class=&quot;headerlink&quot; title=&quot;Rust 语法简明总结&quot;&gt;&lt;/a&gt;Rust 语法简明总结&lt;/h2&gt;&lt;p&gt;该文是简单精要地阐明一下 Rust 语言的一些基本语法。不是要把语法</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="Rust" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Rust/"/>
+    
+    
+    <category term="Rust" scheme="http://www.code64.cn/blog1/tags/Rust/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 手动安装 Rust 最新版本编译器</title>
+    <link href="http://www.code64.cn/blog1/2021/03-30/8CDBAAFE38AE21B713FD085130F10844/"/>
+    <id>http://www.code64.cn/blog1/2021/03-30/8CDBAAFE38AE21B713FD085130F10844/</id>
+    <published>2021-03-30T01:05:51.000Z</published>
+    <updated>2022-02-24T14:35:47.194Z</updated>
+    
+    <content type="html"><![CDATA[<p>Linux 手动安装 Rust 最新版本编译器</p><p>一般来说，Linux 发行版都自带了 Rust 编译器，通过 <code>apt-get</code> 或者 <code>dnf</code> 等包管理工具即可以安装 Rust 编译器。</p><p>Rust 编译器套件中包含了自升级命令行组件 rustup，可以进行升级操作： </p><pre><code class="bash">rustup self update            # 升级 rustup 工具本身rustup update                 # 升级 Rust 编译器整个套件</code></pre><p>也可以去 Rust 官方去下载指定的版本进行手动安装。 手动安装可以选择安装组件，可以指定安装路径，也可以选择具体版本。</p><p>如下，去  <a href="https://forge.rust-lang.org/infra/other-installation-methods.html">“ 官方地址 ”</a> 去下载具体版本; 这里选择以 1.51.0 版本为例子。（本文书写时最新版本为 1.51.0）。<br>一般的 Linux 发行版的 platform 请选择 x86_64-unknown-linux-gnu， 特殊的 Alpine Linux发行版的 platform 请选择 x86_64-unknown-linux-musl 。</p><p>下面以下载到的文件 rust-1.51.0-x86_64-unknown-linux-gnu.tar.gz 为例：</p><pre><code class="bash"># 解压缩：tar zxvf rust-1.51.0-x86_64-unknown-linux-gnu.tar.gz# 进入解压缩后的目录:cd rust-1.51.0-x86_64-unknown-linux-gnu</code></pre><p>查看一下具体目录结构：</p><pre><code class="bash">ls -l</code></pre><p>你会看到，里面有个官方的安装脚本 <code>install.sh</code> ：</p><pre><code class="bash">ls -ltotal 68-rwxrwxrwx 1 root root  9322 May  6 20:09 COPYRIGHT-rwxrwxrwx 1 root root  9723 May  6 20:09 LICENSE-APACHE-rwxrwxrwx 1 root root  1023 May  6 20:09 LICENSE-MIT-rwxrwxrwx 1 root root  9566 May  6 20:09 README.mddrwxrwxrwx 1 root root   512 May  6 20:11 cargodrwxrwxrwx 1 root root   512 May  6 20:11 clippy-preview-rwxrwxrwx 1 root root   192 May  6 20:11 components-rwxrwxrwx 1 root root    40 May  6 20:10 git-commit-hash-rwxrwxrwx 1 root root 27856 May  6 20:10 install.shdrwxrwxrwx 1 root root   512 May  6 20:11 llvm-tools-previewdrwxrwxrwx 1 root root   512 May  6 20:11 miri-previewdrwxrwxrwx 1 root root   512 May  6 20:11 rls-previewdrwxrwxrwx 1 root root   512 May  6 20:11 rust-analysis-x86_64-unknown-linux-gnudrwxrwxrwx 1 root root   512 May  6 20:11 rust-analyzer-previewdrwxrwxrwx 1 root root   512 May  6 20:11 rust-docs-rwxrwxrwx 1 root root     2 May  6 20:11 rust-installer-versiondrwxrwxrwx 1 root root   512 May  6 20:11 rust-std-x86_64-unknown-linux-gnudrwxrwxrwx 1 root root   512 May  6 20:11 rustcdrwxrwxrwx 1 root root   512 May  6 20:11 rustfmt-preview-rwxrwxrwx 1 root root    29 May  6 20:11 version</code></pre><p>运行一下 <code>install.sh</code> 看看有什么安装选项：</p><pre><code class="bash">sudo ./install.sh --helpUsage: ./install.sh [options]Options:    --uninstall                      only uninstall from the installation prefix    --destdir=[&lt;none&gt;]               set installation root    --prefix=[/usr/local]            set installation prefix    --without=[&lt;none&gt;]               comma-separated list of components to not install    --components=[&lt;none&gt;]            comma-separated list of components to install    --list-components                list available components    --sysconfdir=[/etc]              install system configuration files    --bindir=[/bin]                  install binaries    --libdir=[/lib]                  install libraries    --datadir=[/share]               install data    --mandir=[/share/man]            install man pages in PATH    --docdir=[\&lt;default\&gt;]           install documentation in PATH    --disable-ldconfig               don&#39;t run ldconfig after installation (Linux only)    --disable-verify                 don&#39;t obsolete    --verbose                        run with verbose output</code></pre><p>这里有几个有用的选项：</p><ul><li>--prefix=[/usr/local] <br/>指定安装路径，不指定时为 /usr/local</li><li>--list-components <br/>列出可以安装的组件</li><li>--without=[&lt;none&gt;] <br/>不安装指定组件</li></ul><p>下面看看具体有哪些组件可供选择：</p><pre><code class="bash">sudo ./install.sh --list-components# Available components* rustc* cargo* rls-preview* rust-analyzer-preview* clippy-preview* miri-preview* rustfmt-preview* llvm-tools-preview* rust-analysis-x86_64-unknown-linux-gnu* rust-std-x86_64-unknown-linux-gnu* rust-docs</code></pre><p>其中，本人亲测，rust-docs 为帮助文档，安装过程特别慢，而且文档可以直接在浏览器上网去查看，所以没有必要装到本地，采用以下命令进行安装：</p><pre><code class="bash">sudo ./install.sh --without=rust-docs</code></pre><p>输入编译命令，测试一下，出现版本号则表示安装成功：</p><pre><code class="bash">rustc -Vrustc 1.51.0 (2fd73fabe 2021-03-23)</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Linux 手动安装 Rust 最新版本编译器&lt;/p&gt;
+&lt;p&gt;一般来说，Linux 发行版都自带了 Rust 编译器，通过 &lt;code&gt;apt-get&lt;/code&gt; 或者 &lt;code&gt;dnf&lt;/code&gt; 等包管理工具即可以安装 Rust 编译器。&lt;/p&gt;
+&lt;p&gt;Rust </summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="Rust" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Rust/"/>
+    
+    
+    <category term="Rust" scheme="http://www.code64.cn/blog1/tags/Rust/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C11 的变长数组</title>
+    <link href="http://www.code64.cn/blog1/2020/07-03/635C028687D671F50A1AF81E8F589D50/"/>
+    <id>http://www.code64.cn/blog1/2020/07-03/635C028687D671F50A1AF81E8F589D50/</id>
+    <published>2020-07-03T03:20:13.000Z</published>
+    <updated>2022-02-24T14:35:47.179Z</updated>
+    
+    <content type="html"><![CDATA[<p>C11 的变长数组</p><p>C 语言新版本支持变长的数组（variable length array，简称VLA），数组的长度可以用一个变量来决定。</p><p>如果 C 编译器不支持变长数组，那么宏定义 __STDC_NO_VLA__ 就必须定义为 1。使用下面的代码可以检查是否支持变长数组：</p><pre><code class="C">#ifdef __STDC_NO_VLA__    printf(&quot;不支持变长数组 \n&quot;);#endif // __STDC_NO_VLA__</code></pre><p>代码中有些地方是不能声明和定义为变长数组的：</p><p>一、变长数组不能是全局变量<br>二、extern 外部变量<br>三、结构或者联合里面的字段<br>四、static 变量  </p><p>也就是说，变长数组只能用于非 static 的局部变量。</p><p>变长数组的实现原理是什么，下面以一个简单的 .c 程序，进行编译成汇编看看：</p><pre><code class="C">// varr.c#include &lt;stdio.h&gt;static void func1(int arrsize)&#123;    int array[arrsize];                // 这里定于可变数组，数组的大小由一个变量来决定  &#125;int main()&#123;    func1(9);    return 0;&#125;</code></pre><p>用下面命令：</p><pre><code class="bash">gcc -std=c99 -S varr.c</code></pre><p>编译为汇编得到：</p><pre><code class="x86asm">    .file    &quot;varr.c&quot;    .text    .def    _func1;    .scl    3;    .type    32;    .endef_func1:    pushl    %ebp    movl    %esp, %ebp    pushl    %ebx    subl    $20, %esp    movl    %esp, %eax    movl    %eax, %ecx    movl    8(%ebp), %eax    leal    -1(%eax), %edx    movl    %edx, -12(%ebp)    leal    0(,%eax,4), %edx    movl    $16, %eax    subl    $1, %eax    addl    %edx, %eax    movl    $16, %ebx    movl    $0, %edx    divl    %ebx    imull    $16, %eax, %eax    call    ___chkstk_ms    subl    %eax, %esp    movl    %esp, %eax    addl    $3, %eax    shrl    $2, %eax    sall    $2, %eax    movl    %eax, -16(%ebp)    movl    %ecx, %esp    nop    movl    -4(%ebp), %ebx    leave    ret    .def    ___main;    .scl    2;    .type    32;    .endef    .globl    _main    .def    _main;    .scl    2;    .type    32;    .endef_main:    pushl    %ebp    movl    %esp, %ebp    andl    $-16, %esp    subl    $16, %esp    call    ___main    movl    $9, (%esp)    call    _func1    movl    $0, %eax    leave    ret    .ident    &quot;GCC: (GNU) 10.2.0&quot;</code></pre><p>从上述汇编代码中可以看出，可变数组是根据数组大小的变量，动态地在栈中开辟一串连续的空间，来作为动态数组的存储空间。<br>函数执行完毕之后，这部分在栈内动态开辟的空间，会自动被回收。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;C11 的变长数组&lt;/p&gt;
+&lt;p&gt;C 语言新版本支持变长的数组（variable length array，简称VLA），数组的长度可以用一个变量来决定。&lt;/p&gt;
+&lt;p&gt;如果 C 编译器不支持变长数组，那么宏定义 __STDC_NO_VLA__ 就必须定义为 1。使用下面的</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="C_CPP" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/C-CPP/"/>
+    
+    
+    <category term="C/C++" scheme="http://www.code64.cn/blog1/tags/C-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C# 直接引用命名空间中的静态成员</title>
+    <link href="http://www.code64.cn/blog1/2018/12-02/C2B887CEB1D1D3C9064A8AAB781E1659/"/>
+    <id>http://www.code64.cn/blog1/2018/12-02/C2B887CEB1D1D3C9064A8AAB781E1659/</id>
+    <published>2018-12-02T01:29:59.000Z</published>
+    <updated>2022-02-24T14:35:47.179Z</updated>
+    
+    <content type="html"><![CDATA[<p>  C#直接引用命名空间中的静态成员</p><p>C# 6.0 允许直接导入并调用类/命名空间中的静态成员，而不需要指定类名。</p><p>直接导入类/命名空间中的静态成员的语法为 (在 <code>using</code> 后面加上 <code>static</code> 来实现)：</p><pre><code class="CSharp">using static &lt;Namespace路径链&gt;.类型;</code></pre><p>例如：</p><pre><code class="CSharp">using static System.Console;</code></pre><p>这样就可以直接使用：</p><pre><code class="CSharp">using static System.Console;namespace Hello1&#123;    class Program    &#123;        static void Main(string[] args)        &#123;            WriteLine(&quot;我又开始作妖了.&quot;);  // 等价于使用Console.WriteLine        &#125;    &#125;&#125;</code></pre><p>命名空间也可以使用别名，格式如下：</p><pre><code class="CSharp">using  别名 = 命名空间或者类名;</code></pre><p>当别名指向命名空间，则可以使用 <code>“别名::类型”</code> 的方式进行使用；如果别名指向类型名，则可以使用 <code>“别名.成员”</code> 进行访问。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;  C#直接引用命名空间中的静态成员&lt;/p&gt;
+&lt;p&gt;C# 6.0 允许直接导入并调用类/命名空间中的静态成员，而不需要指定类名。&lt;/p&gt;
+&lt;p&gt;直接导入类/命名空间中的静态成员的语法为 (在 &lt;code&gt;using&lt;/code&gt; 后面加上 &lt;code&gt;static&lt;/cod</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="CSharp" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/CSharp/"/>
+    
+    
+    <category term="C#" scheme="http://www.code64.cn/blog1/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React 中函数组件与类组件的样例</title>
+    <link href="http://www.code64.cn/blog1/2018/10-09/65F786835306E1C27B7023A6F17B5460/"/>
+    <id>http://www.code64.cn/blog1/2018/10-09/65F786835306E1C27B7023A6F17B5460/</id>
+    <published>2018-10-09T08:46:52.000Z</published>
+    <updated>2022-02-24T14:35:47.194Z</updated>
+    
+    <content type="html"><![CDATA[<p>  React中函数组件与类组件的样例</p><ul><li>(1) 函数组件直接从函数里面返回结果，函数组件高效、直接、粗暴有力，没有this，没有实例初始化，没有状态state。</li><li>(2) 类组件则需要实例化，并有生命周期，有状态state。</li></ul><p>下面就展示一下函数组件和类组件的样例：</p><p>首先html文件的head中包含以下script脚本：</p><pre><code class="html">&lt;head&gt;  &lt;script src=&quot;https://unpkg.com/react@16/umd/react.development.js&quot;&gt;&lt;/script&gt;  &lt;script src=&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;  &lt;script src=&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;&gt;&lt;/script&gt;&lt;/head&gt;</code></pre><p>把JSX的文件，放在body里面引用：</p><pre><code class="html">&lt;body&gt;  &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;  &lt;script type=&quot;text/babel&quot; src=&quot;example.js&quot;&gt;&lt;/script&gt;&lt;/body&gt;</code></pre><p>以下展示了React中函数组件与类组件的样例，example.js的内容：</p><pre><code class="JSX">var app = document.getElementById(&quot;app&quot;);// 函数组件function Comp1(props) &#123;    return &lt;h2&gt;组件1，值为：&#123;props.value&#125;&lt;/h2&gt;;&#125;// 类组件class Comp2 extends React.Component &#123;    render() &#123;        return &lt;h2&gt;组件2，值为： &#123;this.props.value&#125;. &lt;/h2&gt;;    &#125;&#125;Comp2.defaultProps = &#123;    value: &quot;组件2的值&quot;&#125;//function TestComp() &#123;    return (        &lt;div id=&quot;id-for-test&quot;&gt;            &lt;Comp1 value=&quot;组件1的值&quot; /&gt;            &lt;Comp2 /&gt;        &lt;/div&gt;    );&#125;const testComp = &lt;TestComp/&gt;;//const content = (    &lt;span&gt;        &#123;testComp&#125;    &lt;/span&gt;);ReactDOM.render(content, app);</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;  React中函数组件与类组件的样例&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;(1) 函数组件直接从函数里面返回结果，函数组件高效、直接、粗暴有力，没有this，没有实例初始化，没有状态state。&lt;/li&gt;
+&lt;li&gt;(2) 类组件则需要实例化，并有生命周期，有状态state。&lt;/li</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="React" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/React/"/>
+    
+    
+    <category term="React" scheme="http://www.code64.cn/blog1/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C11 中具有安全边界检查的函数</title>
+    <link href="http://www.code64.cn/blog1/2018/07-05/E42A88DCB6352F4DDF4EB86046878893/"/>
+    <id>http://www.code64.cn/blog1/2018/07-05/E42A88DCB6352F4DDF4EB86046878893/</id>
+    <published>2018-07-05T15:13:05.000Z</published>
+    <updated>2022-02-24T14:35:47.179Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>我记得最早加入安全边界检查函数的是微软，在一些涉及缓冲区的基本 C 函数中，一律加上了 <code>_s</code> 后缀的、具有安全边界检查功能的函数。有少部分与之前微软定义的不兼容，这里以 C11 标准为准。</p><p>C11 标准引入了这些函数，它们比之前习惯性使用的传统函数更加安全，可以防止出现缓冲区溢出问题错误的发生。但是，能不能做到真正安全，还是需要编码者更细心地正确去编码。</p><p>不可理喻的是，C11 标准居然把这些定义的标准设置为可选。既然是标准，就应该是必须实现的才对嘛。这个让使用者情何以堪，到底我们使用它还是不用它 ？？</p><p><img src="/blog1/2018/07-05/E42A88DCB6352F4DDF4EB86046878893/ai.jpg" alt="大写的唉"></p><h3 id="如何确定编译器是否支持安全边界检查函数"><a href="#如何确定编译器是否支持安全边界检查函数" class="headerlink" title="如何确定编译器是否支持安全边界检查函数"></a>如何确定编译器是否支持安全边界检查函数</h3><p>如果编译器的标准库实现了安全边界检查函数，就会定义 <code>__STDC_LIB_EXT1__</code> 的宏。</p><pre><code class="C">#include &lt;stdio.h&gt;int main()&#123;#ifdef __STDC_LIB_EXT1__    printf(&quot;已实现&quot;);#else    printf(&quot;未实现&quot;);#endif // ifdef __STDC_LIB_EXT1__&#125;</code></pre><h3 id="如何开启使用安全边界检查函数"><a href="#如何开启使用安全边界检查函数" class="headerlink" title="如何开启使用安全边界检查函数"></a>如何开启使用安全边界检查函数</h3><p>好奇葩的一点，如果你想使用安全边界检查函数，还要相应的在 #include 头文件之前定义一个宏 <code>__STDC_WANT_LIB_EXT1__</code> 的值为 1，才能开启使用这个头文件中的安全边界检查函数。</p><p>举例，string.h 里面定义了一些安全边界检查函数，如果要使用它，就需要按照如下的写法：</p><pre><code class="C">#define __STDC_WANT_LIB_EXT1__  1      //把这个宏定义为 1 才开启安全边界检查函数//#define __STDC_WANT_LIB_EXT1__  0    //把这个宏定义为 0 会禁用安全边界检查函数#include &lt;string.h&gt;</code></pre><h3 id="strlen-s"><a href="#strlen-s" class="headerlink" title="strlen_s"></a>strlen_s</h3><p>strlen_s 是 strlen 的安全版本，用于返回字符串的长度。原型：</p><pre><code class="C">size_t strnlen_s(const char *str, size_t strsz);</code></pre><p>第一个参数 str 为字符串指针，第二个参数为缓冲区大小，如果字符串超出缓冲区大小还没有以 \0 结尾则返回缓冲区大小。</p><h3 id="strcpy-s"><a href="#strcpy-s" class="headerlink" title="strcpy_s"></a>strcpy_s</h3><p>strcpy_s 是 strcpy 的安全版本，用于复制字符串。原型：</p><pre><code class="C">errno_t strcpy_s(char *restrict dest, rsize_t destsz, const char *restrict src);</code></pre><p>第二个参数指出目标缓冲区 dest 的大小。复制成功，返回 0；失败则返回非 0 。</p><h3 id="strncpy-s"><a href="#strncpy-s" class="headerlink" title="strncpy_s"></a>strncpy_s</h3><p>strncpy_s 是 strncpy 的安全版本，用于复制字符串。原型：</p><pre><code class="C">errno_t strncpy_s(char *restrict dest, rsize_t destsz,                  const char *restrict src, rsize_t count);</code></pre><p>第二个参数指出目标缓冲区 dest 的大小。第四个参数指出最多从 src 复制多少个字符。如果前 count 个字符中没有 \0，会继续把 \0 添加的目标字符串后面。复制成功，返回 0；失败则返回非 0 。</p><h3 id="strcat-s"><a href="#strcat-s" class="headerlink" title="strcat_s"></a>strcat_s</h3><p>strcat_s 是 strcat 的安全版本，用于追加复制字符串。原型：</p><pre><code class="C">errno_t strcat_s(char *restrict dest, rsize_t destsz, const char *restrict src);</code></pre><p>第二个参数指出目标缓冲区 dest 的大小。</p><h3 id="strncat-s"><a href="#strncat-s" class="headerlink" title="strncat_s"></a>strncat_s</h3><p>strncat_s 是 strncat 的安全版本，用于追加复制字符串。原型：</p><pre><code class="C">errno_t strncat_s(char *restrict dest, rsize_t destsz,                  const char *restrict src, rsize_t count);</code></pre><p>第二个参数指出目标缓冲区 dest 的大小。第四个参数指出最多从 src 追加复制多少个字符。如果前 count 个字符中没有 \0，会继续把 \0 添加的目标字符串后面。复制成功，返回 0；失败则返回非 0 。</p><h3 id="gets-s"><a href="#gets-s" class="headerlink" title="gets_s"></a>gets_s</h3><p>从stdin流中读取字符串，直至接受到换行符或EOF时停止，并将读取的结果存放在 str 指针所指向的字符数组中。原型：</p><pre><code class="C">char *gets_s( char *str, rsize_t n );</code></pre><p>第二个参数指出目标缓冲区 str 的大小。</p><h3 id="strtok-s"><a href="#strtok-s" class="headerlink" title="strtok_s"></a>strtok_s</h3><p>将字符串进行单元化，分割转换为一系列 token。（这个函数跟微软的不一样）</p><pre><code class="C">char *strtok_s(char *restrict str, rsize_t *restrict strmax,     const char *restrict delim, char **restrict ptr);</code></pre><ul><li>str ： 需要被分割的字符串。执行第一次分割之后，对同一个字符串执行后续的分割时，这个参数是 NULL。</li><li>strmax ： 指向一个 rsize_t 的整数，这个整数表示需要分割的字符串的长度。每次调用 strtok_s 之后，函数会更新这个整数值，表示分割后剩余的字符数。</li><li>delim ： 包含所有可能分界的字符的字符串。</li><li>ptr ： 指向 char* 类型的变量的指针。函数在该变量中存储信息，允许在找到第一个 token 之后继续搜索标记。</li></ul><p>返回值：<br>返回分割的 token，如果没有，返回 NULL。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;我记得最早加入安全边界检查函数的是微软，在一些涉及缓冲区的基本 C 函数中，一律加上了 &lt;code&gt;_s&lt;/code&gt; 后缀的、具有安全边界</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="C_CPP" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/C-CPP/"/>
+    
+    
+    <category term="C/C++" scheme="http://www.code64.cn/blog1/tags/C-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C 语言中的常见的预定义宏</title>
+    <link href="http://www.code64.cn/blog1/2018/07-04/1A3A4A6F10A1D499E13A38054BF33B8F/"/>
+    <id>http://www.code64.cn/blog1/2018/07-04/1A3A4A6F10A1D499E13A38054BF33B8F/</id>
+    <published>2018-07-04T02:30:43.000Z</published>
+    <updated>2022-02-24T14:35:47.179Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="DATA"><a href="#DATA" class="headerlink" title="__DATA__"></a>__DATA__</h3><p>此宏是编译器预定义的。表示当前的日期的一个字符串。</p><h3 id="FILE"><a href="#FILE" class="headerlink" title="__FILE__"></a>__FILE__</h3><p>此宏是编译器预定义的。表示当前的源文件名的一个字符串。</p><h3 id="LINE"><a href="#LINE" class="headerlink" title="__LINE__"></a>__LINE__</h3><p>此宏是编译器预定义的。表示当前的行号的的一个整数常量。</p><h3 id="TIME"><a href="#TIME" class="headerlink" title="__TIME__"></a>__TIME__</h3><p>此宏是编译器预定义的。表示当前的时间（精确到秒）的一个字符串。</p><h3 id="FUNCTION"><a href="#FUNCTION" class="headerlink" title="__FUNCTION__"></a>__FUNCTION__</h3><p>此宏是编译器预定义的。表示当前函数的函数名。</p><h3 id="func"><a href="#func" class="headerlink" title="__func__"></a>__func__</h3><p>此宏是编译器预定义的。表示当前函数的函数名（ C99 标准才有 ）。</p><h3 id="STDC-VERSION"><a href="#STDC-VERSION" class="headerlink" title="__STDC_VERSION__"></a>__STDC_VERSION__</h3><p>此宏是编译器预定义的。表示当前 C 语言标准的版本号的整数。</p><h3 id="cplusplus"><a href="#cplusplus" class="headerlink" title="__cplusplus"></a>__cplusplus</h3><p>此宏是 C++ 特有的，表示当前 C++ 语言标准的版本号的整数。C 语言编译器下绝对不会定义此宏。此宏可以用来区分当前源文件是 C 还是 C++。</p><h3 id="STDC-UTF-16"><a href="#STDC-UTF-16" class="headerlink" title="__STDC_UTF_16__"></a>__STDC_UTF_16__</h3><p>如果该宏预定义为整数值1，则表示 char16_t 类型的值为 UTF-16 编码的字符。如果采用其他编码，则不会有此宏。</p><h3 id="STDC-UTF-32"><a href="#STDC-UTF-32" class="headerlink" title="__STDC_UTF_32__"></a>__STDC_UTF_32__</h3><p>如果该宏预定义为整数值1，则表示 char32_t 类型的值为 UTF-32 编码的字符。如果采用其他编码，则不会有此宏。</p><h3 id="STDC-LIB-EXT1"><a href="#STDC-LIB-EXT1" class="headerlink" title="__STDC_LIB_EXT1__"></a>__STDC_LIB_EXT1__</h3><p>如果该宏被定义，则它是一个整数值 1，表示当前编译器实现了 C11 标准中安全版本的边界检查的函数集合，通常这些函数是以 <code>_s</code> 结尾的。否则该部分函数集合没有被实现。</p><h3 id="STDC-NO-VLA"><a href="#STDC-NO-VLA" class="headerlink" title="__STDC_NO_VLA__"></a>__STDC_NO_VLA__</h3><p>如果该宏被定义，则它是一个整数值 1，表示该编译器不支持变长数组（ VLA ）。</p><h3 id="STDC-NO-ATOMICS"><a href="#STDC-NO-ATOMICS" class="headerlink" title="__STDC_NO_ATOMICS__"></a>__STDC_NO_ATOMICS__</h3><p>如果该宏被定义，则它是一个整数值 1，表示当前编译器不支持原子类型操作。（包括使用 <code>_Atomic</code> 限定符）<br>如果没有定义此宏，不要 <code>#include &lt;stdatomic.h&gt;</code></p><h3 id="STDC-NO-COMPLEX"><a href="#STDC-NO-COMPLEX" class="headerlink" title="__STDC_NO_COMPLEX__"></a>__STDC_NO_COMPLEX__</h3><p>如果该宏被定义，则它是一个整数值 1，表示当前编译器不支持复数类型。<br>如果没有定义此宏，不要 <code>#include &lt;complex.h&gt;</code></p><h3 id="STDC-NO-THREADS"><a href="#STDC-NO-THREADS" class="headerlink" title="__STDC_NO_THREADS__"></a>__STDC_NO_THREADS__</h3><p>如果该宏被定义，则它是一个整数值 1，表示当前编译器不支持 C 标准的线程库 （不是指 POSIX Thread），<code>_Thread_local</code> 关键字依然可以使用。<br>如果没有定义此宏，不要 <code>#include &lt;threads.h&gt;</code></p><h3 id="GNUC"><a href="#GNUC" class="headerlink" title="__GNUC__"></a>__GNUC__</h3><p>GCC 编译器才有此宏，表示 GCC 的版本号。但是 clang 为了兼容 GCC，也会定义此宏。</p><h3 id="MSC-VER"><a href="#MSC-VER" class="headerlink" title="_MSC_VER"></a>_MSC_VER</h3><p>VC 编译器才有此宏，表示 VC 的版本号。但是 Windows 下的 clang 为了兼容 VC，可能也会定义此宏。</p><h3 id="clang"><a href="#clang" class="headerlink" title="__clang__"></a>__clang__</h3><p>clang 编译器才有此宏，表示 clang 的版本号。</p><h3 id="BORLANDC"><a href="#BORLANDC" class="headerlink" title="__BORLANDC__"></a>__BORLANDC__</h3><p>Borland C/C++ 编译器才有此宏，表示 Borland C/C++ 的版本号。</p><h3 id="WIN32"><a href="#WIN32" class="headerlink" title="_WIN32"></a>_WIN32</h3><p>生成目标为 Windows 系统的程序，都会定义此宏，不管是 32 位还是 64 位的，都会。</p><h3 id="WIN64"><a href="#WIN64" class="headerlink" title="_WIN64"></a>_WIN64</h3><p>生成目标为 64位 Windows 系统的程序，会定义此宏，只有 64 位的 Windows，才会有定义此宏。</p><h3 id="APPLE"><a href="#APPLE" class="headerlink" title="__APPLE__"></a>__APPLE__</h3><p>生成目标为苹果操作系统的程序，会定义此宏，不管是电脑还是手机、平板设备。</p><h3 id="unix"><a href="#unix" class="headerlink" title="__unix__"></a>__unix__</h3><p>生成目标为 unix 及其兼容系统的程序。</p><h3 id="linux"><a href="#linux" class="headerlink" title="__linux__"></a>__linux__</h3><p>生成目标为 linux 及其兼容系统的程序。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;DATA&quot;&gt;&lt;a href=&quot;#DATA&quot; class=&quot;headerlink&quot; title=&quot;__DATA__&quot;&gt;&lt;/a&gt;__DATA__&lt;/h3&gt;&lt;p&gt;此宏是编译器预定义的。表示当前的日期的一个字符串。&lt;/p&gt;
+&lt;h3 id=&quot;FILE&quot;&gt;&lt;a href=&quot;#</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="C_CPP" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/C-CPP/"/>
+    
+    
+    <category term="C/C++" scheme="http://www.code64.cn/blog1/tags/C-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 安装 Objective-C 编译与运行环境</title>
+    <link href="http://www.code64.cn/blog1/2018/05-02/2597812BD6D3982B22AE70B954C5C5F1/"/>
+    <id>http://www.code64.cn/blog1/2018/05-02/2597812BD6D3982B22AE70B954C5C5F1/</id>
+    <published>2018-05-02T06:21:31.000Z</published>
+    <updated>2022-02-24T14:35:47.194Z</updated>
+    
+    <content type="html"><![CDATA[<p>  一般需要做 Objective-C 语言的开发和学习，都需要使用一套苹果电脑，可以是 MAC 台式机或者 MacBook，也可以在淘宝上面淘一台黑苹果，或者自己组装折腾一台黑苹果来用。</p><p>如果暂时还没有买 MAC 电脑，又打算感受一下 Objective-C 语言的骚，可以在Linux下搭建其编译和运行环境。下面以 Ubuntu 18.04 作为例子进行说明。Windows 10可以在 WSL 下运行整个 Ubuntu 18.04 达到同样效果。</p><p>首先更新apt：</p><pre><code class="bash">sudo apt-get update</code></pre><p>更新已有软件包：</p><pre><code class="bash">sudo apt-get upgrade</code></pre><p>安装 gcc，因为 Objective-C 依赖于 gcc ：</p><pre><code class="bash"># 安装 gcc 的 C 和 C++ 编译器sudo apt-get install gccsudo apt-get install g++</code></pre><p>安装 gcc 中的 Objective-C 编译器：</p><pre><code class="bash">sudo apt-get install gobjc</code></pre><p>安装 GNUstep 运行环境：</p><pre><code class="bash">sudo apt-get install gnustep</code></pre><p>安装 GNUstep 开发库：</p><pre><code class="bash">sudo apt-get install gnustep-devel</code></pre><p>安装 GNUstep 的 Makefile 依赖：</p><pre><code class="bash">sudo apt-get install gnustep-make</code></pre><p>编辑并保存以下 Objective-C 的 Hello World 样例，文件名为 hello1.m</p><pre><code class="ObjC">#import &lt;Foundation/Foundation.h&gt;int main(void)&#123;    NSLog(@&quot;Hello, world!&quot;);    return (0);&#125;</code></pre><p>执行以下命令进行编译：</p><pre><code class="bash">gcc `gnustep-config --objc-flags` -o hello1 hello1.m</code></pre><p>报错了，信息如下：</p><pre><code>hello1.m: In function ‘main’:/tmp/ccuU7quf.o: In function `main&#39;:/mnt/c/test/objc/hello1.m:5: undefined reference to `NSLog&#39;/tmp/ccuU7quf.o: In function `__objc_gnu_init&#39;:/mnt/c/test/objc/hello1.m:6: undefined reference to `__objc_exec_class&#39;/tmp/ccuU7quf.o:(.data.rel+0x0): undefined reference to `__objc_class_name_NSConstantString&#39;collect2: error: ld returned 1 exit status</code></pre><p>这是因为没有连接上 libobjc 库和 libgnustep-base 库导致，把编译命令更改为：</p><pre><code class="bash">gcc `gnustep-config --objc-flags` -o hello1 hello1.m \    /usr/lib/x86_64-linux-gnu/libobjc.so.4 /usr/lib/libgnustep-base.so</code></pre><p>编译通过啦，可以直接运行：</p><pre><code class="bash">./hello1# 这里省去了很多初始化的LOG2020-07-25 16:53:58.830 hello1[6624:6624] Hello, world!</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;  一般需要做 Objective-C 语言的开发和学习，都需要使用一套苹果电脑，可以是 MAC 台式机或者 MacBook，也可以在淘宝上面淘一台黑苹果，或者自己组装折腾一台黑苹果来用。&lt;/p&gt;
+&lt;p&gt;如果暂时还没有买 MAC 电脑，又打算感受一下 Objective-C</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="Objective-C" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Objective-C/"/>
+    
+    
+    <category term="Objective-C" scheme="http://www.code64.cn/blog1/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Swift 中的可空类型</title>
+    <link href="http://www.code64.cn/blog1/2017/08-24/52847D92261A0D1FEE1A3F3F4911B4DF/"/>
+    <id>http://www.code64.cn/blog1/2017/08-24/52847D92261A0D1FEE1A3F3F4911B4DF/</id>
+    <published>2017-08-24T11:12:05.000Z</published>
+    <updated>2022-02-24T14:35:47.194Z</updated>
+    
+    <content type="html"><![CDATA[<p>Swift中的可空类型 </p><p>印象中，C#语言很早就引入了可空类型。Swift语言也存在可空类型（也叫可选类型）。可空类型有个特有的特性，可空类型的变量，（1）要么有值 （2）要么为空（nil）。</p><p>声明可空类型，就是在类型名后面加一个“?”号。例如：</p><pre><code class="Swift">var opValue1 : String?var opValue2 : String? = &quot;abc&quot;           // 声明字符串可空类型,并初始化</code></pre><p>可空类型是对普通类型的一种包装。如果需要取可空类型变量的值，就需要对可空类型进行拆包操作。拆包使用拆包操作符“!”，在变量的后面加上感叹号，就可以进行拆包，取得可空类型的具体数据，例如：</p><pre><code class="Swift">import Foundationvar opValue: String? = &quot;superMe&quot;         // 声明字符串可空类型,并初始化print(opValue!)                          // 使用!拆开取得可空类型的数据</code></pre><p>以上拆包的操作必须保证可空变量的值有效，如果可空变量为nil，则拆包会导致程序运行错误，拆包之前需要先判断可空变量是否为nil。</p><pre><code class="Swift">if opValue != nil &#123;    opValue!&#125;</code></pre><p>这里建议不要对可空变量进行拆包，而建议采用第二种拆包取值方法，叫实例绑定。它是一种 <code>if-let/if-var</code> 语法结构，如下：</p><pre><code class="Swift">import Foundationvar opValue: Int32? = 1024               // 声明整数可空类型,并初始化if let tmp = opValue &#123;                   // if-let 语句对可空变量进行实例绑定，                                         // 绑定成功则返回true，为nil则返回false    print(tmp)&#125; else &#123;    print(&quot;opValue为nil&quot;);&#125;</code></pre><p>可以一次性给多个可空变量进行实例绑定，如下所示：</p><pre><code class="Swift">import Foundationvar opValue1: Int64? = 1024var opValue2: Int64? = 2048if let tmp1 = opValue1, let tmp2 = opValue2 &#123; // 只有所有实例绑定都成功才返回true    print(tmp1)    print(tmp2)&#125; else &#123;    print(&quot;opValue1或者opValue2为nil&quot;);&#125;</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Swift中的可空类型 &lt;/p&gt;
+&lt;p&gt;印象中，C#语言很早就引入了可空类型。Swift语言也存在可空类型（也叫可选类型）。可空类型有个特有的特性，可空类型的变量，（1）要么有值 （2）要么为空（nil）。&lt;/p&gt;
+&lt;p&gt;声明可空类型，就是在类型名后面加一个“?”号。例如：</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="Swift" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Swift/"/>
+    
+    
+    <category term="Swift" scheme="http://www.code64.cn/blog1/tags/Swift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Swift 变量的声明</title>
+    <link href="http://www.code64.cn/blog1/2017/08-23/16D7BAE2FFFFDAC1F7D05A7992000912/"/>
+    <id>http://www.code64.cn/blog1/2017/08-23/16D7BAE2FFFFDAC1F7D05A7992000912/</id>
+    <published>2017-08-23T04:11:35.000Z</published>
+    <updated>2022-02-24T14:35:47.194Z</updated>
+    
+    <content type="html"><![CDATA[<p>  Swift变量的声明</p><p>这里的变量泛指通常意义上的变量和常量，因为可以把常量理解为不可变的变量。<br>Swift变量的声明使用 var 关键字，常量使用 let 关键字，举例：</p><pre><code class="Swift">import Foundationvar value1 = &quot;Hello World 1&quot;    // 声明变量value1，并初始化，编译器自动推导为字符串类型let value2 = &quot;Hello World 2&quot;    // 声明常量value2，并初始化，编译器自动推导为字符串类型var value3 = 3                  // 声明变量value3，并初始化，编译器自动推导为Int整数类型var value4 = 1.1                // 声明变量value4，并初始化，编译器自动推导为Double浮点数类型var 中文变量名 = 400             // 可以使用Unicode字符作为变量名print(value1)print(value2)print(value3)print(value4)print(中文变量名)</code></pre><p>Swift是强类型的语言，编译器会根据变量初始化的值，自动推导出变量的类型。赋值语句与类型不匹配会导致编译出错。例如下面代码，将会编译出错：</p><pre><code class="Swift">var value1 = &quot;abc&quot;let value2 = &quot;xyz&quot;value1 = 100                // 编译出错，因为value1的类型在上面已经推导为Stringvalue2 = &quot;ijk&quot;              // 编译出错，value2为常量，不能改变其值</code></pre><p>以下是在声明变量的时候，显式地指明了变量的类型：（采用变量名后面加冒号“:” 再加上类型名）</p><pre><code class="Swift">import Foundationvar var1:Int = 3            // 声明整数var var2:Float = 1.2        // 声明浮点数(32位)var var3:Double = 1.6       // 声明浮点数(64位)var var4:String = &quot;abc&quot;     // 声明字符串var var5:Bool = true        // 声明布尔类型let const1:Int8 = 1         // 声明8位有符号整数let const2:UInt8 = 4        // 声明8位无符号整数let const3:Int16 = 7        // 声明16位有符号整数let const4:UInt16 = 2       // 声明16位无符号整数let const5:Int32 = 5        // 声明32位有符号整数let const6:UInt32 = 8       // 声明32位无符号整数let const7:Int64 = 3        // 声明64位有符号整数let const8:UInt64 = 6       // 声明64位无符号整数</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;  Swift变量的声明&lt;/p&gt;
+&lt;p&gt;这里的变量泛指通常意义上的变量和常量，因为可以把常量理解为不可变的变量。&lt;br&gt;Swift变量的声明使用 var 关键字，常量使用 let 关键字，举例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;Swift&quot;&gt;import Fou</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="Swift" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Swift/"/>
+    
+    
+    <category term="Swift" scheme="http://www.code64.cn/blog1/tags/Swift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript 的数组排序</title>
+    <link href="http://www.code64.cn/blog1/2015/04-22/31B99BD6F0F6FE2D5C177FA136D6EE15/"/>
+    <id>http://www.code64.cn/blog1/2015/04-22/31B99BD6F0F6FE2D5C177FA136D6EE15/</id>
+    <published>2015-04-22T04:21:15.000Z</published>
+    <updated>2022-02-24T14:35:47.194Z</updated>
+    
+    <content type="html"><![CDATA[<p>  JavaScript的数组中，提供了一个相当实用的方法，用于数组的排序。</p><p>这个方法就是 <code>sort()</code>。调用 <code>sort()</code> 方法之后，数组会根据每一项从小到大排列，看看下面例子：</p><pre><code class="JavaScript">var arr = [1, 2, 3, 4, 5, 9, 8, 7, 6];arr.sort();console.log(arr);</code></pre><p>得到的结果如下：</p><pre><code class="JavaScript">[1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre><p>再看看一个例子：</p><pre><code class="JavaScript">var arr = [10086, 10010, 28, 56, 3, 31];arr.sort();console.log(arr);</code></pre><p>得到的结果如下：</p><pre><code class="JavaScript">[10010, 10086, 28, 3, 31, 56]</code></pre><p>上面的结果并没有按照数值的大小，从小到大排列。而是把所有的数字值先转换为字符串，再以字符串进行比较所得到的排序结果。如果需要以数值进行排序，则 <code>sort</code> 方法需要一个传入一个比较函数作为参数，来控制数组的排序方向，例如：</p><pre><code class="JavaScript">function compareNumber(a, b) &#123;    return a - b;&#125;var arr = [10086, 10010, 28, 56, 3, 31];arr.sort(compareNumber);console.log(arr);</code></pre><p>得到的结果如下：</p><pre><code class="JavaScript">[3, 28, 31, 56, 10010, 10086]</code></pre><p>加入了比较函数compareNumber来控制数组的排序之后，可以看到排序结果按照意想中的按数值从小到达进行排列。</p><p>如果需要按照数值的大小，从大到小排列呢。以下说明以下比较函数的控制规则：</p><pre><code class="JavaScript">function compareNumber(a, b) &#123;    //return -1;    //return 0;    //return 1;&#125;</code></pre><ul><li>(1) 如果a应该排在b的前面，返回负数</li><li>(2) 如果a应该排在b的后面，返回正数</li><li>(3) 如果a与b相等，返回0</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;  JavaScript的数组中，提供了一个相当实用的方法，用于数组的排序。&lt;/p&gt;
+&lt;p&gt;这个方法就是 &lt;code&gt;sort()&lt;/code&gt;。调用 &lt;code&gt;sort()&lt;/code&gt; 方法之后，数组会根据每一项从小到大排列，看看下面例子：&lt;/p&gt;
+&lt;pre&gt;&lt;cod</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="JavaScript" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/JavaScript/"/>
+    
+    
+    <category term="JavaScript" scheme="http://www.code64.cn/blog1/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 的反射与注解</title>
+    <link href="http://www.code64.cn/blog1/2011/08-21/C3A70A5614ED50A3FB175C56BEA4464C/"/>
+    <id>http://www.code64.cn/blog1/2011/08-21/C3A70A5614ED50A3FB175C56BEA4464C/</id>
+    <published>2011-08-21T02:43:12.000Z</published>
+    <updated>2022-02-24T14:35:47.194Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h3 id="反射机制与-Class-类"><a href="#反射机制与-Class-类" class="headerlink" title="反射机制与 Class 类"></a>反射机制与 Class 类</h3><p>反射机制是程序在运行的中途，动态地获取一个类或者对象的成员与方法，并使用它们的机制。反射是通过 java.lang.Class 类的方法来实现。</p><p>Java 中每个对象都是 Class 类的一个对象，可以通过下面方式获取到 Class 对象：</p><ol><li>通过调用对象的 <code>getClass()</code> 方法获得：</li></ol><pre><code class="Java">Class classObj = objectName.getClass();</code></pre><ol start="2"><li>通过类的隐含静态对象成员变量 <code>class</code> 获得：</li></ol><pre><code class="Java">Class classObj = ClassName.class;</code></pre><ol start="3"><li>通过 Class 类的静态方法 <code>forName()</code> 去查找获得。这里必须加上异常处理，因为有可能找不到对应的类。</li></ol><pre><code class="Java">try &#123;    Class classObj = Class.forName(&quot;com.xxxx.xxxx.ClassName&quot;);&#125; catch(ClassNotFoundException e) &#123;    e.printStackTrace();&#125;</code></pre><h3 id="获取构造方法"><a href="#获取构造方法" class="headerlink" title="获取构造方法"></a>获取构造方法</h3><p>使用 Class 类对象的下面成员方法获取类的构造方法：</p><table><thead><tr><th>方法</th><th>返回值</th><th>说明</th></tr></thead><tbody><tr><td><code>getConstructors()</code></td><td>Constructor对象数组</td><td>返回类的所有public的构造方法</td></tr><tr><td><code>getDeclaredConstructors()</code></td><td>Constructor对象数组</td><td>返回类的所有构造方法，按声明顺序返回</td></tr><tr><td><code>getConstructor(Class&lt;?&gt;... paramTypes)</code></td><td>Constructor对象</td><td>返回类的一个public的指定构造方法</td></tr><tr><td><code>getDeclaredConstructor(Class&lt;?&gt;... paramTypes)</code></td><td>Constructor对象</td><td>返回类的一个指定构造方法</td></tr></tbody></table><p>举例：</p><pre><code class="Java">class ClassName1 &#123;    public ClassName1(String value1, int value2) &#123;    &#125;&#125;//----public class Test1 &#123;    public Test1() &#123;&#125;    Class cls = ClassName1.class;    constructor = cls.getConstructor(String.class, int.class);&#125;</code></pre><p>Constructor 类中的常用方法：</p><table><thead><tr><th>方法</th><th>说明</th></tr></thead><tbody><tr><td><code>newInstance()</code></td><td>调用构造器创建一个该类的新实例对象</td></tr><tr><td><code>isVarArgs()</code></td><td>该构造方法是否可以带可变数量的参数，是则返回 true，否则返回 false</td></tr><tr><td><code>getParameterTypes()</code></td><td>返回 Class 对象数组，表示该构造方法的参数类型</td></tr><tr><td><code>getExceptionTypes()</code></td><td>返回 Class 对象数组，表示该构造方法可能抛出的异常类型</td></tr><tr><td><code>setAccessible(boolean)</code></td><td>设置为 true 则可以调用非 public 的构造方法来创建对象</td></tr><tr><td><code>getModifiers()</code></td><td>返回一个整数，表示该构造方法的修饰符</td></tr></tbody></table><h3 id="修饰符的解释"><a href="#修饰符的解释" class="headerlink" title="修饰符的解释"></a>修饰符的解释</h3><p>getModifiers() 方法会返回一个整数代表的修饰符，用Modifier类的下面静态方法可以解释修饰符：</p><table><thead><tr><th>方法</th><th>说明</th></tr></thead><tbody><tr><td><code>isPublic(int)</code></td><td>是否 public 修饰</td></tr><tr><td><code>isProtected(int)</code></td><td>是否 protected 修饰</td></tr><tr><td><code>isPrivate(int)</code></td><td>是否 private 修饰</td></tr><tr><td><code>isStatic(int)</code></td><td>是否 static 修饰</td></tr><tr><td><code>isFinal(int)</code></td><td>是否 final 修饰</td></tr><tr><td><code>toString(int)</code></td><td>将所有修饰与字符串的形式返回</td></tr></tbody></table><h3 id="获取和访问成员变量"><a href="#获取和访问成员变量" class="headerlink" title="获取和访问成员变量"></a>获取和访问成员变量</h3><p>通过 Class 类对象的下面方法获取成员变量的变量信息：</p><table><thead><tr><th>方法</th><th>说明</th></tr></thead><tbody><tr><td><code>getField(String)</code></td><td>返回一个 Field 对象，代表一个 public 的成员</td></tr><tr><td><code>getFields()</code></td><td>返回一个 Field 对象数组，代表所有 public 的成员列表(包括父类的成员)</td></tr><tr><td><code>getDeclaredField(String)</code></td><td>返回一个 Field 对象，代表一个的成员</td></tr><tr><td><code>getDeclaredFields()</code></td><td>返回一个 Field 对象数组，代表所有的成员列表(不包括继承的成员)</td></tr></tbody></table><p>Field 类常用的方法有：</p><table><thead><tr><th>方法</th><th>说明</th></tr></thead><tbody><tr><td><code>get(Object obj)</code></td><td>返回此 Field 表示的成员对象</td></tr><tr><td><code>set(Object obj, Object value)</code></td><td>将此 Field 表示的成员对象设置为指定值</td></tr><tr><td><code>getName()</code></td><td>获取字段的名称</td></tr><tr><td><code>getType()</code></td><td>返回一个 Class 对象，获取字段的类型</td></tr><tr><td><code>getInt(Object obj)</code></td><td>获取 int 类型的 obj 的成员变量的值</td></tr><tr><td><code>setInt(Object obj, int value)</code></td><td>设置 int 类型的 obj 的成员变量的值</td></tr><tr><td><code>getFloat(Object obj)</code></td><td>获取 float 类型的 obj 的成员变量的值</td></tr><tr><td><code>setFloat(Object obj, float value)</code></td><td>设置 float 类型的 obj 的成员变量的值</td></tr><tr><td><code>getBoolean(Object obj)</code></td><td>获取 boolean 类型的 obj 的成员变量的值</td></tr><tr><td><code>setBoolean(Object obj, boolean value)</code></td><td>设置 boolean 类型的 obj 的成员变量的值</td></tr><tr><td><code>setAccessible(boolean)</code></td><td>设置为 true 则可以访问非 public 的成员</td></tr><tr><td><code>getModifiers()</code></td><td>返回一个整数，表示该成员的修饰符</td></tr></tbody></table><h3 id="获取和访问方法"><a href="#获取和访问方法" class="headerlink" title="获取和访问方法"></a>获取和访问方法</h3><p>通过 Class 类对象的下面方法获取方法信息：</p><table><thead><tr><th>方法</th><th>说明</th></tr></thead><tbody><tr><td><code>getMethod(String name, Class&lt;?&gt;... paramTypes)</code></td><td>返回一个 Method 对象，代表一个 public 的方法</td></tr><tr><td><code>getMethods()</code></td><td>返回一个 Method 对象数组，代表所有 public 的方法</td></tr><tr><td><code>getDeclaredMethod(String name, Class&lt;?&gt;... paramTypes)</code></td><td>返回一个 Method 对象，代表一个方法</td></tr><tr><td><code>getDeclaredMethods()</code></td><td>返回一个 Method 对象数组，代表所有的方法(不包括继承的方法)</td></tr></tbody></table><p>Method 类常用的方法有：</p><table><thead><tr><th>方法</th><th>说明</th></tr></thead><tbody><tr><td><code>invoke(Object obj, Object... args)</code></td><td>调用 obj 对象的方法</td></tr><tr><td><code>getName()</code></td><td>获取方法名</td></tr><tr><td><code>getReturnType()</code></td><td>返回一个 Class 对象，获取方法的返回值类型</td></tr><tr><td><code>getParameterTypes()</code></td><td>返回 Class 对象数组，获取方法的参数列表的类型的数组</td></tr><tr><td><code>getExceptionTypes()</code></td><td>返回 Class 对象数组，获取方法的可能抛出的类型的数组</td></tr><tr><td><code>isVarArgs()</code></td><td>该方法是否可以带可变数量的参数，是则返回 true，否则返回 false</td></tr><tr><td><code>getModifiers()</code></td><td>返回一个整数，表示该方法的修饰符</td></tr></tbody></table><h2 id="注解-（Annotation）"><a href="#注解-（Annotation）" class="headerlink" title="注解 （Annotation）"></a>注解 （Annotation）</h2><p>注解是以结构化的方式为程序提供额外信息，包括能被编译器、加载器、解释器等自动处理的额外信息。<br>可以进行注解的有：</p><ul><li>包</li><li>类型（类、接口、枚举）</li><li>构造方法</li><li>方法</li><li>成员变量</li><li>参数</li><li>局部变量</li></ul><p><code>注解类型</code> 是指一种特殊的接口类型，<code>注解</code> 则是指 <code>注解类型</code> 的一个实例。</p><p>注解中的信息是以 <code>键 / 值</code> 对的形式存在的，可以存在 0 个或者多个键值对。没有键值对的注解叫标记注解类型。</p><h3 id="标准注解"><a href="#标准注解" class="headerlink" title="标准注解"></a>标准注解</h3><p>Java 在 API java.lang 包中定义了三个标准的内置注解。如下：</p><h4 id="1-Override"><a href="#1-Override" class="headerlink" title="1. @Override"></a>1. @Override</h4><p>@Override 是一个标记注解类型，用于编译器检查该方法是否是重载方法，可以方式程序员在重写覆盖某个方法时犯错。如果要重写的方法不是父类的方法，则编译器会报错。</p><h4 id="2-Deprecated"><a href="#2-Deprecated" class="headerlink" title="2. @Deprecated"></a>2. @Deprecated</h4><p>@Deprecated 是一个标记注解类型，表示该字段以后版本可能会被废弃，请使用者不应该继续使用，请采用其他方法代替。编译时会有警告提示。但是目前版本还是被使用。</p><h4 id="3-SuppressWarnings"><a href="#3-SuppressWarnings" class="headerlink" title="3. @SuppressWarnings"></a>3. @SuppressWarnings</h4><p>@SuppressWarnings 注解是请编译器不要提示某些类型的警告信息出现。它的用法是传递一个字符串数组作为参数。例如：</p><pre><code class="Java">@SuppressWarnings(value=(&quot;deprecation&quot;, &quot;unchecked&quot;, &quot;unused&quot;))public void func1(void) &#123;&#125;</code></pre><h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p><code>元注解</code> 是对注解进行注解的注解。在 API java.lang.annotation 包中定义了四个标准的元注解。</p><h4 id="1-Documented"><a href="#1-Documented" class="headerlink" title="1. @Documented"></a>1. @Documented</h4><p>@Documented 是一个标记注解类型，被它注解的元素应该被 javadoc 文档化。</p><h4 id="2-Inherited"><a href="#2-Inherited" class="headerlink" title="2. @Inherited"></a>2. @Inherited</h4><p>默认标记在父类上面的注解是不会被子类继承的。@Inherited 表示注解类型会被子类继承。</p><h4 id="3-Retension"><a href="#3-Retension" class="headerlink" title="3. @Retension"></a>3. @Retension</h4><p>表示注解的有效期，也就是注解的保留时间。它的值是一个 <code>java.lang.annotation.RetensionPolicy</code> 的枚举值。该枚举有下面值，表示下面不同的含义：</p><table><thead><tr><th>值</th><th>说明</th></tr></thead><tbody><tr><td><code>SOURCE</code></td><td>注解只存在与源文件，编译器解释该注解之后就会丢弃</td></tr><tr><td><code>CLASS</code></td><td>注解会留存在*.class文件中，但是 JVM 不会去读取此注解。默认值</td></tr><tr><td><code>RUNTIME</code></td><td>注解会被 JVM 加载。可以使用反射机制来查询到该注解的内容</td></tr></tbody></table><h4 id="4-Target"><a href="#4-Target" class="headerlink" title="4. @Target"></a>4. @Target</h4><p>用于指明注解修饰的对象范围，也就是指明适用的元素类型。如果未设置 @Target，则表示所有程序元素都适用。 它的值是一个 <code>java.lang.annotation.ElementType</code> 的枚举值。该枚举有下面值，表示下面不同的含义：</p><table><thead><tr><th>值</th><th>说明</th></tr></thead><tbody><tr><td><code>PACKAGE</code></td><td>注解只标注包</td></tr><tr><td><code>TYPE</code></td><td>注解只标注类、接口、枚举以及 Annotation 类型</td></tr><tr><td><code>ANNOTATION_TYPE</code></td><td>注解只标注 Annotation 类型</td></tr><tr><td><code>CONSTRUCTOR</code></td><td>注解只标注构造方法</td></tr><tr><td><code>FIELD</code></td><td>注解只标注成员</td></tr><tr><td><code>METHOD</code></td><td>注解只标注方法</td></tr><tr><td><code>PARAMETER</code></td><td>注解只标注参数</td></tr><tr><td><code>LOCAL_VARIABLE</code></td><td>注解只标注局部变量</td></tr></tbody></table><h3 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h3><p>自定义注解使用 <code>interface</code> 关键字前面加一个 <code>“@”</code> 来实现，自定义注解隐含继承了 <code>java.lang.annotation.Annotation</code> 接口。有些地方需要注意的是：</p><ul><li>注解中的方法不需要加上 private、protected、public 等修饰，保持默认即可</li><li>注解中的方法可以加上 default 来声明默认值</li><li>自定义注解不能继承其他注解或者接口</li><li>可以加上元注解来描述注解的使用方式与范围</li></ul><p>举例：</p><pre><code class="Java">package com.testanno;import java.lang.annotation.*;@Target(value = &#123;ElementType.TYPE, ElementType.METHOD&#125;)@Retention(RetentionPolicy.RUNTIME)@Inherited@Documentedpublic @interface Anno1 &#123;                      // 这里声明一个注解类型叫 Anno1    int value1() default 1;    String value2() default &quot;string-1&quot;;    Class type() default int.class;&#125;</code></pre><h3 id="通过反射机制访问注解信息"><a href="#通过反射机制访问注解信息" class="headerlink" title="通过反射机制访问注解信息"></a>通过反射机制访问注解信息</h3><p>Constructor、Field、Method 类都是继承于 AccessibleObject 类，提供了一下相关的方法：</p><ul><li><code>isAnnotationPresent</code> : 用于查询是否附加了指定类型的注解</li><li><code>getAnnotation</code> : 获取指定类型的注解对象</li><li><code>getAnnotations</code> : 获取所有的注解对象，返回一个注解对象数组</li><li><code>getParameterAnnotations</code> : 获取所有参数所添加的注解对象，返回一个二维注解对象数组</li></ul><p>使用注解例子：</p><pre><code class="Java">package com.testanno;public class Test1 &#123;   // 直接使用上一个例子中的 Anno1 注解类型    @Anno1(value1 = 100, value2 = &quot;string-2&quot;)    public void function1()&#123;        System.out.println(&quot;function1&quot;);    &#125;    @Anno1    public void function2() &#123;        System.out.println(&quot;function2&quot;);    &#125;&#125;</code></pre><p>下面例子是通过反射机制来访问注解信息：</p><pre><code class="Java">package com.testanno;import java.lang.reflect.Method;public class MyTest &#123;    public static void main(String[] args) &#123;        try &#123;            Class cls = Class.forName(&quot;com.testanno.Test1&quot;);               // 通过反射获得类对象            Method[] methods = cls.getMethods();                           // 获得所有方法            for (Method curMethod: methods) &#123;                              // 遍历所有方法                if (curMethod.isAnnotationPresent(Anno1.class)) &#123;                    Anno1 anno1 = curMethod.getAnnotation(Anno1.class);    // 获得方法的注解                    System.out.println(&quot;Method name = &quot; + curMethod.getName());                    System.out.println(&quot;value1 = &quot; + anno1.value1() +                                         &quot;, value2 = &quot; + anno1.value2() + &quot;\n&quot;);                &#125;            &#125;        &#125;        catch (ClassNotFoundException e) &#123;            e.printStackTrace();        &#125;    &#125;&#125;</code></pre><p>输出结果：</p><pre><code>Method name = function2value1 = 1, value2 = string-1Method name = function1value1 = 100, value2 = string-2</code></pre><p><img src="/blog1/2011/08-21/C3A70A5614ED50A3FB175C56BEA4464C/fan.jpg" alt="完"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;反射&quot;&gt;&lt;a href=&quot;#反射&quot; class=&quot;headerlink&quot; title=&quot;反射&quot;&gt;&lt;/a&gt;反射&lt;/h2&gt;&lt;h3 id=&quot;反射机制与-Class-类&quot;&gt;&lt;a href=&quot;#反射机制与-Class-类&quot; class=&quot;headerlink&quot; title=</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="Java" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java/"/>
+    
+    
+    <category term="Java" scheme="http://www.code64.cn/blog1/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AT&amp;T 汇编伪指令说明</title>
+    <link href="http://www.code64.cn/blog1/2009/10-08/BF629617CAE2B0FF08CB38DCE94AA184/"/>
+    <id>http://www.code64.cn/blog1/2009/10-08/BF629617CAE2B0FF08CB38DCE94AA184/</id>
+    <published>2009-10-08T01:32:15.000Z</published>
+    <updated>2022-02-24T14:35:47.179Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="AT-amp-T-汇编伪指令说明"><a href="#AT-amp-T-汇编伪指令说明" class="headerlink" title="AT&amp;T 汇编伪指令说明"></a>AT&amp;T 汇编伪指令说明</h1><h3 id="globl-或者-global"><a href="#globl-或者-global" class="headerlink" title=".globl 或者 .global"></a><code>.globl</code> 或者 <code>.global</code></h3><p>.globl / .global 伪指令将符号定义为全局可链接的，跨文件可以访问的符号。</p><pre><code>    .globl  label_name</code></pre><h3 id="extern"><a href="#extern" class="headerlink" title=".extern"></a><code>.extern</code></h3><p>.extern 定义外部符号</p><pre><code>    .extern  label_name</code></pre><h3 id="comm-和-lcomm"><a href="#comm-和-lcomm" class="headerlink" title=".comm 和 .lcomm"></a><code>.comm</code> 和 <code>.lcomm</code></h3><p>.comm 定义 COMM （未初始化变量）类型的全局符号； .lcomm 定义 COMM （未初始化变量）类型的局部符号</p><pre><code>    #.comm/.lcomm 符号名, 大小    .comm label_name, 8    .lcomm label_name, 16</code></pre><h3 id="weak"><a href="#weak" class="headerlink" title=".weak"></a><code>.weak</code></h3><p>.weak 伪指令将符号定义为弱类型，其他同名符号存在是，应该优先采用其他强类型的符号。</p><pre><code>    .weak  label_name</code></pre><h3 id="hidden"><a href="#hidden" class="headerlink" title=".hidden"></a><code>.hidden</code></h3><p>.hidden 伪指令将符号定义为隐藏属性。该符号为全局符号，但是对于 elf 文件来说，不暴露处理。加上此属性的符号，在生成的 .so 文件中，其他模块是找不到该符号的。</p><pre><code>    .hidden  label_name</code></pre><h3 id="type"><a href="#type" class="headerlink" title=".type"></a><code>.type</code></h3><p>.type 伪指令指明符号的类型，可以取值：object 或者 function。object 表示数据，function 表示函数。</p><pre><code>    .type    var1, @object    .type    function_1, @function</code></pre><h3 id="size"><a href="#size" class="headerlink" title=".size"></a><code>.size</code></h3><p>.size 伪指令指明符号的占用空间的大小</p><pre><code>    .size    var1, 4</code></pre><h3 id="align"><a href="#align" class="headerlink" title=".align"></a><code>.align</code></h3><p>.align 指出紧跟的数据或者代码要求的对齐值。</p><pre><code>    .align 4</code></pre><h3 id="zero"><a href="#zero" class="headerlink" title=".zero"></a><code>.zero</code></h3><p>填充多少个0</p><pre><code>    .zero    4</code></pre><h3 id="rept-和-endr"><a href="#rept-和-endr" class="headerlink" title=".rept 和 .endr"></a><code>.rept</code> 和 <code>.endr</code></h3><p>用来重复汇编语句块，例子：</p><pre><code>    .rept   3    .long   100    .endr    # 相当于如下重复了 3 次    .long  100    .long  100    .long  100</code></pre><h3 id="space"><a href="#space" class="headerlink" title=".space"></a><code>.space</code></h3><p>填充产生多个重复字节的值：</p><pre><code>    # .space size, fill    .space  100, 2         # 100 个 2    .space  200            # 200 个 0，不指定值则默认为 0</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;AT-amp-T-汇编伪指令说明&quot;&gt;&lt;a href=&quot;#AT-amp-T-汇编伪指令说明&quot; class=&quot;headerlink&quot; title=&quot;AT&amp;amp;T 汇编伪指令说明&quot;&gt;&lt;/a&gt;AT&amp;amp;T 汇编伪指令说明&lt;/h1&gt;&lt;h3 id=&quot;globl-或者-</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="x86汇编" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/x86%E6%B1%87%E7%BC%96/"/>
+    
+    
+    <category term="x86汇编" scheme="http://www.code64.cn/blog1/tags/x86%E6%B1%87%E7%BC%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>x86 扩展传送指令</title>
+    <link href="http://www.code64.cn/blog1/2008/09-02/FC725941C3976746BC698D7630894FFA/"/>
+    <id>http://www.code64.cn/blog1/2008/09-02/FC725941C3976746BC698D7630894FFA/</id>
+    <published>2008-09-02T00:40:25.000Z</published>
+    <updated>2022-02-24T14:35:47.194Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="x86-扩展传送指令"><a href="#x86-扩展传送指令" class="headerlink" title="x86 扩展传送指令"></a>x86 扩展传送指令</h1><h2 id="x86-扩展传送指令包含了两种指令"><a href="#x86-扩展传送指令包含了两种指令" class="headerlink" title="x86 扩展传送指令包含了两种指令"></a>x86 扩展传送指令包含了两种指令</h2><h4 id="1-符号扩展传送指令-MOVSX"><a href="#1-符号扩展传送指令-MOVSX" class="headerlink" title="1. 符号扩展传送指令 MOVSX"></a>1. 符号扩展传送指令 MOVSX</h4><pre><code>把寄存器或者内存的值，符号扩展到更大的寄存器中。 有如下操作数匹配方式：</code></pre><pre><code class="x86asm">    MOVSX reg16, reg8/mem8     MOVSX reg32, reg8/mem8    MOVSX reg64, reg8/mem8    MOVSX reg32, reg16/mem16     MOVSX reg64, reg16/mem16    MOVSXD reg64, reg32/mem32</code></pre><h4 id="2-零扩展传送指令-MOVZX"><a href="#2-零扩展传送指令-MOVZX" class="headerlink" title="2. 零扩展传送指令 MOVZX"></a>2. 零扩展传送指令 MOVZX</h4><pre><code>把寄存器或者内存的值，零扩展到更大的寄存器中。 有如下操作数匹配方式：</code></pre><pre><code class="x86asm">    MOVZX reg16, reg8/mem8    MOVZX reg32, reg8/mem8    MOVZX reg64, reg8/mem8    MOVZX reg32, reg16/mem16    MOVZX reg64, reg16/mem16</code></pre><h2 id="AT-amp-T-格式的扩展传送指令"><a href="#AT-amp-T-格式的扩展传送指令" class="headerlink" title="AT&amp;T 格式的扩展传送指令"></a>AT&amp;T 格式的扩展传送指令</h2><ol><li>传送方向改为从左至右</li><li>指令后面加上 B、W 指明操作数大小</li><li>MOVSXD 也可以用 MOVSXL 来代替</li></ol><pre><code>    movsxb reg8/mem8, reg16     movsxb reg8/mem8, reg32    movsxb reg8/mem8, reg64    movsxw reg16/mem16, reg32     movsxw reg16/mem16, reg64    movsxd reg32/mem32, reg64    movsxl reg32/mem32, reg64        movzxb reg8/mem8, reg16    movzxb reg8/mem8, reg32    movzxb reg8/mem8, reg64     movzxw reg16/mem16, reg32    movzxw reg16/mem16, reg64</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;x86-扩展传送指令&quot;&gt;&lt;a href=&quot;#x86-扩展传送指令&quot; class=&quot;headerlink&quot; title=&quot;x86 扩展传送指令&quot;&gt;&lt;/a&gt;x86 扩展传送指令&lt;/h1&gt;&lt;h2 id=&quot;x86-扩展传送指令包含了两种指令&quot;&gt;&lt;a href=&quot;#x86-</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="x86汇编" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/x86%E6%B1%87%E7%BC%96/"/>
+    
+    
+    <category term="x86汇编" scheme="http://www.code64.cn/blog1/tags/x86%E6%B1%87%E7%BC%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>x86 串操作指令</title>
+    <link href="http://www.code64.cn/blog1/2008/07-30/8C2D0EB461D3748AFBC2011CEA105279/"/>
+    <id>http://www.code64.cn/blog1/2008/07-30/8C2D0EB461D3748AFBC2011CEA105279/</id>
+    <published>2008-07-29T16:10:05.000Z</published>
+    <updated>2022-02-24T14:35:47.194Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="方向标志位-DF"><a href="#方向标志位-DF" class="headerlink" title="方向标志位 DF"></a>方向标志位 DF</h2><p>方向标志位 <code>DF</code> 是 <code>EFLAGS</code> 寄存器中的 bit-10，用于指明串操作的方向。</p><ul><li><code>SI/ESI/RSI</code> 寄存器中的 S 代表 “源” （只配合 DS 段使用）</li><li><code>DI/EDI/RDI</code> 寄存器中的 D 代表 “目标”（只配合 ES 段使用）</li></ul><ol><li>DF 为 0 时，每次操作之后，SI/ESI/RSI、DI/EDI/RDI 寄存器递增</li><li>DF 为 0 时，每次操作之后，SI/ESI/RSI、DI/EDI/RDI 寄存器递减</li></ol><hr><ul><li><code>CLD</code> 指令： 该指令将 DF 清 0</li><li><code>STD</code> 指令： 该指令将 DF 置 1</li></ul><h2 id="串传送指令"><a href="#串传送指令" class="headerlink" title="串传送指令"></a>串传送指令</h2><h4 id="1-MOVSB"><a href="#1-MOVSB" class="headerlink" title="1. MOVSB"></a>1. MOVSB</h4><ul><li>将 SI/ESI/RSI 指定的源内存地址中 1 个字节的数据，传送到 DI/EDI/RDI 指定的目标内存地址中。</li><li>并且，SI/ESI/RSI 和 DI/EDI/RDI 根据 DF 标志自动递增或者递减 1。</li></ul><h4 id="2-MOVSW"><a href="#2-MOVSW" class="headerlink" title="2. MOVSW"></a>2. MOVSW</h4><ul><li>将 SI/ESI/RSI 指定的源内存地址中 2 个字节的数据，传送到 DI/EDI/RDI 指定的目标内存地址中。</li><li>并且，SI/ESI/RSI 和 DI/EDI/RDI 根据 DF 标志自动递增或者递减 2。</li></ul><h4 id="3-MOVSL-（AT-amp-T语法）-MOVSD-（Intel语法）"><a href="#3-MOVSL-（AT-amp-T语法）-MOVSD-（Intel语法）" class="headerlink" title="3. MOVSL （AT&amp;T语法） MOVSD （Intel语法）"></a>3. MOVSL （AT&amp;T语法） MOVSD （Intel语法）</h4><ul><li>将 SI/ESI/RSI 指定的源内存地址中 4 个字节的数据，传送到 DI/EDI/RDI 指定的目标内存地址中。</li><li>并且，SI/ESI/RSI 和 DI/EDI/RDI 根据 DF 标志自动递增或者递减 4。</li></ul><h4 id="4-MOVSQ"><a href="#4-MOVSQ" class="headerlink" title="4. MOVSQ"></a>4. MOVSQ</h4><ul><li>将 SI/ESI/RSI 指定的源内存地址中 8 个字节的数据，传送到 DI/EDI/RDI 指定的目标内存地址中。</li><li>并且，SI/ESI/RSI 和 DI/EDI/RDI 根据 DF 标志自动递增或者递减 8。</li></ul><h2 id="REP-前缀"><a href="#REP-前缀" class="headerlink" title="REP 前缀"></a>REP 前缀</h2><p>串操作指令一般是配合 rep 前缀使用。 rep 前缀的作用是根据 CX/ECX/RCX 寄存器的值，重复执行多次串指令，每执行一次， CX/ECX/RCX 自动减 1。</p><pre><code class="x86asm">    rep  movsw</code></pre><p>相当于如下指令：</p><pre><code class="x86asm">L1:    movsw    loop  L1</code></pre><h2 id="串加载指令"><a href="#串加载指令" class="headerlink" title="串加载指令"></a>串加载指令</h2><h4 id="1-LODSB"><a href="#1-LODSB" class="headerlink" title="1. LODSB"></a>1. LODSB</h4><ul><li>将 SI/ESI/RSI 指定的源内存地址中 1 个字节的数据，传送到 AL 寄存器中。</li><li>并且，SI/ESI/RSI 根据 DF 标志自动递增或者递减 1。</li></ul><h4 id="2-LODSW"><a href="#2-LODSW" class="headerlink" title="2. LODSW"></a>2. LODSW</h4><ul><li>将 SI/ESI/RSI 指定的源内存地址中 2 个字节的数据，传送到 AX 寄存器中。</li><li>并且，SI/ESI/RSI 根据 DF 标志自动递增或者递减 2。</li></ul><h4 id="3-LODSL-（AT-amp-T语法）-LODSD-（Intel语法）"><a href="#3-LODSL-（AT-amp-T语法）-LODSD-（Intel语法）" class="headerlink" title="3. LODSL （AT&amp;T语法） LODSD （Intel语法）"></a>3. LODSL （AT&amp;T语法） LODSD （Intel语法）</h4><ul><li>将 SI/ESI/RSI 指定的源内存地址中 4 个字节的数据，传送到 EAX 寄存器中。</li><li>并且，SI/ESI/RSI 根据 DF 标志自动递增或者递减 4。</li></ul><h4 id="4-LODSQ"><a href="#4-LODSQ" class="headerlink" title="4. LODSQ"></a>4. LODSQ</h4><ul><li>将 SI/ESI/RSI 指定的源内存地址中 8 个字节的数据，传送到 RAX 寄存器中。</li><li>并且，SI/ESI/RSI 根据 DF 标志自动递增或者递减 8。</li></ul><h2 id="串存储指令"><a href="#串存储指令" class="headerlink" title="串存储指令"></a>串存储指令</h2><h4 id="1-STOSB"><a href="#1-STOSB" class="headerlink" title="1. STOSB"></a>1. STOSB</h4><ul><li>将 AL 寄存器的值（1 个字节）存储到 DI/EDI/RDI 指定的目标内存地址中。</li><li>并且，DI/EDI/RDI 根据 DF 标志自动递增或者递减 1。</li></ul><h4 id="2-STOSW"><a href="#2-STOSW" class="headerlink" title="2. STOSW"></a>2. STOSW</h4><ul><li>将 AX 寄存器的值（2 个字节）存储到 DI/EDI/RDI 指定的目标内存地址中。</li><li>并且，DI/EDI/RDI 根据 DF 标志自动递增或者递减 2。</li></ul><h4 id="3-STOSL-（AT-amp-T语法）-STOSD-（Intel语法）"><a href="#3-STOSL-（AT-amp-T语法）-STOSD-（Intel语法）" class="headerlink" title="3. STOSL （AT&amp;T语法） STOSD （Intel语法）"></a>3. STOSL （AT&amp;T语法） STOSD （Intel语法）</h4><ul><li>将 EAX 寄存器的值（4 个字节）存储到 DI/EDI/RDI 指定的目标内存地址中。</li><li>并且，DI/EDI/RDI 根据 DF 标志自动递增或者递减 4。</li></ul><h4 id="4-STOSQ"><a href="#4-STOSQ" class="headerlink" title="4. STOSQ"></a>4. STOSQ</h4><ul><li>将 RAX 寄存器的值（8 个字节）存储到 DI/EDI/RDI 指定的目标内存地址中。</li><li>并且，DI/EDI/RDI 根据 DF 标志自动递增或者递减 8。</li></ul><p>STOSB/STOSW/STOSL/STOSQ 可以配合 rep 前缀对大内存缓冲区进行初始化。</p><h2 id="串比较指令"><a href="#串比较指令" class="headerlink" title="串比较指令"></a>串比较指令</h2><h4 id="1-CMPSB"><a href="#1-CMPSB" class="headerlink" title="1. CMPSB"></a>1. CMPSB</h4><ul><li>SI/ESI/RSI 指定的源内存地址，DI/EDI/RDI 指定的目标内存，1 字节减操作，源减去目标，然后根据结果设置 EFLAGS 寄存器标志。 </li><li>并且，SI/ESI/RSI 和 DI/EDI/RDI 根据 DF 标志自动递增或者递减 1。</li></ul><h4 id="2-CMPSW"><a href="#2-CMPSW" class="headerlink" title="2. CMPSW"></a>2. CMPSW</h4><ul><li>SI/ESI/RSI 指定的源内存地址，DI/EDI/RDI 指定的目标内存，2 字节减操作，源减去目标，然后根据结果设置 EFLAGS 寄存器标志。 </li><li>并且，SI/ESI/RSI 和 DI/EDI/RDI 根据 DF 标志自动递增或者递减 2。</li></ul><h4 id="3-CMPSL-（AT-amp-T语法）-CMPSD-（Intel语法）"><a href="#3-CMPSL-（AT-amp-T语法）-CMPSD-（Intel语法）" class="headerlink" title="3. CMPSL （AT&amp;T语法） CMPSD （Intel语法）"></a>3. CMPSL （AT&amp;T语法） CMPSD （Intel语法）</h4><ul><li>SI/ESI/RSI 指定的源内存地址，DI/EDI/RDI 指定的目标内存，4 字节减操作，源减去目标，然后根据结果设置 EFLAGS 寄存器标志。 </li><li>并且，SI/ESI/RSI 和 DI/EDI/RDI 根据 DF 标志自动递增或者递减 4。</li></ul><h4 id="4-CMPSQ"><a href="#4-CMPSQ" class="headerlink" title="4. CMPSQ"></a>4. CMPSQ</h4><ul><li>SI/ESI/RSI 指定的源内存地址，DI/EDI/RDI 指定的目标内存，8 字节减操作，源减去目标，然后根据结果设置 EFLAGS 寄存器标志。 </li><li>并且，SI/ESI/RSI 和 DI/EDI/RDI 根据 DF 标志自动递增或者递减 8。</li></ul><p>CMPSB/CMPSW/CMPSL/CMPSQ 可以配合 REP、REPE、REPNE、REPZ、REPNZ前缀一起使用来实现各种字符串比较操作。</p><h2 id="串扫描指令"><a href="#串扫描指令" class="headerlink" title="串扫描指令"></a>串扫描指令</h2><h4 id="1-SCASB"><a href="#1-SCASB" class="headerlink" title="1. SCASB"></a>1. SCASB</h4><ul><li>AL 作为源操作数，DI/EDI/RDI 指定的目标内存，1 字节减操作，源减去目标，然后根据结果设置 EFLAGS 寄存器标志。 </li><li>并且，DI/EDI/RDI 根据 DF 标志自动递增或者递减 1。</li></ul><h4 id="2-SCASW"><a href="#2-SCASW" class="headerlink" title="2. SCASW"></a>2. SCASW</h4><ul><li>AX 作为源操作数，DI/EDI/RDI 指定的目标内存，2 字节减操作，源减去目标，然后根据结果设置 EFLAGS 寄存器标志。 </li><li>并且，DI/EDI/RDI 根据 DF 标志自动递增或者递减 1。</li></ul><h4 id="3-SCASL-（AT-amp-T语法）-SCASD-（Intel语法）"><a href="#3-SCASL-（AT-amp-T语法）-SCASD-（Intel语法）" class="headerlink" title="3. SCASL （AT&amp;T语法） SCASD （Intel语法）"></a>3. SCASL （AT&amp;T语法） SCASD （Intel语法）</h4><ul><li>EAX 作为源操作数，DI/EDI/RDI 指定的目标内存，4 字节减操作，源减去目标，然后根据结果设置 EFLAGS 寄存器标志。 </li><li>并且，DI/EDI/RDI 根据 DF 标志自动递增或者递减 1。</li></ul><h4 id="4-SCASQ"><a href="#4-SCASQ" class="headerlink" title="4. SCASQ"></a>4. SCASQ</h4><ul><li>RAX 作为源操作数，DI/EDI/RDI 指定的目标内存，8 字节减操作，源减去目标，然后根据结果设置 EFLAGS 寄存器标志。 </li><li>并且，DI/EDI/RDI 根据 DF 标志自动递增或者递减 1。</li></ul><p>SCASB/SCASW/SCASL/SCASQ 可以配合 REP、REPE、REPNE、REPZ、REPNZ前缀一起使用来实现各种字符串比较、查找操作。</p><p><br/><br/><br/><br/><br/><br/><br/><br><img src="/blog1/images/asmbook.jpg" alt="汇编语言程序设计"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;方向标志位-DF&quot;&gt;&lt;a href=&quot;#方向标志位-DF&quot; class=&quot;headerlink&quot; title=&quot;方向标志位 DF&quot;&gt;&lt;/a&gt;方向标志位 DF&lt;/h2&gt;&lt;p&gt;方向标志位 &lt;code&gt;DF&lt;/code&gt; 是 &lt;code&gt;EFLAGS&lt;/code&gt; 寄存</summary>
+      
+    
+    
+    
+    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="x86汇编" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/x86%E6%B1%87%E7%BC%96/"/>
+    
+    
+    <category term="x86汇编" scheme="http://www.code64.cn/blog1/tags/x86%E6%B1%87%E7%BC%96/"/>
+    
+  </entry>
+  
+</feed>

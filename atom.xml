@@ -3,11 +3,11 @@
   <title>码兵之家</title>
   
   <subtitle>公仔的个人博客站</subtitle>
-  <link href="http://www.code64.cn/blog1/atom.xml" rel="self"/>
+  <link href="https://www.code64.cn/blog1/atom.xml" rel="self"/>
   
-  <link href="http://www.code64.cn/blog1/"/>
+  <link href="https://www.code64.cn/blog1/"/>
   <updated>2022-02-24T14:35:47.194Z</updated>
-  <id>http://www.code64.cn/blog1/</id>
+  <id>https://www.code64.cn/blog1/</id>
   
   <author>
     <name>码兵之家 - 公仔</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>GNU 连接器 ld 的使用指南</title>
-    <link href="http://www.code64.cn/blog1/2021/10-03/0661E6A88B533CE14E03343293F9BDD8/"/>
-    <id>http://www.code64.cn/blog1/2021/10-03/0661E6A88B533CE14E03343293F9BDD8/</id>
+    <link href="https://www.code64.cn/blog1/2021/10-03/0661E6A88B533CE14E03343293F9BDD8/"/>
+    <id>https://www.code64.cn/blog1/2021/10-03/0661E6A88B533CE14E03343293F9BDD8/</id>
     <published>2021-10-03T10:50:42.000Z</published>
     <updated>2022-02-24T14:35:47.194Z</updated>
     
@@ -35,19 +35,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="Linux" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/"/>
+    <category term="Linux" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/"/>
     
     
-    <category term="Linux" scheme="http://www.code64.cn/blog1/tags/Linux/"/>
+    <category term="Linux" scheme="https://www.code64.cn/blog1/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>使用 GNU gettext 实现程序的多国语言本地化</title>
-    <link href="http://www.code64.cn/blog1/2021/06-13/59FA5670CBB6D1AE7BD50A5887B8C1AD/"/>
-    <id>http://www.code64.cn/blog1/2021/06-13/59FA5670CBB6D1AE7BD50A5887B8C1AD/</id>
+    <link href="https://www.code64.cn/blog1/2021/06-13/59FA5670CBB6D1AE7BD50A5887B8C1AD/"/>
+    <id>https://www.code64.cn/blog1/2021/06-13/59FA5670CBB6D1AE7BD50A5887B8C1AD/</id>
     <published>2021-06-13T02:57:38.000Z</published>
     <updated>2022-02-24T14:35:47.194Z</updated>
     
@@ -61,19 +61,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="Linux" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/"/>
+    <category term="Linux" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/"/>
     
     
-    <category term="Linux" scheme="http://www.code64.cn/blog1/tags/Linux/"/>
+    <category term="Linux" scheme="https://www.code64.cn/blog1/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>Windows 下如何将标准输出设置为 UTF-8 编码</title>
-    <link href="http://www.code64.cn/blog1/2021/06-10/DE1E7A72CAC1E21D674A76C3D093CAB3/"/>
-    <id>http://www.code64.cn/blog1/2021/06-10/DE1E7A72CAC1E21D674A76C3D093CAB3/</id>
+    <link href="https://www.code64.cn/blog1/2021/06-10/DE1E7A72CAC1E21D674A76C3D093CAB3/"/>
+    <id>https://www.code64.cn/blog1/2021/06-10/DE1E7A72CAC1E21D674A76C3D093CAB3/</id>
     <published>2021-06-10T01:05:37.000Z</published>
     <updated>2022-02-24T14:35:47.194Z</updated>
     
@@ -87,19 +87,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="Win32" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Win32/"/>
+    <category term="Win32" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Win32/"/>
     
     
-    <category term="Win32" scheme="http://www.code64.cn/blog1/tags/Win32/"/>
+    <category term="Win32" scheme="https://www.code64.cn/blog1/tags/Win32/"/>
     
   </entry>
   
   <entry>
     <title>Node.js 使用 PM2 管理进程</title>
-    <link href="http://www.code64.cn/blog1/2021/05-30/A1F112420F18A412B067B4C27C904C33/"/>
-    <id>http://www.code64.cn/blog1/2021/05-30/A1F112420F18A412B067B4C27C904C33/</id>
+    <link href="https://www.code64.cn/blog1/2021/05-30/A1F112420F18A412B067B4C27C904C33/"/>
+    <id>https://www.code64.cn/blog1/2021/05-30/A1F112420F18A412B067B4C27C904C33/</id>
     <published>2021-05-30T02:38:47.000Z</published>
     <updated>2022-02-24T14:35:47.194Z</updated>
     
@@ -116,19 +116,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="JavaScript" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/JavaScript/"/>
+    <category term="JavaScript" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/JavaScript/"/>
     
     
-    <category term="JavaScript" scheme="http://www.code64.cn/blog1/tags/JavaScript/"/>
+    <category term="JavaScript" scheme="https://www.code64.cn/blog1/tags/JavaScript/"/>
     
   </entry>
   
   <entry>
     <title>Node.js Windows平台下多版本共存的方法</title>
-    <link href="http://www.code64.cn/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/"/>
-    <id>http://www.code64.cn/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/</id>
+    <link href="https://www.code64.cn/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/"/>
+    <id>https://www.code64.cn/blog1/2021/05-26/C3A70A5614ED50A3FB175C56BEA4464D/</id>
     <published>2021-05-26T02:21:26.000Z</published>
     <updated>2022-02-24T14:35:47.194Z</updated>
     
@@ -143,19 +143,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="JavaScript" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/JavaScript/"/>
+    <category term="JavaScript" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/JavaScript/"/>
     
     
-    <category term="JavaScript" scheme="http://www.code64.cn/blog1/tags/JavaScript/"/>
+    <category term="JavaScript" scheme="https://www.code64.cn/blog1/tags/JavaScript/"/>
     
   </entry>
   
   <entry>
     <title>Rust 语法简明总结</title>
-    <link href="http://www.code64.cn/blog1/2021/04-02/D285A33A84DBDB29D0FE1E420D07D2FD/"/>
-    <id>http://www.code64.cn/blog1/2021/04-02/D285A33A84DBDB29D0FE1E420D07D2FD/</id>
+    <link href="https://www.code64.cn/blog1/2021/04-02/D285A33A84DBDB29D0FE1E420D07D2FD/"/>
+    <id>https://www.code64.cn/blog1/2021/04-02/D285A33A84DBDB29D0FE1E420D07D2FD/</id>
     <published>2021-04-02T03:18:06.000Z</published>
     <updated>2022-02-24T14:35:47.194Z</updated>
     
@@ -169,19 +169,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="Rust" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Rust/"/>
+    <category term="Rust" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Rust/"/>
     
     
-    <category term="Rust" scheme="http://www.code64.cn/blog1/tags/Rust/"/>
+    <category term="Rust" scheme="https://www.code64.cn/blog1/tags/Rust/"/>
     
   </entry>
   
   <entry>
     <title>Linux 手动安装 Rust 最新版本编译器</title>
-    <link href="http://www.code64.cn/blog1/2021/03-30/8CDBAAFE38AE21B713FD085130F10844/"/>
-    <id>http://www.code64.cn/blog1/2021/03-30/8CDBAAFE38AE21B713FD085130F10844/</id>
+    <link href="https://www.code64.cn/blog1/2021/03-30/8CDBAAFE38AE21B713FD085130F10844/"/>
+    <id>https://www.code64.cn/blog1/2021/03-30/8CDBAAFE38AE21B713FD085130F10844/</id>
     <published>2021-03-30T01:05:51.000Z</published>
     <updated>2022-02-24T14:35:47.194Z</updated>
     
@@ -197,19 +197,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="Rust" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Rust/"/>
+    <category term="Rust" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Rust/"/>
     
     
-    <category term="Rust" scheme="http://www.code64.cn/blog1/tags/Rust/"/>
+    <category term="Rust" scheme="https://www.code64.cn/blog1/tags/Rust/"/>
     
   </entry>
   
   <entry>
     <title>C11 的变长数组</title>
-    <link href="http://www.code64.cn/blog1/2020/07-03/635C028687D671F50A1AF81E8F589D50/"/>
-    <id>http://www.code64.cn/blog1/2020/07-03/635C028687D671F50A1AF81E8F589D50/</id>
+    <link href="https://www.code64.cn/blog1/2020/07-03/635C028687D671F50A1AF81E8F589D50/"/>
+    <id>https://www.code64.cn/blog1/2020/07-03/635C028687D671F50A1AF81E8F589D50/</id>
     <published>2020-07-03T03:20:13.000Z</published>
     <updated>2022-02-24T14:35:47.179Z</updated>
     
@@ -225,19 +225,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="C_CPP" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/C-CPP/"/>
+    <category term="C_CPP" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/C-CPP/"/>
     
     
-    <category term="C/C++" scheme="http://www.code64.cn/blog1/tags/C-C/"/>
+    <category term="C/C++" scheme="https://www.code64.cn/blog1/tags/C-C/"/>
     
   </entry>
   
   <entry>
     <title>C# 直接引用命名空间中的静态成员</title>
-    <link href="http://www.code64.cn/blog1/2018/12-02/C2B887CEB1D1D3C9064A8AAB781E1659/"/>
-    <id>http://www.code64.cn/blog1/2018/12-02/C2B887CEB1D1D3C9064A8AAB781E1659/</id>
+    <link href="https://www.code64.cn/blog1/2018/12-02/C2B887CEB1D1D3C9064A8AAB781E1659/"/>
+    <id>https://www.code64.cn/blog1/2018/12-02/C2B887CEB1D1D3C9064A8AAB781E1659/</id>
     <published>2018-12-02T01:29:59.000Z</published>
     <updated>2022-02-24T14:35:47.179Z</updated>
     
@@ -253,19 +253,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="CSharp" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/CSharp/"/>
+    <category term="CSharp" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/CSharp/"/>
     
     
-    <category term="C#" scheme="http://www.code64.cn/blog1/tags/C/"/>
+    <category term="C#" scheme="https://www.code64.cn/blog1/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>React 中函数组件与类组件的样例</title>
-    <link href="http://www.code64.cn/blog1/2018/10-09/65F786835306E1C27B7023A6F17B5460/"/>
-    <id>http://www.code64.cn/blog1/2018/10-09/65F786835306E1C27B7023A6F17B5460/</id>
+    <link href="https://www.code64.cn/blog1/2018/10-09/65F786835306E1C27B7023A6F17B5460/"/>
+    <id>https://www.code64.cn/blog1/2018/10-09/65F786835306E1C27B7023A6F17B5460/</id>
     <published>2018-10-09T08:46:52.000Z</published>
     <updated>2022-02-24T14:35:47.194Z</updated>
     
@@ -282,19 +282,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="React" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/React/"/>
+    <category term="React" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/React/"/>
     
     
-    <category term="React" scheme="http://www.code64.cn/blog1/tags/React/"/>
+    <category term="React" scheme="https://www.code64.cn/blog1/tags/React/"/>
     
   </entry>
   
   <entry>
     <title>C11 中具有安全边界检查的函数</title>
-    <link href="http://www.code64.cn/blog1/2018/07-05/E42A88DCB6352F4DDF4EB86046878893/"/>
-    <id>http://www.code64.cn/blog1/2018/07-05/E42A88DCB6352F4DDF4EB86046878893/</id>
+    <link href="https://www.code64.cn/blog1/2018/07-05/E42A88DCB6352F4DDF4EB86046878893/"/>
+    <id>https://www.code64.cn/blog1/2018/07-05/E42A88DCB6352F4DDF4EB86046878893/</id>
     <published>2018-07-05T15:13:05.000Z</published>
     <updated>2022-02-24T14:35:47.179Z</updated>
     
@@ -308,19 +308,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="C_CPP" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/C-CPP/"/>
+    <category term="C_CPP" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/C-CPP/"/>
     
     
-    <category term="C/C++" scheme="http://www.code64.cn/blog1/tags/C-C/"/>
+    <category term="C/C++" scheme="https://www.code64.cn/blog1/tags/C-C/"/>
     
   </entry>
   
   <entry>
     <title>C 语言中的常见的预定义宏</title>
-    <link href="http://www.code64.cn/blog1/2018/07-04/1A3A4A6F10A1D499E13A38054BF33B8F/"/>
-    <id>http://www.code64.cn/blog1/2018/07-04/1A3A4A6F10A1D499E13A38054BF33B8F/</id>
+    <link href="https://www.code64.cn/blog1/2018/07-04/1A3A4A6F10A1D499E13A38054BF33B8F/"/>
+    <id>https://www.code64.cn/blog1/2018/07-04/1A3A4A6F10A1D499E13A38054BF33B8F/</id>
     <published>2018-07-04T02:30:43.000Z</published>
     <updated>2022-02-24T14:35:47.179Z</updated>
     
@@ -335,19 +335,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="C_CPP" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/C-CPP/"/>
+    <category term="C_CPP" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/C-CPP/"/>
     
     
-    <category term="C/C++" scheme="http://www.code64.cn/blog1/tags/C-C/"/>
+    <category term="C/C++" scheme="https://www.code64.cn/blog1/tags/C-C/"/>
     
   </entry>
   
   <entry>
     <title>Linux 安装 Objective-C 编译与运行环境</title>
-    <link href="http://www.code64.cn/blog1/2018/05-02/2597812BD6D3982B22AE70B954C5C5F1/"/>
-    <id>http://www.code64.cn/blog1/2018/05-02/2597812BD6D3982B22AE70B954C5C5F1/</id>
+    <link href="https://www.code64.cn/blog1/2018/05-02/2597812BD6D3982B22AE70B954C5C5F1/"/>
+    <id>https://www.code64.cn/blog1/2018/05-02/2597812BD6D3982B22AE70B954C5C5F1/</id>
     <published>2018-05-02T06:21:31.000Z</published>
     <updated>2022-02-24T14:35:47.194Z</updated>
     
@@ -362,19 +362,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="Objective-C" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Objective-C/"/>
+    <category term="Objective-C" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Objective-C/"/>
     
     
-    <category term="Objective-C" scheme="http://www.code64.cn/blog1/tags/Objective-C/"/>
+    <category term="Objective-C" scheme="https://www.code64.cn/blog1/tags/Objective-C/"/>
     
   </entry>
   
   <entry>
     <title>Swift 中的可空类型</title>
-    <link href="http://www.code64.cn/blog1/2017/08-24/52847D92261A0D1FEE1A3F3F4911B4DF/"/>
-    <id>http://www.code64.cn/blog1/2017/08-24/52847D92261A0D1FEE1A3F3F4911B4DF/</id>
+    <link href="https://www.code64.cn/blog1/2017/08-24/52847D92261A0D1FEE1A3F3F4911B4DF/"/>
+    <id>https://www.code64.cn/blog1/2017/08-24/52847D92261A0D1FEE1A3F3F4911B4DF/</id>
     <published>2017-08-24T11:12:05.000Z</published>
     <updated>2022-02-24T14:35:47.194Z</updated>
     
@@ -390,19 +390,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="Swift" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Swift/"/>
+    <category term="Swift" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Swift/"/>
     
     
-    <category term="Swift" scheme="http://www.code64.cn/blog1/tags/Swift/"/>
+    <category term="Swift" scheme="https://www.code64.cn/blog1/tags/Swift/"/>
     
   </entry>
   
   <entry>
     <title>Swift 变量的声明</title>
-    <link href="http://www.code64.cn/blog1/2017/08-23/16D7BAE2FFFFDAC1F7D05A7992000912/"/>
-    <id>http://www.code64.cn/blog1/2017/08-23/16D7BAE2FFFFDAC1F7D05A7992000912/</id>
+    <link href="https://www.code64.cn/blog1/2017/08-23/16D7BAE2FFFFDAC1F7D05A7992000912/"/>
+    <id>https://www.code64.cn/blog1/2017/08-23/16D7BAE2FFFFDAC1F7D05A7992000912/</id>
     <published>2017-08-23T04:11:35.000Z</published>
     <updated>2022-02-24T14:35:47.194Z</updated>
     
@@ -418,19 +418,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="Swift" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Swift/"/>
+    <category term="Swift" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Swift/"/>
     
     
-    <category term="Swift" scheme="http://www.code64.cn/blog1/tags/Swift/"/>
+    <category term="Swift" scheme="https://www.code64.cn/blog1/tags/Swift/"/>
     
   </entry>
   
   <entry>
     <title>JavaScript 的数组排序</title>
-    <link href="http://www.code64.cn/blog1/2015/04-22/31B99BD6F0F6FE2D5C177FA136D6EE15/"/>
-    <id>http://www.code64.cn/blog1/2015/04-22/31B99BD6F0F6FE2D5C177FA136D6EE15/</id>
+    <link href="https://www.code64.cn/blog1/2015/04-22/31B99BD6F0F6FE2D5C177FA136D6EE15/"/>
+    <id>https://www.code64.cn/blog1/2015/04-22/31B99BD6F0F6FE2D5C177FA136D6EE15/</id>
     <published>2015-04-22T04:21:15.000Z</published>
     <updated>2022-02-24T14:35:47.194Z</updated>
     
@@ -446,19 +446,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="JavaScript" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/JavaScript/"/>
+    <category term="JavaScript" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/JavaScript/"/>
     
     
-    <category term="JavaScript" scheme="http://www.code64.cn/blog1/tags/JavaScript/"/>
+    <category term="JavaScript" scheme="https://www.code64.cn/blog1/tags/JavaScript/"/>
     
   </entry>
   
   <entry>
     <title>Java 的反射与注解</title>
-    <link href="http://www.code64.cn/blog1/2011/08-21/C3A70A5614ED50A3FB175C56BEA4464C/"/>
-    <id>http://www.code64.cn/blog1/2011/08-21/C3A70A5614ED50A3FB175C56BEA4464C/</id>
+    <link href="https://www.code64.cn/blog1/2011/08-21/C3A70A5614ED50A3FB175C56BEA4464C/"/>
+    <id>https://www.code64.cn/blog1/2011/08-21/C3A70A5614ED50A3FB175C56BEA4464C/</id>
     <published>2011-08-21T02:43:12.000Z</published>
     <updated>2022-02-24T14:35:47.194Z</updated>
     
@@ -472,19 +472,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="Java" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java/"/>
+    <category term="Java" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java/"/>
     
     
-    <category term="Java" scheme="http://www.code64.cn/blog1/tags/Java/"/>
+    <category term="Java" scheme="https://www.code64.cn/blog1/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>AT&amp;T 汇编伪指令说明</title>
-    <link href="http://www.code64.cn/blog1/2009/10-08/BF629617CAE2B0FF08CB38DCE94AA184/"/>
-    <id>http://www.code64.cn/blog1/2009/10-08/BF629617CAE2B0FF08CB38DCE94AA184/</id>
+    <link href="https://www.code64.cn/blog1/2009/10-08/BF629617CAE2B0FF08CB38DCE94AA184/"/>
+    <id>https://www.code64.cn/blog1/2009/10-08/BF629617CAE2B0FF08CB38DCE94AA184/</id>
     <published>2009-10-08T01:32:15.000Z</published>
     <updated>2022-02-24T14:35:47.179Z</updated>
     
@@ -498,19 +498,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="x86汇编" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/x86%E6%B1%87%E7%BC%96/"/>
+    <category term="x86汇编" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/x86%E6%B1%87%E7%BC%96/"/>
     
     
-    <category term="x86汇编" scheme="http://www.code64.cn/blog1/tags/x86%E6%B1%87%E7%BC%96/"/>
+    <category term="x86汇编" scheme="https://www.code64.cn/blog1/tags/x86%E6%B1%87%E7%BC%96/"/>
     
   </entry>
   
   <entry>
     <title>x86 扩展传送指令</title>
-    <link href="http://www.code64.cn/blog1/2008/09-02/FC725941C3976746BC698D7630894FFA/"/>
-    <id>http://www.code64.cn/blog1/2008/09-02/FC725941C3976746BC698D7630894FFA/</id>
+    <link href="https://www.code64.cn/blog1/2008/09-02/FC725941C3976746BC698D7630894FFA/"/>
+    <id>https://www.code64.cn/blog1/2008/09-02/FC725941C3976746BC698D7630894FFA/</id>
     <published>2008-09-02T00:40:25.000Z</published>
     <updated>2022-02-24T14:35:47.194Z</updated>
     
@@ -524,19 +524,19 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="x86汇编" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/x86%E6%B1%87%E7%BC%96/"/>
+    <category term="x86汇编" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/x86%E6%B1%87%E7%BC%96/"/>
     
     
-    <category term="x86汇编" scheme="http://www.code64.cn/blog1/tags/x86%E6%B1%87%E7%BC%96/"/>
+    <category term="x86汇编" scheme="https://www.code64.cn/blog1/tags/x86%E6%B1%87%E7%BC%96/"/>
     
   </entry>
   
   <entry>
     <title>x86 串操作指令</title>
-    <link href="http://www.code64.cn/blog1/2008/07-30/8C2D0EB461D3748AFBC2011CEA105279/"/>
-    <id>http://www.code64.cn/blog1/2008/07-30/8C2D0EB461D3748AFBC2011CEA105279/</id>
+    <link href="https://www.code64.cn/blog1/2008/07-30/8C2D0EB461D3748AFBC2011CEA105279/"/>
+    <id>https://www.code64.cn/blog1/2008/07-30/8C2D0EB461D3748AFBC2011CEA105279/</id>
     <published>2008-07-29T16:10:05.000Z</published>
     <updated>2022-02-24T14:35:47.194Z</updated>
     
@@ -550,12 +550,12 @@
     
     
     
-    <category term="技术文章" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    <category term="技术文章" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    <category term="x86汇编" scheme="http://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/x86%E6%B1%87%E7%BC%96/"/>
+    <category term="x86汇编" scheme="https://www.code64.cn/blog1/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/x86%E6%B1%87%E7%BC%96/"/>
     
     
-    <category term="x86汇编" scheme="http://www.code64.cn/blog1/tags/x86%E6%B1%87%E7%BC%96/"/>
+    <category term="x86汇编" scheme="https://www.code64.cn/blog1/tags/x86%E6%B1%87%E7%BC%96/"/>
     
   </entry>
   
